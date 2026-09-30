@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-ivory: #F8F0E3;
+    --color-ivory-light: #FFF9EF;
+    --color-maroon: #6E1F2E;
+    --color-maroon-dark: #42131E;
+    --color-gold: #B5965A;
+    --color-gold-light: #D4AF37;
+    --color-brown: #291C1A;
+
+    --font-serif-primary: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+    --font-cinzel: 'Cinzel', serif;
+    --font-italiana: 'Italiana', serif;
+    --font-sans-primary: 'Montserrat', 'Plus Jakarta Sans', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-ivory-light);
+    color: var(--color-brown);
+    font-family: var(--font-sans-primary);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Custom Serif & Display Classes */
+.font-serif-luxury {
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-italiana {
+  font-family: 'Italiana', 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-sans-body {
+  font-family: 'Montserrat', 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Luxury Card & Border Utilites */
+.border-gold-subtle {
+  border-color: rgba(181, 150, 90, 0.35);
+}
+
+.border-gold-glow {
+  border-color: #B5965A;
+  box-shadow: 0 0 15px rgba(181, 150, 90, 0.25);
+}
+
+.bg-maroon-gradient {
+  background: linear-gradient(135deg, #6E1F2E 0%, #42131E 100%);
+}
+
+.bg-ivory-gradient {
+  background: linear-gradient(180deg, #FFF9EF 0%, #F8F0E3 100%);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #B5965A 50%, #9A7B3E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-metallic {
+  color: #B5965A;
+  text-shadow: 0 0 1px rgba(181, 150, 90, 0.3);
+}
+
+/* Traditional Indian Arch Frame */
+.arch-card {
+  border-top-left-radius: 140px;
+  border-top-right-radius: 140px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.arch-card-sm {
+  border-top-left-radius: 80px;
+  border-top-right-radius: 80px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+/* Subtle Golden Ornaments & Mandala */
+.mandala-bg {
+  background-image: radial-gradient(circle at center, rgba(181, 150, 90, 0.08) 0%, transparent 70%);
+}
+
+/* Keyframe Animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes cloudMove {
+  0% { transform: translateX(-5%); }
+  50% { transform: translateX(5%); }
+  100% { transform: translateX(-5%); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.05); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-cloud-move {
+  animation: cloudMove 25s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8F0E3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6E1F2E;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B5965A;
+}
