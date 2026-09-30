@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Play, Pause, Music } from 'lucide-react';
+import { Play, Pause, Music, Volume2, VolumeX, Ticket, ArrowUp } from 'lucide-react';
 import { WEDDING_DATA } from '../data/weddingData';
+import { soundEngine } from '../utils/soundEffects';
 
 export const MusicPlayer: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [soundEffectsEnabled, setSoundEffectsEnabled] = useState(true);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -21,6 +23,7 @@ export const MusicPlayer: React.FC = () => {
   }, []);
 
   const togglePlay = () => {
+    soundEngine.playClick();
     if (!audioRef.current) return;
     if (isPlaying) {
       audioRef.current.pause();
@@ -30,28 +33,75 @@ export const MusicPlayer: React.FC = () => {
     }
   };
 
-  return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 select-none">
-      {/* Expanded Track Name Pill */}
-      <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#291C1A]/90 backdrop-blur-md border border-[#B5965A]/40 text-[#FFF9EF] text-xs font-sans-body shadow-xl">
-        <Music className="w-3.5 h-3.5 text-[#D4AF37] animate-spin" style={{ animationDuration: '8s' }} />
-        <span className="font-medium text-[11px] truncate max-w-[140px]">
-          {WEDDING_DATA.audioTrack.title}
-        </span>
-      </div>
+  const toggleSoundEffects = () => {
+    const nextState = !soundEffectsEnabled;
+    setSoundEffectsEnabled(nextState);
+    soundEngine.enabled = nextState;
+    if (nextState) soundEngine.playChime();
+  };
 
-      {/* Floating Play/Pause Button */}
-      <button
-        onClick={togglePlay}
-        aria-label={isPlaying ? 'Pause Background Music' : 'Play Background Music'}
-        className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#6E1F2E] to-[#42131E] hover:from-[#521722] hover:to-[#291C1A] text-[#FFF9EF] border-2 border-[#B5965A] shadow-2xl flex items-center justify-center transition-all transform active:scale-95 group"
-      >
-        {isPlaying ? (
-          <Pause className="w-5 h-5 text-[#D4AF37]" />
-        ) : (
-          <Play className="w-5 h-5 text-[#D4AF37] ml-0.5" />
-        )}
-      </button>
+  const handleScrollToRsvp = () => {
+    soundEngine.playClick();
+    const rsvp = document.getElementById('rsvp');
+    if (rsvp) rsvp.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleScrollToTop = () => {
+    soundEngine.playClick();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <div className="fixed bottom-5 right-4 z-50 flex items-center gap-2 select-none">
+      {/* Floating Gold Control Dock */}
+      <div className="flex items-center gap-1.5 p-1.5 rounded-full bg-[#291C1A]/95 backdrop-blur-md border-2 border-[#B5965A] text-[#FFF9EF] shadow-2xl">
+        {/* RSVP Quick Access Button */}
+        <button
+          onClick={handleScrollToRsvp}
+          className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#6E1F2E] hover:bg-[#42131E] text-[#FFF9EF] text-xs font-sans-body font-bold transition-all border border-[#B5965A]/40 shadow-sm"
+        >
+          <Ticket className="w-3.5 h-3.5 text-[#D4AF37]" />
+          <span className="hidden sm:inline">VIP RSVP</span>
+        </button>
+
+        {/* Track Title Pill */}
+        <div className="hidden lg:flex items-center gap-2 px-3 py-1 text-xs font-sans-body">
+          <Music className="w-3.5 h-3.5 text-[#D4AF37] animate-spin" style={{ animationDuration: '8s' }} />
+          <span className="font-medium text-[11px] truncate max-w-[130px] text-amber-100">
+            {WEDDING_DATA.audioTrack.title}
+          </span>
+        </div>
+
+        {/* Sound FX Chime Toggle */}
+        <button
+          onClick={toggleSoundEffects}
+          className="p-2 rounded-full hover:bg-white/10 text-amber-200 transition-colors"
+          aria-label={soundEffectsEnabled ? 'Mute interaction sound effects' : 'Enable interaction sound effects'}
+          title={soundEffectsEnabled ? 'Interaction Sounds On' : 'Interaction Sounds Off'}
+        >
+          {soundEffectsEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4 opacity-60" />}
+        </button>
+
+        {/* Music Play/Pause */}
+        <button
+          onClick={togglePlay}
+          className="p-2 rounded-full bg-gradient-to-tr from-[#D4AF37] to-[#B5965A] text-[#291C1A] shadow-md hover:brightness-110 transition-all font-bold"
+          aria-label={isPlaying ? 'Pause Background Music' : 'Play Background Music'}
+          title={isPlaying ? 'Pause Music' : 'Play Background Raga'}
+        >
+          {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
+        </button>
+
+        {/* Top Scroll Button */}
+        <button
+          onClick={handleScrollToTop}
+          className="p-2 rounded-full hover:bg-white/10 text-amber-200 transition-colors"
+          aria-label="Scroll back to top cover"
+          title="Top Cover"
+        >
+          <ArrowUp className="w-4 h-4" />
+        </button>
+      </div>
     </div>
   );
 };

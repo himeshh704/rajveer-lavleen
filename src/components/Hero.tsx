@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ChevronDown, Sparkles, Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { ChevronDown, Sparkles, Play, Pause, Volume2, VolumeX, Film, Image } from 'lucide-react';
 import { WEDDING_DATA } from '../data/weddingData';
+import { soundEngine } from '../utils/soundEffects';
 
 interface HeroProps {
   onExploreClick?: () => void;
@@ -11,19 +12,28 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
+  const [heroMode, setHeroMode] = useState<'video' | 'portal'>('video');
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
 
-  // Track window scroll progress for hero fade out
+  // Track window scroll progress for hero transformations
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end start']
   });
 
+  // Portal scroll transformations for Illustrated mode
+  const templeScale = useTransform(scrollYProgress, [0, 0.65], [1, 2.4]);
+  const doorLeftX = useTransform(scrollYProgress, [0.08, 0.65], ['0%', '-100%']);
+  const doorRightX = useTransform(scrollYProgress, [0.08, 0.65], ['0%', '100%']);
+  const portalGlowOpacity = useTransform(scrollYProgress, [0.05, 0.4, 0.75], [0, 1, 0.25]);
+
+  // Video mode transformations
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.8], [1, 1.05]);
 
   const togglePlay = () => {
+    soundEngine.playClick();
     if (!videoRef.current) return;
     if (isPlaying) {
       videoRef.current.pause();
@@ -34,60 +44,109 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
   };
 
   const toggleMute = () => {
+    soundEngine.playClick();
     if (!videoRef.current) return;
     videoRef.current.muted = !isMuted;
     setIsMuted(!isMuted);
   };
 
+  const switchMode = (mode: 'video' | 'portal') => {
+    soundEngine.playChime();
+    setHeroMode(mode);
+  };
+
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[100dvh] min-h-[600px] overflow-hidden bg-black text-white flex flex-col justify-between items-center"
+      className={`relative w-full h-[100dvh] min-h-[620px] overflow-hidden text-white flex flex-col justify-between items-center transition-colors duration-700 ${
+        heroMode === 'video' ? 'bg-black' : 'bg-gradient-to-b from-[#38bdf8] via-[#7dd3fc] to-[#bae6fd]'
+      }`}
     >
-      {/* 1. FULL FRAME VIDEO BACKGROUND */}
-      <motion.div style={{ scale: heroScale }} className="absolute inset-0 w-full h-full">
-        <video
-          ref={videoRef}
-          src="/videos/hero_video.mp4"
-          autoPlay
-          loop
-          muted={isMuted}
-          playsInline
-          className="w-full h-full object-cover"
-        />
-        {/* Cinematic Dark & Gold Tint Overlay for Premium Text Contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#42131E]/90" />
-      </motion.div>
+      {/* ----------------- MODE A: FULL FRAME VIDEO ----------------- */}
+      {heroMode === 'video' && (
+        <motion.div style={{ scale: heroScale }} className="absolute inset-0 w-full h-full">
+          <video
+            ref={videoRef}
+            src="/videos/hero_video.mp4"
+            autoPlay
+            loop
+            muted={isMuted}
+            playsInline
+            className="w-full h-full object-cover"
+          />
+          {/* Cinematic Dark & Gold Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#42131E]/90" />
+        </motion.div>
+      )}
 
-      {/* 2. TOP FLOATING AUDIO & PLAY CONTROLS */}
-      <div className="relative z-30 w-full max-w-7xl mx-auto px-4 pt-6 flex items-center justify-between pointer-events-auto">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-xs font-sans-body text-amber-200">
-          <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
-          <span>Ranbir & Alia Wedding Reel</span>
+      {/* ----------------- MODE B: ILLUSTRATED PORTAL SKY ----------------- */}
+      {heroMode === 'portal' && (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {/* Animated Fluffy Sky Clouds */}
+          <div className="absolute -top-6 -left-10 w-72 sm:w-96 h-36 bg-white/45 rounded-full blur-2xl animate-cloud-move" />
+          <div
+            className="absolute top-12 -right-12 w-80 sm:w-[500px] h-44 bg-white/50 rounded-full blur-3xl animate-cloud-move"
+            style={{ animationDuration: '30s' }}
+          />
+          <div
+            className="absolute top-1/3 left-2 w-64 sm:w-80 h-32 bg-white/35 rounded-full blur-2xl animate-cloud-move"
+            style={{ animationDuration: '38s' }}
+          />
+          {/* Radial Sun Glow */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[340px] sm:w-[600px] h-[340px] sm:h-[600px] bg-gradient-to-b from-white/35 via-sky-200/15 to-transparent rounded-full blur-3xl" />
+        </div>
+      )}
+
+      {/* TOP FLOATING CONTROLS (Mode Switcher + Sound Controls) */}
+      <div className="relative z-30 w-full max-w-7xl mx-auto px-4 pt-5 flex items-center justify-between pointer-events-auto">
+        {/* Mode Switcher Pill */}
+        <div className="inline-flex p-1 rounded-full bg-black/40 backdrop-blur-md border border-white/30 text-xs font-sans-body shadow-lg">
+          <button
+            onClick={() => switchMode('video')}
+            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full transition-all ${
+              heroMode === 'video'
+                ? 'bg-[#B5965A] text-[#291C1A] font-bold shadow-sm'
+                : 'text-white/80 hover:text-white'
+            }`}
+          >
+            <Film className="w-3.5 h-3.5" />
+            <span>Cinematic Film</span>
+          </button>
+          <button
+            onClick={() => switchMode('portal')}
+            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full transition-all ${
+              heroMode === 'portal'
+                ? 'bg-[#B5965A] text-[#291C1A] font-bold shadow-sm'
+                : 'text-white/80 hover:text-white'
+            }`}
+          >
+            <Image className="w-3.5 h-3.5" />
+            <span>Gurdwara Portal</span>
+          </button>
         </div>
 
-        <div className="flex items-center gap-2">
-          {/* Sound Toggle */}
-          <button
-            onClick={toggleMute}
-            className="p-2.5 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-md border border-white/30 text-amber-100 transition-all shadow-lg"
-            aria-label={isMuted ? 'Unmute video sound' : 'Mute video sound'}
-          >
-            {isMuted ? <VolumeX className="w-4.5 h-4.5" /> : <Volume2 className="w-4.5 h-4.5" />}
-          </button>
-
-          {/* Pause / Play Toggle */}
-          <button
-            onClick={togglePlay}
-            className="p-2.5 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-md border border-white/30 text-amber-100 transition-all shadow-lg"
-            aria-label={isPlaying ? 'Pause video' : 'Play video'}
-          >
-            {isPlaying ? <Pause className="w-4.5 h-4.5" /> : <Play className="w-4.5 h-4.5 ml-0.5" />}
-          </button>
-        </div>
+        {/* Video Audio & Play Toggles (when in video mode) */}
+        {heroMode === 'video' && (
+          <div className="flex items-center gap-2">
+            <button
+              onClick={toggleMute}
+              className="p-2.5 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-md border border-white/30 text-amber-100 transition-all shadow-lg"
+              aria-label={isMuted ? 'Unmute video sound' : 'Mute video sound'}
+            >
+              {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+            </button>
+            <button
+              onClick={togglePlay}
+              className="p-2.5 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-md border border-white/30 text-amber-100 transition-all shadow-lg"
+              aria-label={isPlaying ? 'Pause video' : 'Play video'}
+            >
+              {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
+            </button>
+          </div>
+        )}
       </div>
 
-      {/* 3. HERO CALLIGRAPHIC TYPOGRAPHY (FULL FRAME CENTERED) */}
+      {/* HERO CALLIGRAPHIC TYPOGRAPHY */}
       <motion.div
         style={{ opacity: heroOpacity }}
         className="relative z-20 px-4 text-center flex flex-col items-center select-none max-w-3xl mx-auto my-auto"
@@ -131,11 +190,47 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
         </p>
       </motion.div>
 
-      {/* 4. SCROLL DOWN CUE */}
+      {/* GURDWARA PORTAL STAGE (Active in Portal Mode) */}
+      {heroMode === 'portal' && (
+        <div className="relative z-15 w-full flex flex-col items-center justify-end pointer-events-none pb-2 sm:pb-0">
+          <motion.div
+            style={{ scale: templeScale }}
+            className="relative w-[96vw] max-w-3xl aspect-[1024/558] origin-bottom flex items-end justify-center"
+          >
+            {/* Temple Left Half */}
+            <motion.img
+              src="/images/temple_left.png"
+              alt="Gurdwara Left Portal"
+              style={{ x: doorLeftX }}
+              className="absolute inset-0 w-full h-full object-contain object-bottom drop-shadow-[0_8px_20px_rgba(0,0,0,0.25)]"
+            />
+            {/* Temple Right Half */}
+            <motion.img
+              src="/images/temple_right.png"
+              alt="Gurdwara Right Portal"
+              style={{ x: doorRightX }}
+              className="absolute inset-0 w-full h-full object-contain object-bottom drop-shadow-[0_8px_20px_rgba(0,0,0,0.25)]"
+            />
+          </motion.div>
+
+          {/* Portal Glow */}
+          <motion.div
+            style={{ opacity: portalGlowOpacity }}
+            className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
+          >
+            <div className="w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] rounded-full bg-radial from-amber-100 via-amber-200/65 to-transparent blur-3xl" />
+          </motion.div>
+        </div>
+      )}
+
+      {/* SCROLL DOWN CUE */}
       <motion.div
         style={{ opacity: heroOpacity }}
         className="relative z-20 pb-6 flex flex-col items-center gap-1 cursor-pointer pointer-events-auto"
-        onClick={onExploreClick}
+        onClick={() => {
+          soundEngine.playClick();
+          if (onExploreClick) onExploreClick();
+        }}
       >
         <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-white/95 font-sans-body font-semibold drop-shadow">
           Scroll down to explore invitation

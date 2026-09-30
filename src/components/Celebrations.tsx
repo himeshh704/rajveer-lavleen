@@ -1,14 +1,36 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Calendar, Clock, Sparkles, Heart, GlassWater, Shirt, ChevronRight, Layers, LayoutList } from 'lucide-react';
+import { MapPin, Calendar, Clock, Sparkles, Heart, GlassWater, Shirt, ChevronRight, Layers, LayoutList, Palette } from 'lucide-react';
 import { WEDDING_DATA } from '../data/weddingData';
 import type { EventDetail } from '../data/weddingData';
+import { soundEngine } from '../utils/soundEffects';
 
 export const Celebrations: React.FC = () => {
   const [activeDayIndex, setActiveDayIndex] = useState(0);
   const [viewMode, setViewMode] = useState<'interactive' | 'all'>('interactive');
 
   const currentEvent = WEDDING_DATA.events[activeDayIndex];
+
+  // Color Swatches per Event
+  const colorSwatches: Record<string, { name: string; hex: string }[]> = {
+    'mehndi-sangeet': [
+      { name: 'Emerald Green', hex: '#004B23' },
+      { name: 'Saffron Yellow', hex: '#E9B44C' },
+      { name: 'Royal Gold', hex: '#D4AF37' }
+    ],
+    'anand-karaj': [
+      { name: 'Velvet Crimson', hex: '#6E1F2E' },
+      { name: 'Pastel Blush', hex: '#F4ACB7' },
+      { name: 'Ivory Gold', hex: '#F8F0E3' }
+    ],
+    'reception': [
+      { name: 'Midnight Black', hex: '#121212' },
+      { name: 'Royal Maroon', hex: '#42131E' },
+      { name: 'Champagne Gold', hex: '#D4AF37' }
+    ]
+  };
+
+  const currentSwatches = colorSwatches[currentEvent.id] || [];
 
   return (
     <section id="celebrations" className="relative py-24 px-4 md:px-8 bg-gradient-to-b from-[#6E1F2E] via-[#521722] to-[#42131E] text-[#FFF9EF] overflow-hidden">
@@ -38,7 +60,10 @@ export const Celebrations: React.FC = () => {
           <div className="pt-4 flex justify-center">
             <div className="inline-flex p-1 rounded-full bg-[#291C1A]/80 border border-[#B5965A]/40 text-xs font-sans-body">
               <button
-                onClick={() => setViewMode('interactive')}
+                onClick={() => {
+                  soundEngine.playClick();
+                  setViewMode('interactive');
+                }}
                 className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full transition-all ${
                   viewMode === 'interactive'
                     ? 'bg-[#B5965A] text-[#291C1A] font-bold shadow-md'
@@ -50,7 +75,10 @@ export const Celebrations: React.FC = () => {
               </button>
 
               <button
-                onClick={() => setViewMode('all')}
+                onClick={() => {
+                  soundEngine.playClick();
+                  setViewMode('all');
+                }}
                 className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full transition-all ${
                   viewMode === 'all'
                     ? 'bg-[#B5965A] text-[#291C1A] font-bold shadow-md'
@@ -74,7 +102,10 @@ export const Celebrations: React.FC = () => {
                 return (
                   <button
                     key={evt.id}
-                    onClick={() => setActiveDayIndex(idx)}
+                    onClick={() => {
+                      soundEngine.playChime();
+                      setActiveDayIndex(idx);
+                    }}
                     className={`px-5 py-3 rounded-2xl border transition-all flex flex-col items-center gap-0.5 text-center ${
                       isActive
                         ? 'bg-gradient-to-r from-[#D4AF37] via-[#B5965A] to-[#8C6D32] text-[#291C1A] border-amber-300 shadow-xl scale-105 font-bold'
@@ -153,6 +184,25 @@ export const Celebrations: React.FC = () => {
                           <span className="text-amber-200">{currentEvent.dressCode}</span>
                         </div>
                       </div>
+
+                      {/* Dress Code Color Swatches */}
+                      {currentSwatches.length > 0 && (
+                        <div className="flex items-center gap-2 pt-1">
+                          <Palette className="w-3.5 h-3.5 text-[#B5965A]" />
+                          <span className="text-[11px] text-[#B5965A] font-semibold uppercase tracking-wider">Palette:</span>
+                          <div className="flex items-center gap-1.5">
+                            {currentSwatches.map((swatch, sIdx) => (
+                              <div
+                                key={sIdx}
+                                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#FFF9EF]/10 border border-white/20 text-[10px]"
+                              >
+                                <span className="w-2.5 h-2.5 rounded-full border border-white/40" style={{ backgroundColor: swatch.hex }} />
+                                <span className="text-amber-100 font-medium">{swatch.name}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
 
                     {/* Maps & Calendar Buttons */}
@@ -201,7 +251,10 @@ export const Celebrations: React.FC = () => {
 
                     <div className="pt-3 border-t border-[#B5965A]/20">
                       <button
-                        onClick={() => setActiveDayIndex((prev) => (prev + 1) % WEDDING_DATA.events.length)}
+                        onClick={() => {
+                          soundEngine.playClick();
+                          setActiveDayIndex((prev) => (prev + 1) % WEDDING_DATA.events.length);
+                        }}
                         className="inline-flex items-center gap-1.5 text-xs font-sans-body text-[#D4AF37] font-semibold hover:underline"
                       >
                         <span>Explore Next Day</span>
