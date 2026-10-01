@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Play, Pause, Music, Volume2, VolumeX, Ticket, ArrowUp } from 'lucide-react';
+import { Play, Pause, Music, Volume2, VolumeX, ArrowUp } from 'lucide-react';
 import { WEDDING_DATA } from '../data/weddingData';
 import { soundEngine } from '../utils/soundEffects';
 
@@ -40,12 +40,6 @@ export const MusicPlayer: React.FC = () => {
     if (nextState) soundEngine.playChime();
   };
 
-  const handleScrollToRsvp = () => {
-    soundEngine.playClick();
-    const rsvp = document.getElementById('rsvp');
-    if (rsvp) rsvp.scrollIntoView({ behavior: 'smooth' });
-  };
-
   const handleScrollToTop = () => {
     soundEngine.playClick();
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -55,15 +49,6 @@ export const MusicPlayer: React.FC = () => {
     <div className="fixed bottom-5 right-4 z-50 flex items-center gap-2 select-none">
       {/* Floating Gold Control Dock */}
       <div className="flex items-center gap-1.5 p-1.5 rounded-full bg-[#291C1A]/95 backdrop-blur-md border-2 border-[#B5965A] text-[#FFF9EF] shadow-2xl">
-        {/* RSVP Quick Access Button */}
-        <button
-          onClick={handleScrollToRsvp}
-          className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#6E1F2E] hover:bg-[#42131E] text-[#FFF9EF] text-xs font-sans-body font-bold transition-all border border-[#B5965A]/40 shadow-sm"
-        >
-          <Ticket className="w-3.5 h-3.5 text-[#D4AF37]" />
-          <span className="hidden sm:inline">VIP RSVP</span>
-        </button>
-
         {/* Track Title Pill */}
         <div className="hidden lg:flex items-center gap-2 px-3 py-1 text-xs font-sans-body">
           <Music className="w-3.5 h-3.5 text-[#D4AF37] animate-spin" style={{ animationDuration: '8s' }} />

@@ -3,6 +3,7 @@ import { InvitationBlessing } from './components/InvitationBlessing';
 import { DateReveal } from './components/DateReveal';
 import { Celebrations } from './components/Celebrations';
 import { CoupleStory } from './components/CoupleStory';
+import { FooterMap } from './components/FooterMap';
 import { MusicPlayer } from './components/MusicPlayer';
 
 export function App() {
@@ -31,6 +32,9 @@ export function App() {
 
         {/* 5. Bride and Groom Story Section & Image Carousel */}
         <CoupleStory />
+
+        {/* 6. Full Size Interactive Google Map & Footer */}
+        <FooterMap />
       </main>
 
       {/* Floating Audio Music Player */}

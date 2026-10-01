@@ -31,7 +31,7 @@ export const RsvpSection: React.FC = () => {
         setSubmitted(true);
         setAttending(parsed.attending);
         setFullName(parsed.fullName);
-        setPassId(parsed.passId || `VIP-PASS-${Math.floor(1000 + Math.random() * 9000)}`);
+        setPassId(parsed.passId || `PASS-${Math.floor(1000 + Math.random() * 9000)}`);
       } catch (e) {
         console.error(e);
       }
@@ -64,7 +64,7 @@ export const RsvpSection: React.FC = () => {
       return;
     }
 
-    const newPassId = `VIP-${Math.floor(100000 + Math.random() * 900000)}`;
+    const newPassId = `PASS-${Math.floor(100000 + Math.random() * 900000)}`;
     setPassId(newPassId);
 
     const payload = {
@@ -115,22 +115,22 @@ export const RsvpSection: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#6E1F2E]/10 border border-[#6E1F2E]/30 text-[#6E1F2E]">
             <Ticket className="w-4 h-4 text-[#6E1F2E]" />
             <span className="text-xs uppercase font-sans-body tracking-[0.25em] font-semibold">
-              VIP Guest Concierge & RSVP
+              Guest Concierge & RSVP
             </span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-serif-luxury font-bold text-[#6E1F2E]">
-            Confirm Your Royal Attendance
+            Confirm Your Attendance
           </h2>
 
           <p className="text-sm sm:text-base font-cormorant italic text-[#291C1A]/80 max-w-lg mx-auto">
-            Please respond by 15 January 2027 to generate your official VIP Guest Entry Pass.
+            Please respond by 15 January 2027 to generate your official Guest Entry Pass.
           </p>
 
           <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#B5965A] to-transparent mx-auto mt-4" />
         </div>
 
-        {/* Form & VIP Card Container */}
+        {/* Form & Guest Card Container */}
         <div className="bg-[#F8F0E3] border-2 border-[#B5965A]/40 rounded-3xl p-6 sm:p-10 shadow-2xl relative">
           <AnimatePresence mode="wait">
             {submitted ? (
@@ -157,7 +157,7 @@ export const RsvpSection: React.FC = () => {
                   </p>
                 </div>
 
-                {/* VIP ROYAL GUEST PASS CARD (Generated upon RSVP) */}
+                {/* ROYAL GUEST PASS CARD (Generated upon RSVP) */}
                 {attending === 'yes' && (
                   <div className="my-6 p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#6E1F2E] via-[#521722] to-[#42131E] border-2 border-[#B5965A] text-[#FFF9EF] shadow-2xl relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-[#B5965A]/15 rounded-full blur-2xl pointer-events-none" />
@@ -170,7 +170,7 @@ export const RsvpSection: React.FC = () => {
                             Ranbir weds Alia
                           </span>
                           <span className="text-[10px] font-sans-body text-[#FFF9EF]/70 block">
-                            VIP ROYAL ACCESS PASS
+                            ROYAL GUEST ACCESS PASS
                           </span>
                         </div>
                       </div>
@@ -422,7 +422,7 @@ export const RsvpSection: React.FC = () => {
                   className="w-full py-4 rounded-xl bg-gradient-to-r from-[#6E1F2E] to-[#42131E] hover:from-[#521722] hover:to-[#291C1A] text-[#FFF9EF] font-serif-luxury font-bold text-lg shadow-xl border border-[#B5965A]/40 flex items-center justify-center gap-2 transition-all transform active:scale-[0.99]"
                 >
                   <Send className="w-5 h-5 text-[#D4AF37]" />
-                  <span>Generate VIP Guest Pass & Confirm RSVP</span>
+                  <span>Generate Guest Pass & Confirm RSVP</span>
                 </button>
               </form>
             )}

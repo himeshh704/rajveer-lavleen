@@ -119,7 +119,7 @@ export const WEDDING_DATA: WeddingData = {
   weddingDateISO: "2027-01-31T09:30:00",
   formattedDate: "31 January 2027",
   city: "Amritsar, Punjab",
-  venueName: "Gurdwara Sri Harmandir Sahib & The Royal Palms Ballroom",
+  venueName: "The Royal Palms Estate & Lawns",
   gurbaniBlessing: {
     gurmukhi: "ੴ ਸਤਿਗੁਰ ਪ੍ਰਸਾਦਿ ॥ ਧਨੁ ਪਿਰੁ ਏਹਿ ਨ ਆਖੀਅਨਿ ਬਹਨਿ ਇਕਠੇ ਹੋਇ ॥ ਏਕ ਜੋਤੀ ਦੁਇ ਮੂਰਤੀ ਧਨੁ ਪਿਰੁ ਕਹੀਐ ਸੋਇ ॥",
     translation: "They are not said to be husband and wife, who merely sit together. They alone are called husband and wife, who have one light in two bodies."
@@ -148,13 +148,13 @@ export const WEDDING_DATA: WeddingData = {
       date: "31 January 2027",
       formattedDate: "Sunday, 31 January 2027",
       time: "9:30 AM Kirtan | 10:30 AM Anand Karaj",
-      venue: "Gurdwara Sahib & The Imperial Lawns",
+      venue: "The Imperial Royal Lawns",
       address: "Grand Trunk Road, Amritsar, Punjab",
       city: "Amritsar",
       dressCode: "Royal Pastels & Velvet Ethnic (Head covering mandatory)",
-      description: "The solemn and divine union of two souls bound in holy matrimony through four sacred Laavan circumambulations around Sri Guru Granth Sahib Ji, followed by Guru Ka Langar.",
+      description: "The solemn and divine union of two souls bound in holy matrimony through four sacred Laavan circumambulations, followed by Royal Langar.",
       iconName: "Heart",
-      googleMapsUrl: "https://maps.google.com/?q=Sri+Harmandir+Sahib+Amritsar",
+      googleMapsUrl: "https://maps.google.com/?q=Taj+Swarna+Amritsar",
       calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Anand+Karaj+-+Ranbir+weds+Alia&dates=20270131T040000Z/20270131T080000Z&details=Anand+Karaj+Wedding+Ceremony&location=Amritsar"
     },
     {
@@ -180,7 +180,7 @@ export const WEDDING_DATA: WeddingData = {
       title: "First Glance at Amrit Sarovar",
       date: "Spring 2024",
       location: "Amritsar, Punjab",
-      description: "A serene afternoon at the Golden Temple. Amidst soothing Gurbani Kirtan and golden reflections, two eyes met, marking the commencement of a destiny written in heaven.",
+      description: "A serene afternoon in Amritsar. Amidst soothing Gurbani Kirtan and golden reflections, two eyes met, marking the commencement of a destiny written in heaven.",
       imageUrl: "/images/golden_temple_amrit_sarovar.png",
       caption: "The divine spark at the holy sarovar"
     },
@@ -216,15 +216,15 @@ export const WEDDING_DATA: WeddingData = {
   thingsToKnow: [
     {
       id: "venue-etiquette",
-      title: "Gurdwara Etiquette & Head Coverings",
+      title: "Sacred Ceremony Etiquette & Head Coverings",
       category: "etiquette",
-      description: "Respecting the sacred Gurdwara protocol during the Anand Karaj.",
+      description: "Respecting the sacred ceremony protocol during the Anand Karaj.",
       icon: "ShieldCheck",
       details: [
         "Head covering is mandatory for both ladies and gentlemen (Rumaal/Chunni will be provided at the entrance).",
-        "Please remove shoes and socks before stepping into the Gurdwara premises.",
+        "Please remove shoes before stepping into the main hall premises.",
         "Kindly dress modestly covering shoulders and knees.",
-        "Alcohol and tobacco are strictly prohibited on Gurdwara grounds."
+        "Alcohol and tobacco are strictly prohibited during sacred rituals."
       ]
     },
     {
@@ -234,7 +234,7 @@ export const WEDDING_DATA: WeddingData = {
       description: "Ensuring a seamless and luxurious stay for all our guests.",
       icon: "Hotel",
       details: [
-        "Complimentary luxury shuttle buses will run every 30 mins between Taj Swarna and the Gurdwara venue.",
+        "Complimentary luxury shuttle buses will run every 30 mins between Taj Swarna and the venue.",
         "Dedicated concierge desks will be present at Sri Guru Ram Dass Jee International Airport (ATQ).",
         "Valet parking is available at all event locations."
       ]

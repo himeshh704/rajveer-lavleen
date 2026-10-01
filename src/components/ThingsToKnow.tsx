@@ -37,7 +37,7 @@ export const ThingsToKnow: React.FC = () => {
           </h2>
 
           <p className="text-sm sm:text-base font-cormorant italic text-[#291C1A]/80 max-w-xl mx-auto">
-            Everything you need to know about Gurdwara etiquette, stay, transfers, and concierges.
+            Everything you need to know about wedding ceremony etiquette, stay, transfers, and concierges.
           </p>
 
           <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#B5965A] to-transparent mx-auto mt-4" />
