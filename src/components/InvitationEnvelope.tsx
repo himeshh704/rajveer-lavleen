@@ -18,36 +18,29 @@ export const InvitationEnvelope: React.FC<InvitationEnvelopeProps> = ({ onOpen }
     setHasStarted(true);
     soundEngine.playChime();
 
-    // Safety fallback: if video doesn't finish or play on mobile low power mode, auto reveal after 3.5s
-    const fallbackTimer = setTimeout(() => {
-      triggerGlowAndReveal();
-    }, 3500);
-
     if (videoRef.current) {
       videoRef.current.muted = false;
       videoRef.current.currentTime = 0;
       videoRef.current
         .play()
         .then(() => {
-          // Playing smoothly
+          // Video is playing cleanly - let it finish completely until handleVideoEnded!
         })
         .catch(() => {
-          // Fallback if browser blocks sound or low-power mode restricts video
+          // If browser blocks unmuted playback, attempt muted playback for mobile compatibility
           if (videoRef.current) {
             videoRef.current.muted = true;
             videoRef.current
               .play()
               .catch(() => {
-                clearTimeout(fallbackTimer);
+                // Only if video completely fails to play, trigger fallback reveal
                 triggerGlowAndReveal();
               });
           } else {
-            clearTimeout(fallbackTimer);
             triggerGlowAndReveal();
           }
         });
     } else {
-      clearTimeout(fallbackTimer);
       triggerGlowAndReveal();
     }
   };
@@ -101,51 +94,58 @@ export const InvitationEnvelope: React.FC<InvitationEnvelopeProps> = ({ onOpen }
               }`}
             />
 
-            {/* Gorgeous Royal Cover Overlay Before Play */}
+            {/* Gorgeous 2D Cartoon Punjabi Couple Royal Cover Overlay Before Play */}
             {!hasStarted && (
               <div
                 onClick={handleStartPlay}
-                className="absolute inset-0 bg-gradient-to-b from-[#6E1F2E]/80 via-[#291C1A]/85 to-[#120B0B]/95 flex flex-col items-center justify-center p-6 text-center z-20 cursor-pointer"
+                className="absolute inset-0 bg-gradient-to-b from-[#6E1F2E]/90 via-[#3B0E17]/92 to-[#1A060A]/98 flex flex-col items-center justify-center p-6 text-center z-20 cursor-pointer"
               >
-                {/* Background Artwork */}
+                {/* Background Pattern Artwork */}
                 <div
-                  className="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none bg-cover bg-center"
+                  className="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none bg-cover bg-center"
                   style={{ backgroundImage: "url('/images/golden_temple_vector_card.png')" }}
                 />
 
-                {/* Royal Ik Onkar & Names */}
+                {/* 2D Cartoon Couple Frame & Header */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8 }}
-                  className="relative z-10 space-y-4 max-w-sm mx-auto"
+                  className="relative z-10 space-y-4 max-w-sm mx-auto flex flex-col items-center"
                 >
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-b from-[#D4AF37] to-[#B5965A] p-0.5 mx-auto shadow-2xl">
-                    <div className="w-full h-full rounded-full bg-[#6E1F2E] flex items-center justify-center text-3xl sm:text-4xl text-[#D4AF37] border border-[#B5965A]/40 font-serif">
-                      ੴ
-                    </div>
+                  <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#B5965A]/20 border border-[#B5965A]/40 text-[#D4AF37]">
+                    <span className="text-lg font-serif">ੴ</span>
+                    <span className="text-[10px] font-cinzel tracking-[0.25em] uppercase font-semibold">
+                      Satnam Waheguru
+                    </span>
+                  </div>
+
+                  {/* 2D Cartoonish Punjabi Bride & Groom Portrait Frame */}
+                  <div className="w-44 h-44 sm:w-52 sm:h-52 rounded-full border-4 border-[#D4AF37] p-1 bg-gradient-to-b from-[#D4AF37] via-[#B5965A] to-[#6E1F2E] shadow-[0_0_35px_rgba(212,175,55,0.4)] overflow-hidden shrink-0">
+                    <img
+                      src="/images/amrit_simran_2d_couple_illustration.png"
+                      alt="Amrit & Simran Punjabi Couple Illustration"
+                      className="w-full h-full object-cover rounded-full transform hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
 
                   <div className="space-y-1">
-                    <span className="text-[11px] font-cinzel tracking-[0.3em] text-[#D4AF37] uppercase block font-semibold">
-                      Royal Matrimonial Invitation
-                    </span>
                     <h1 className="text-3xl sm:text-4xl font-serif-luxury font-bold text-amber-100 tracking-wide">
                       Rajveer &amp; Lavleen
                     </h1>
-                    <p className="text-xs font-cormorant italic text-[#FFF9EF]/80">
-                      "Two souls bound in sacred union"
+                    <p className="text-xs font-cormorant italic text-[#FFF9EF]/85">
+                      "Two souls, one light — Anand Karaj Union"
                     </p>
                   </div>
 
                   {/* Pulsing Royal Golden Button */}
-                  <div className="pt-6">
+                  <div className="pt-3">
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#D4AF37] via-[#B5965A] to-[#8C6D32] text-[#291C1A] font-bold text-xs sm:text-sm tracking-widest uppercase font-sans-body shadow-[0_0_25px_rgba(212,175,55,0.4)] border border-amber-200"
+                      className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#D4AF37] via-[#B5965A] to-[#8C6D32] text-[#291C1A] font-bold text-xs sm:text-sm tracking-widest uppercase font-sans-body shadow-[0_0_25px_rgba(212,175,55,0.5)] border border-amber-200"
                     >
-                      <span>✉️ Tap To Open Invitation</span>
+                      <span>✉️ Tap To Reveal Invitation</span>
                     </motion.div>
                   </div>
                 </motion.div>

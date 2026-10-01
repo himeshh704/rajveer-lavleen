@@ -101,7 +101,7 @@ export const WEDDING_DATA: WeddingData = {
       about: "A gentleman of warmth and quiet grace. Devoted to family heritage, soulful music, and building a life grounded in love and faith.",
       parents: "S. Harpreet Singh Ahluwalia & Smt. Jasleen Kaur Ahluwalia",
       grandparents: "Late S. Avtar Singh Ahluwalia & Late Smt. Kuldeep Kaur Ahluwalia",
-      image: "/images/anand_karaj_palki_couple.png"
+      image: "/images/amrit_simran_2d_couple_illustration.png"
     },
     bride: {
       firstName: "Lavleen",
@@ -110,14 +110,14 @@ export const WEDDING_DATA: WeddingData = {
       about: "An elegant radiance with a compassionate heart. Lover of classical ragas, vibrant Phulkari textures, and warm family gatherings.",
       parents: "S. Gurinder Singh Dhillon & Smt. Manpreet Kaur Dhillon",
       grandparents: "Late S. Inderjit Singh Dhillon & Late Smt. Surjit Kaur Dhillon",
-      image: "/images/couple_memory.png"
+      image: "/images/amrit_simran_2d_couple_illustration.png"
     },
     hashtag: "#RajveerWedsLavleen",
     heading: "Rajveer weds Lavleen",
     subheading: "A CELEBRATION OF LOVE"
   },
-  weddingDateISO: "2027-01-31T09:30:00",
-  formattedDate: "31 January 2027",
+  weddingDateISO: "2026-11-01T09:30:00",
+  formattedDate: "1 November 2026",
   city: "Amritsar, Punjab",
   venueName: "The Royal Palms Estate & Lawns",
   gurbaniBlessing: {
@@ -129,8 +129,8 @@ export const WEDDING_DATA: WeddingData = {
       id: "mehndi-sangeet",
       name: "Mehndi & Sangeet Night",
       tagline: "Intricate Henna, Jaggo Beats & Royal Festivities",
-      date: "29 January 2027",
-      formattedDate: "Friday, 29 January 2027",
+      date: "30 October 2026",
+      formattedDate: "Friday, 30 October 2026",
       time: "5:00 PM Onwards",
       venue: "The Heritage Royal Courtyard",
       address: "Mall Road, Amritsar, Punjab",
@@ -139,14 +139,14 @@ export const WEDDING_DATA: WeddingData = {
       description: "An enchanting evening adorned with traditional henna, brass Jaggo lanterns, aromatic spices, live dholki, and joyous dancing under starlit skies.",
       iconName: "Sparkles",
       googleMapsUrl: "https://maps.google.com/?q=Amritsar+Punjab",
-      calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mehndi+%26+Sangeet+Night+-+Rajveer+weds+Lavleen&dates=20270129T113000Z/20270129T180000Z&details=Mehndi+and+Sangeet+Celebrations&location=Amritsar"
+      calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mehndi+%26+Sangeet+Night+-+Rajveer+weds+Lavleen&dates=20261030T113000Z/20261030T180000Z&details=Mehndi+and+Sangeet+Celebrations&location=Amritsar"
     },
     {
       id: "anand-karaj",
       name: "Anand Karaj (Sacred Wedding)",
       tagline: "The Holy Four Laavan Nuptials",
-      date: "31 January 2027",
-      formattedDate: "Sunday, 31 January 2027",
+      date: "1 November 2026",
+      formattedDate: "Sunday, 1 November 2026",
       time: "9:30 AM Kirtan | 10:30 AM Anand Karaj",
       venue: "The Imperial Royal Lawns",
       address: "Grand Trunk Road, Amritsar, Punjab",
@@ -155,14 +155,14 @@ export const WEDDING_DATA: WeddingData = {
       description: "The solemn and divine union of two souls bound in holy matrimony through four sacred Laavan circumambulations, followed by Royal Langar.",
       iconName: "Heart",
       googleMapsUrl: "https://maps.google.com/?q=Taj+Swarna+Amritsar",
-      calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Anand+Karaj+-+Rajveer+weds+Lavleen&dates=20270131T040000Z/20270131T080000Z&details=Anand+Karaj+Wedding+Ceremony&location=Amritsar"
+      calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Anand+Karaj+-+Rajveer+weds+Lavleen&dates=20261101T040000Z/20261101T080000Z&details=Anand+Karaj+Wedding+Ceremony&location=Amritsar"
     },
     {
       id: "reception",
       name: "The Royal Reception Gala",
       tagline: "An Evening of Elegance, Toasts & Dancing",
-      date: "31 January 2027",
-      formattedDate: "Sunday, 31 January 2027",
+      date: "1 November 2026",
+      formattedDate: "Sunday, 1 November 2026",
       time: "7:00 PM Onwards",
       venue: "Grand Imperial Ballroom",
       address: "Taj Swarna Estate, Amritsar, Punjab",
@@ -171,7 +171,7 @@ export const WEDDING_DATA: WeddingData = {
       description: "A glamorous celebration of eternal togetherness featuring champagne toasts, acoustic violin performances, gourmet dinner, and a night of dancing.",
       iconName: "GlassWater",
       googleMapsUrl: "https://maps.google.com/?q=Taj+Swarna+Amritsar",
-      calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Reception+Gala+-+Rajveer+weds+Lavleen&dates=20270131T133000Z/20270131T190000Z&details=Grand+Reception+Gala&location=Taj+Swarna+Amritsar"
+      calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Reception+Gala+-+Rajveer+weds+Lavleen&dates=20261101T133000Z/20261101T190000Z&details=Grand+Reception+Gala&location=Taj+Swarna+Amritsar"
     }
   ],
   storyMoments: [
@@ -199,16 +199,16 @@ export const WEDDING_DATA: WeddingData = {
       date: "Summer 2026",
       location: "Kashmir Valley",
       description: "Under a canopy of chinar trees overlooking the tranquil waters of Dal Lake, Rajveer asked Lavleen to walk the path of life together forever.",
-      imageUrl: "/images/anand_karaj_palki_couple.png",
+      imageUrl: "/images/amrit_simran_2d_couple_illustration.png",
       caption: "An eternal promise under Kashmir skies"
     },
     {
       id: "m4",
       title: "Together Towards Eternity",
-      date: "31 January 2027",
+      date: "1 November 2026",
       location: "Amritsar",
       description: "Now, as we step into our holy Anand Karaj, we invite you to be part of our most treasured moment.",
-      imageUrl: "/images/couple_memory.png",
+      imageUrl: "/images/amrit_simran_2d_couple_illustration.png",
       caption: "Ready for the sacred four Laavan"
     }
   ],
