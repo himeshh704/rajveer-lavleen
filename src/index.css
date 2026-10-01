@@ -69,6 +69,14 @@ html.lenis, html.lenis body {
   font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
+.font-great-vibes {
+  font-family: 'Great Vibes', cursive, 'Playfair Display', serif;
+}
+
+.font-alex-brush {
+  font-family: 'Alex Brush', cursive, 'Cormorant Garamond', serif;
+}
+
 .font-sans-body {
   font-family: 'Montserrat', 'Plus Jakarta Sans', sans-serif;
 }
