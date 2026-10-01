@@ -64,7 +64,7 @@ export const InvitationBlessing: React.FC = () => {
           className="mb-4 text-center"
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#6E1F2E] text-[#FFF9EF] shadow-sm border border-[#D4AF37]/50">
-            <img src="/images/ik_onkar_maroon_logo.png" alt="Ik Onkar" className="w-5 h-5 object-contain invert brightness-200" />
+            <img src="/images/ik_onkar_maroon_cutout.png" alt="Ik Onkar" className="w-5 h-5 object-contain invert brightness-200" />
             <span className="text-xs sm:text-sm font-serif-luxury font-semibold tracking-wide">
               {WEDDING_DATA.gurbaniBlessing.gurmukhi}
             </span>
@@ -88,10 +88,10 @@ export const InvitationBlessing: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-center justify-center mt-2 mb-6"
           >
-            <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1.5 bg-gradient-to-br from-[#F5E5C0] via-[#D4AF37] to-[#9A7B3E] shadow-md flex items-center justify-center">
-              <div className="w-full h-full rounded-full bg-[#FFFDF9] flex items-center justify-center p-2 border border-[#B5965A]/30">
+            <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1.5 bg-gradient-to-br from-[#F5E5C0] via-[#D4AF37] to-[#9A7B3E] shadow-md flex items-center justify-center">
+              <div className="w-full h-full rounded-full bg-[#FFFDF9] flex items-center justify-center p-2 border border-[#B5965A]/40 shadow-inner">
                 <img
-                  src="/images/rl_monogram_logo.png"
+                  src="/images/rl_monogram_cutout.png"
                   alt="RL Monogram Logo"
                   className="w-full h-full object-contain"
                 />
