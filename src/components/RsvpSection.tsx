@@ -152,7 +152,7 @@ export const RsvpSection: React.FC = () => {
 
                   <p className="text-xs sm:text-sm font-sans-body text-[#291C1A]/80 max-w-md mx-auto">
                     {attending === 'yes'
-                      ? "We are overjoyed to welcome you to Ranbir & Alia's Anand Karaj and wedding festivities in Amritsar!"
+                      ? "We are overjoyed to welcome you to Rajveer & Lavleen's Anand Karaj and wedding festivities in Amritsar!"
                       : "Your response has been noted. Thank you for sending your warm blessings!"}
                   </p>
                 </div>
@@ -167,7 +167,7 @@ export const RsvpSection: React.FC = () => {
                         <span className="text-2xl font-serif text-[#D4AF37]">ੴ</span>
                         <div>
                           <span className="text-xs font-cinzel text-[#D4AF37] uppercase font-bold tracking-widest block">
-                            Ranbir weds Alia
+                            Rajveer weds Lavleen
                           </span>
                           <span className="text-[10px] font-sans-body text-[#FFF9EF]/70 block">
                             ROYAL GUEST ACCESS PASS
@@ -405,7 +405,7 @@ export const RsvpSection: React.FC = () => {
                 {/* Step 4: Blessing Message */}
                 <div className="space-y-1.5 pt-4 border-t border-[#B5965A]/20">
                   <label className="text-xs font-sans-body font-semibold text-[#291C1A] block">
-                    Message or Warm Blessings for Ranbir & Alia
+                    Message or Warm Blessings for Rajveer & Lavleen
                   </label>
                   <textarea
                     rows={3}

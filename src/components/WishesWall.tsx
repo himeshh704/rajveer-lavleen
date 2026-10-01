@@ -91,7 +91,7 @@ export const WishesWall: React.FC = () => {
           </h2>
 
           <p className="text-sm sm:text-base font-cormorant italic text-[#291C1A]/80 max-w-lg mx-auto">
-            Leave your warm wishes and prayers for Ranbir & Alia as they unite in holy Anand Karaj.
+            Leave your warm wishes and prayers for Rajveer & Lavleen as they unite in holy Anand Karaj.
           </p>
 
           <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#B5965A] to-transparent mx-auto mt-4" />

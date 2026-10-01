@@ -95,8 +95,8 @@ export interface WeddingData {
 export const WEDDING_DATA: WeddingData = {
   couple: {
     groom: {
-      firstName: "Ranbir",
-      fullName: "Ranbir Singh Ahluwalia",
+      firstName: "Rajveer",
+      fullName: "Rajveer Singh Ahluwalia",
       title: "The Groom",
       about: "A gentleman of warmth and quiet grace. Devoted to family heritage, soulful music, and building a life grounded in love and faith.",
       parents: "S. Harpreet Singh Ahluwalia & Smt. Jasleen Kaur Ahluwalia",
@@ -104,16 +104,16 @@ export const WEDDING_DATA: WeddingData = {
       image: "/images/anand_karaj_palki_couple.png"
     },
     bride: {
-      firstName: "Alia",
-      fullName: "Alia Kaur Dhillon",
+      firstName: "Lavleen",
+      fullName: "Lavleen Kaur Dhillon",
       title: "The Bride",
       about: "An elegant radiance with a compassionate heart. Lover of classical ragas, vibrant Phulkari textures, and warm family gatherings.",
       parents: "S. Gurinder Singh Dhillon & Smt. Manpreet Kaur Dhillon",
       grandparents: "Late S. Inderjit Singh Dhillon & Late Smt. Surjit Kaur Dhillon",
       image: "/images/couple_memory.png"
     },
-    hashtag: "#RanbirWedsAlia",
-    heading: "Ranbir weds Alia",
+    hashtag: "#RajveerWedsLavleen",
+    heading: "Rajveer weds Lavleen",
     subheading: "A CELEBRATION OF LOVE"
   },
   weddingDateISO: "2027-01-31T09:30:00",
@@ -139,7 +139,7 @@ export const WEDDING_DATA: WeddingData = {
       description: "An enchanting evening adorned with traditional henna, brass Jaggo lanterns, aromatic spices, live dholki, and joyous dancing under starlit skies.",
       iconName: "Sparkles",
       googleMapsUrl: "https://maps.google.com/?q=Amritsar+Punjab",
-      calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mehndi+%26+Sangeet+Night+-+Ranbir+weds+Alia&dates=20270129T113000Z/20270129T180000Z&details=Mehndi+and+Sangeet+Celebrations&location=Amritsar"
+      calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mehndi+%26+Sangeet+Night+-+Rajveer+weds+Lavleen&dates=20270129T113000Z/20270129T180000Z&details=Mehndi+and+Sangeet+Celebrations&location=Amritsar"
     },
     {
       id: "anand-karaj",
@@ -155,7 +155,7 @@ export const WEDDING_DATA: WeddingData = {
       description: "The solemn and divine union of two souls bound in holy matrimony through four sacred Laavan circumambulations, followed by Royal Langar.",
       iconName: "Heart",
       googleMapsUrl: "https://maps.google.com/?q=Taj+Swarna+Amritsar",
-      calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Anand+Karaj+-+Ranbir+weds+Alia&dates=20270131T040000Z/20270131T080000Z&details=Anand+Karaj+Wedding+Ceremony&location=Amritsar"
+      calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Anand+Karaj+-+Rajveer+weds+Lavleen&dates=20270131T040000Z/20270131T080000Z&details=Anand+Karaj+Wedding+Ceremony&location=Amritsar"
     },
     {
       id: "reception",
@@ -171,7 +171,7 @@ export const WEDDING_DATA: WeddingData = {
       description: "A glamorous celebration of eternal togetherness featuring champagne toasts, acoustic violin performances, gourmet dinner, and a night of dancing.",
       iconName: "GlassWater",
       googleMapsUrl: "https://maps.google.com/?q=Taj+Swarna+Amritsar",
-      calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Reception+Gala+-+Ranbir+weds+Alia&dates=20270131T133000Z/20270131T190000Z&details=Grand+Reception+Gala&location=Taj+Swarna+Amritsar"
+      calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Reception+Gala+-+Rajveer+weds+Lavleen&dates=20270131T133000Z/20270131T190000Z&details=Grand+Reception+Gala&location=Taj+Swarna+Amritsar"
     }
   ],
   storyMoments: [
@@ -189,7 +189,7 @@ export const WEDDING_DATA: WeddingData = {
       title: "Roka & Family Union",
       date: "Autumn 2025",
       location: "Chandigarh",
-      description: "With blessings from elders, sweet saffron mithai, and ringing laughter, both families came together to formalize the union of Ranbir & Alia.",
+      description: "With blessings from elders, sweet saffron mithai, and ringing laughter, both families came together to formalize the union of Rajveer & Lavleen.",
       imageUrl: "/images/golden_temple_vector_card.png",
       caption: "Surrounded by family love & blessings"
     },
@@ -198,7 +198,7 @@ export const WEDDING_DATA: WeddingData = {
       title: "The Proposal at Sunset",
       date: "Summer 2026",
       location: "Kashmir Valley",
-      description: "Under a canopy of chinar trees overlooking the tranquil waters of Dal Lake, Ranbir asked Alia to walk the path of life together forever.",
+      description: "Under a canopy of chinar trees overlooking the tranquil waters of Dal Lake, Rajveer asked Lavleen to walk the path of life together forever.",
       imageUrl: "/images/anand_karaj_palki_couple.png",
       caption: "An eternal promise under Kashmir skies"
     },
@@ -248,7 +248,7 @@ export const WEDDING_DATA: WeddingData = {
       details: [
         "During the Laavan ceremony in the Darbar Sahib, please keep mobile phones on silent mode.",
         "Our official photography team will capture every moment. We invite you to be fully present with us.",
-        "Feel free to take photos and tag us with #RanbirWedsAlia during Mehndi and Reception!"
+        "Feel free to take photos and tag us with #RajveerWedsLavleen during Mehndi and Reception!"
       ]
     },
     {
@@ -260,7 +260,7 @@ export const WEDDING_DATA: WeddingData = {
       details: [
         "Wedding Coordinator: +91 98765 43210",
         "Hospitality Manager: +91 98123 45678",
-        "RSVP Manager: rsvp@ranbirwedsalia.com"
+        "RSVP Manager: rsvp@rajveerwedslavleen.com"
       ]
     }
   ],
@@ -269,7 +269,7 @@ export const WEDDING_DATA: WeddingData = {
       id: "w1",
       name: "Gurpreet & Tavleen Singh",
       relation: "Family Friends",
-      message: "May Waheguru Ji bless Ranbir & Alia with endless laughter, boundless health, and deep spiritual harmony! Can't wait to dance at the Sangeet!",
+      message: "May Waheguru Ji bless Rajveer & Lavleen with endless laughter, boundless health, and deep spiritual harmony! Can't wait to dance at the Sangeet!",
       timestamp: "2 hours ago",
       likes: 12
     },
@@ -285,7 +285,7 @@ export const WEDDING_DATA: WeddingData = {
       id: "w3",
       name: "Karan Johar & Friends",
       relation: "Close Friends",
-      message: "Ranbir and Alia, you look like a dream together! Wishing you a lifetime of blockbuster happiness, peace, and togetherness!",
+      message: "Rajveer and Lavleen, you look like a dream together! Wishing you a lifetime of blockbuster happiness, peace, and togetherness!",
       timestamp: "3 days ago",
       likes: 24
     }

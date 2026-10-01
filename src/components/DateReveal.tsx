@@ -51,12 +51,12 @@ export const DateReveal: React.FC = () => {
     const w = rect.width;
     const h = rect.height;
 
-    // Draw Pink Metallic & Rose Gold Gradient Foil
+    // Draw Theme Royal Velvet Maroon & Metallic Gold Foil
     const grad = ctx.createLinearGradient(0, 0, w, h);
-    grad.addColorStop(0, '#FF69B4');
-    grad.addColorStop(0.3, '#FFC0CB');
-    grad.addColorStop(0.6, '#FF1493');
-    grad.addColorStop(1, '#C2185B');
+    grad.addColorStop(0, '#6E1F2E');
+    grad.addColorStop(0.3, '#D4AF37');
+    grad.addColorStop(0.6, '#B5965A');
+    grad.addColorStop(1, '#42131E');
 
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, w, h);
@@ -187,18 +187,18 @@ export const DateReveal: React.FC = () => {
 
         {/* Main Card Container */}
         <div className="relative max-w-lg mx-auto bg-[#FFF9EF] border-2 border-[#B5965A]/50 rounded-3xl p-6 sm:p-10 shadow-2xl overflow-hidden">
-          {/* Unrevealed State: Pink Heart Scratch Canvas Overlay */}
+          {/* Unrevealed State: Royal Theme Heart Scratch Canvas Overlay */}
           {!isScratched && (
-            <div className="relative w-64 sm:w-80 h-64 sm:h-80 mx-auto [clip-path:url(#heartClip)] shadow-[0_10px_30px_rgba(255,105,180,0.5)] group cursor-pointer border-4 border-pink-400">
-              {/* Underlying Date Text Teaser inside Pink Heart */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#E91E63] via-[#C2185B] to-[#880E4F] flex flex-col items-center justify-center p-6 text-[#FFF9EF] text-center">
-                <span className="text-[10px] font-cinzel text-pink-200 uppercase tracking-widest block mb-1">
+            <div className="relative w-64 sm:w-80 h-64 sm:h-80 mx-auto [clip-path:url(#heartClip)] shadow-[0_10px_35px_rgba(181,150,90,0.45)] group cursor-pointer border-4 border-[#B5965A]">
+              {/* Underlying Date Text Teaser inside Royal Theme Heart */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#6E1F2E] via-[#521722] to-[#42131E] flex flex-col items-center justify-center p-6 text-[#FFF9EF] text-center">
+                <span className="text-[10px] font-cinzel text-[#D4AF37] uppercase tracking-widest block mb-1">
                   Save The Date
                 </span>
-                <h3 className="text-2xl sm:text-4xl font-serif-luxury font-bold text-white leading-tight">
+                <h3 className="text-2xl sm:text-4xl font-serif-luxury font-bold text-amber-100 leading-tight">
                   31 January 2027
                 </h3>
-                <p className="text-xs font-sans-body text-pink-100 mt-1">Amritsar, Punjab</p>
+                <p className="text-xs font-sans-body text-amber-200 mt-1">Amritsar, Punjab</p>
               </div>
 
               {/* Scratchable Canvas Surface */}
@@ -252,7 +252,7 @@ export const DateReveal: React.FC = () => {
                 </p>
 
                 <p className="text-xs font-sans-body text-[#FFF9EF]/80 mt-2">
-                  Amritsar, Punjab • #RanbirWedsAlia
+                  Amritsar, Punjab • #RajveerWedsLavleen
                 </p>
               </div>
 

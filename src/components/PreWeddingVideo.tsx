@@ -36,7 +36,7 @@ export const PreWeddingVideo: React.FC = () => {
           <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-black shadow-inner">
             <iframe
               src={WEDDING_DATA.preWeddingVideoUrl}
-              title="Ranbir & Alia Pre-Wedding Film"
+              title="Rajveer & Lavleen Pre-Wedding Film"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
               className="w-full h-full border-0"

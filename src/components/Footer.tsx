@@ -49,7 +49,7 @@ export const Footer: React.FC = () => {
 
         {/* Copyright */}
         <p className="text-[11px] font-sans-body text-[#291C1A]/60 pt-6">
-          Made with love & devotion for Ranbir Singh Ahluwalia & Alia Kaur Dhillon • 31 January 2027
+          Made with love & devotion for Rajveer Singh Ahluwalia & Lavleen Kaur Dhillon • 31 January 2027
         </p>
       </div>
     </footer>
