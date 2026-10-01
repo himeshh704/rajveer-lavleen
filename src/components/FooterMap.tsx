@@ -62,7 +62,7 @@ export const FooterMap: React.FC = () => {
           {/* Full Size iFrame Map */}
           <div className="w-full h-[380px] sm:h-[480px]">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3397.350615967005!2d74.87391937667087!3d31.619980242296185!2m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919a1cd9b2c8623%3A0xb3cf51e18d6a8927!2sTaj%20Swarna%2C%20Amritsar!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+              src="https://maps.google.com/maps?q=Taj%20Swarna%20Amritsar%20Punjab&t=&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
