@@ -18,16 +18,37 @@ export const InvitationEnvelope: React.FC<InvitationEnvelopeProps> = ({ onOpen }
     setHasStarted(true);
     soundEngine.playChime();
 
+    // Safety fallback: if video doesn't finish or play on mobile low power mode, auto reveal after 3.5s
+    const fallbackTimer = setTimeout(() => {
+      triggerGlowAndReveal();
+    }, 3500);
+
     if (videoRef.current) {
       videoRef.current.muted = false;
       videoRef.current.currentTime = 0;
-      videoRef.current.play().catch(() => {
-        // Fallback if browser forces mute
-        if (videoRef.current) {
-          videoRef.current.muted = true;
-          videoRef.current.play().catch(() => {});
-        }
-      });
+      videoRef.current
+        .play()
+        .then(() => {
+          // Playing smoothly
+        })
+        .catch(() => {
+          // Fallback if browser blocks sound or low-power mode restricts video
+          if (videoRef.current) {
+            videoRef.current.muted = true;
+            videoRef.current
+              .play()
+              .catch(() => {
+                clearTimeout(fallbackTimer);
+                triggerGlowAndReveal();
+              });
+          } else {
+            clearTimeout(fallbackTimer);
+            triggerGlowAndReveal();
+          }
+        });
+    } else {
+      clearTimeout(fallbackTimer);
+      triggerGlowAndReveal();
     }
   };
 
@@ -63,37 +84,70 @@ export const InvitationEnvelope: React.FC<InvitationEnvelopeProps> = ({ onOpen }
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.08, filter: 'blur(16px)' }}
           transition={{ duration: 1, ease: 'easeInOut' }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black text-[#FFF9EF] overflow-hidden select-none"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#291C1A] text-[#FFF9EF] overflow-hidden select-none"
         >
-          {/* 1. CUSTOM ENVELOPE PRELOADER VIDEO */}
+          {/* 1. CUSTOM ENVELOPE PRELOADER VIDEO & COVER */}
           <div className="relative w-full h-full flex items-center justify-center bg-[#291C1A]">
             <video
               ref={videoRef}
               src="/videos/envelope_preloader.mp4"
+              poster="/images/golden_temple_vector_card.png"
               muted
               playsInline
               preload="auto"
               onEnded={handleVideoEnded}
-              className="w-full h-full object-cover min-w-full min-h-full scale-100"
+              className={`w-full h-full object-cover min-w-full min-h-full transition-opacity duration-700 ${
+                hasStarted ? 'opacity-100' : 'opacity-30'
+              }`}
             />
 
-            {/* Dark Tint & Simple Clean Overlay Before Play */}
+            {/* Gorgeous Royal Cover Overlay Before Play */}
             {!hasStarted && (
               <div
                 onClick={handleStartPlay}
-                className="absolute inset-0 bg-black/25 flex flex-col items-center justify-end pb-20 px-4 text-center z-20 cursor-pointer"
+                className="absolute inset-0 bg-gradient-to-b from-[#6E1F2E]/80 via-[#291C1A]/85 to-[#120B0B]/95 flex flex-col items-center justify-center p-6 text-center z-20 cursor-pointer"
               >
-                {/* Minimalist Clean Tap To Reveal Button */}
+                {/* Background Artwork */}
+                <div
+                  className="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none bg-cover bg-center"
+                  style={{ backgroundImage: "url('/images/golden_temple_vector_card.png')" }}
+                />
+
+                {/* Royal Ik Onkar & Names */}
                 <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-3 rounded-full bg-black/60 hover:bg-black/80 border border-white/30 text-white backdrop-blur-md shadow-2xl transition-all"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8 }}
+                  className="relative z-10 space-y-4 max-w-sm mx-auto"
                 >
-                  <span className="text-sm sm:text-base font-sans-body font-medium tracking-wider uppercase">
-                    Tap to Reveal
-                  </span>
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-b from-[#D4AF37] to-[#B5965A] p-0.5 mx-auto shadow-2xl">
+                    <div className="w-full h-full rounded-full bg-[#6E1F2E] flex items-center justify-center text-3xl sm:text-4xl text-[#D4AF37] border border-[#B5965A]/40 font-serif">
+                      ੴ
+                    </div>
+                  </div>
+
+                  <div className="space-y-1">
+                    <span className="text-[11px] font-cinzel tracking-[0.3em] text-[#D4AF37] uppercase block font-semibold">
+                      Royal Matrimonial Invitation
+                    </span>
+                    <h1 className="text-3xl sm:text-4xl font-serif-luxury font-bold text-amber-100 tracking-wide">
+                      Rajveer &amp; Lavleen
+                    </h1>
+                    <p className="text-xs font-cormorant italic text-[#FFF9EF]/80">
+                      "Two souls bound in sacred union"
+                    </p>
+                  </div>
+
+                  {/* Pulsing Royal Golden Button */}
+                  <div className="pt-6">
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#D4AF37] via-[#B5965A] to-[#8C6D32] text-[#291C1A] font-bold text-xs sm:text-sm tracking-widest uppercase font-sans-body shadow-[0_0_25px_rgba(212,175,55,0.4)] border border-amber-200"
+                    >
+                      <span>✉️ Tap To Open Invitation</span>
+                    </motion.div>
+                  </div>
                 </motion.div>
               </div>
             )}
