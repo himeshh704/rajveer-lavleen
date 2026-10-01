@@ -177,28 +177,20 @@ export const DateReveal: React.FC = () => {
         </p>
 
         {/* SVG Definition for Heart Clip-Path */}
-        <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
-          <defs>
-            <clipPath id="heartClip" clipPathUnits="objectBoundingBox">
-              <path d="M 0.5,0.96 C 0.5,0.96 0.05,0.62 0.05,0.36 C 0.05,0.16 0.22,0.04 0.36,0.04 C 0.45,0.04 0.5,0.16 0.5,0.16 C 0.5,0.16 0.55,0.04 0.64,0.04 C 0.78,0.04 0.95,0.16 0.95,0.36 C 0.95,0.62 0.5,0.96 0.5,0.96 Z" />
-            </clipPath>
-          </defs>
-        </svg>
-
         {/* Main Card Container */}
         <div className="relative max-w-lg mx-auto bg-[#FFF9EF] border-2 border-[#B5965A]/50 rounded-3xl p-6 sm:p-10 shadow-2xl overflow-hidden">
-          {/* Unrevealed State: Royal Theme Heart Scratch Canvas Overlay */}
+          {/* Unrevealed State: Royal Gold Square Scratch Foil Overlay */}
           {!isScratched && (
-            <div className="relative w-64 sm:w-80 h-64 sm:h-80 mx-auto [clip-path:url(#heartClip)] shadow-[0_10px_35px_rgba(181,150,90,0.45)] group cursor-pointer border-4 border-[#B5965A]">
-              {/* Underlying Date Text Teaser inside Royal Theme Heart */}
+            <div className="relative w-64 sm:w-80 h-64 sm:h-80 mx-auto rounded-3xl shadow-[0_10px_35px_rgba(181,150,90,0.45)] group cursor-pointer border-4 border-[#D4AF37] overflow-hidden">
+              {/* Underlying Date Text Teaser inside Royal Theme Gold Card */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#6E1F2E] via-[#521722] to-[#42131E] flex flex-col items-center justify-center p-6 text-[#FFF9EF] text-center">
-                <span className="text-[10px] font-cinzel text-[#D4AF37] uppercase tracking-widest block mb-1">
+                <span className="text-[10px] font-cinzel text-[#D4AF37] uppercase tracking-widest block mb-1 font-semibold">
                   Save The Date
                 </span>
                 <h3 className="text-2xl sm:text-4xl font-serif-luxury font-bold text-amber-100 leading-tight">
-                  31 January 2027
+                  {WEDDING_DATA.formattedDate}
                 </h3>
-                <p className="text-xs font-sans-body text-amber-200 mt-1">Amritsar, Punjab</p>
+                <p className="text-xs font-sans-body text-amber-200 mt-1">{WEDDING_DATA.city}</p>
               </div>
 
               {/* Scratchable Canvas Surface */}
@@ -244,15 +236,15 @@ export const DateReveal: React.FC = () => {
                 </div>
 
                 <h3 className="text-3xl sm:text-5xl font-serif-luxury font-bold text-amber-100 my-1">
-                  31 January 2027
+                  {WEDDING_DATA.formattedDate}
                 </h3>
 
                 <p className="text-xs sm:text-sm font-cinzel font-semibold text-[#B5965A] tracking-widest uppercase mt-2">
-                  SUNDAY • ANAND KARAJ & WEDDING
+                  SUNDAY • ANAND KARAJ &amp; WEDDING
                 </p>
 
                 <p className="text-xs font-sans-body text-[#FFF9EF]/80 mt-2">
-                  Amritsar, Punjab • #RajveerWedsLavleen
+                  {WEDDING_DATA.city} • {WEDDING_DATA.couple.hashtag}
                 </p>
               </div>
 
