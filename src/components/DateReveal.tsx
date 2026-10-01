@@ -176,7 +176,6 @@ export const DateReveal: React.FC = () => {
           Rub your finger across the golden foil card to unveil our wedding date and start the live countdown!
         </p>
 
-        {/* SVG Definition for Heart Clip-Path */}
         {/* Main Card Container */}
         <div className="relative max-w-lg mx-auto bg-[#FFF9EF] border-2 border-[#B5965A]/50 rounded-3xl p-6 sm:p-10 shadow-2xl overflow-hidden">
           {/* Unrevealed State: Royal Gold Square Scratch Foil Overlay */}
