@@ -1,13 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { MapPin, Clock, Sparkles, Heart, GlassWater, Layers, LayoutList } from 'lucide-react';
+import { Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { WEDDING_DATA } from '../data/weddingData';
 import type { EventDetail } from '../data/weddingData';
 import { soundEngine } from '../utils/soundEffects';
 
 export const Celebrations: React.FC = () => {
-  const [activeDayIndex, setActiveDayIndex] = useState(0);
-  const [viewMode, setViewMode] = useState<'interactive' | 'all'>('interactive');
+  const [activeEventIndex, setActiveEventIndex] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -15,188 +14,176 @@ export const Celebrations: React.FC = () => {
     offset: ['start end', 'end start']
   });
 
-  const parallaxContentY = useTransform(scrollYProgress, [0, 1], [-30, 30]);
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [-20, 20]);
+  const currentEvent = WEDDING_DATA.events[activeEventIndex];
 
-  const currentEvent = WEDDING_DATA.events[activeDayIndex];
+  const handleNext = () => {
+    soundEngine.playChime();
+    setActiveEventIndex((prev) => (prev + 1) % WEDDING_DATA.events.length);
+  };
+
+  const handlePrev = () => {
+    soundEngine.playChime();
+    setActiveEventIndex((prev) => (prev - 1 + WEDDING_DATA.events.length) % WEDDING_DATA.events.length);
+  };
 
   return (
-    <section ref={sectionRef} id="celebrations" className="relative py-24 px-4 md:px-8 bg-gradient-to-b from-[#6E1F2E] via-[#521722] to-[#42131E] text-[#FFF9EF] overflow-hidden">
-      {/* Ambient Radial Glow Backgrounds */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#B5965A]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
+    <section ref={sectionRef} id="celebrations" className="relative py-20 px-3 sm:px-6 md:px-12 bg-gradient-to-b from-[#42131E] via-[#5C1A27] to-[#42131E] text-[#FFF9EF] overflow-hidden min-h-screen flex flex-col items-center justify-center">
+      
+      {/* Background Ambient Glow */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
 
-      <motion.div style={{ y: parallaxContentY }} className="max-w-5xl mx-auto relative z-10 will-change-transform">
+      <motion.div style={{ y: parallaxY }} className="w-full max-w-4xl mx-auto relative z-10">
+        
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
+        <div className="text-center max-w-2xl mx-auto mb-8 space-y-2">
           <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#B5965A]/20 border border-[#B5965A]/40 text-[#D4AF37]">
             <Sparkles className="w-4 h-4" />
-            <span className="text-xs uppercase font-sans-body tracking-[0.25em] font-semibold">
-              The Celebrations
+            <span className="text-xs uppercase font-sans-body tracking-[0.25em] font-bold">
+              WEDDING CELEBRATION PROGRAMME
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif-luxury font-bold text-amber-100 tracking-tight">
-            Creative Wedding Itinerary
+          <h2 className="text-3xl sm:text-5xl font-serif-luxury font-bold text-amber-100 tracking-tight">
+            Events &amp; Ceremonies
           </h2>
-
-          <p className="text-sm sm:text-base font-cormorant italic text-[#FFF9EF]/80 max-w-xl mx-auto">
-            Select a day below to step into each chapter of our royal Punjabi celebrations.
+          <p className="text-xs sm:text-sm font-cormorant italic text-[#FFF9EF]/80">
+            Swipe or select an event below to view event details, dress codes &amp; timings.
           </p>
-
-          {/* View Mode Switcher Toggle */}
-          <div className="pt-4 flex justify-center">
-            <div className="inline-flex p-1 rounded-full bg-[#291C1A]/80 border border-[#B5965A]/40 text-xs font-sans-body">
-              <button
-                onClick={() => {
-                  soundEngine.playClick();
-                  setViewMode('interactive');
-                }}
-                className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full transition-all ${
-                  viewMode === 'interactive'
-                    ? 'bg-[#B5965A] text-[#291C1A] font-bold shadow-md'
-                    : 'text-[#FFF9EF]/80 hover:text-white'
-                }`}
-              >
-                <Layers className="w-3.5 h-3.5" />
-                <span>Interactive Day Experience</span>
-              </button>
-
-              <button
-                onClick={() => {
-                  soundEngine.playClick();
-                  setViewMode('all');
-                }}
-                className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full transition-all ${
-                  viewMode === 'all'
-                    ? 'bg-[#B5965A] text-[#291C1A] font-bold shadow-md'
-                    : 'text-[#FFF9EF]/80 hover:text-white'
-                }`}
-              >
-                <LayoutList className="w-3.5 h-3.5" />
-                <span>Show All Events</span>
-              </button>
-            </div>
-          </div>
         </div>
 
-        {/* View Mode 1: Interactive Day-by-Day Experience */}
-        {viewMode === 'interactive' && (
-          <div className="space-y-8">
-            {/* Interactive Day Timeline Navigation Pills */}
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              {WEDDING_DATA.events.map((evt: EventDetail, idx: number) => {
-                const isActive = idx === activeDayIndex;
-                return (
-                  <button
-                    key={evt.id}
-                    onClick={() => {
-                      soundEngine.playChime();
-                      setActiveDayIndex(idx);
-                    }}
-                    className={`px-5 py-3 rounded-2xl border transition-all flex flex-col items-center gap-0.5 text-center ${
-                      isActive
-                        ? 'bg-gradient-to-r from-[#D4AF37] via-[#B5965A] to-[#8C6D32] text-[#291C1A] border-amber-300 shadow-xl scale-105 font-bold'
-                        : 'bg-[#291C1A]/70 text-[#FFF9EF]/80 border-[#B5965A]/30 hover:border-[#B5965A]'
-                    }`}
-                  >
-                    <span className="text-[10px] font-cinzel tracking-widest uppercase opacity-80">
-                      Day 0{idx + 1}
-                    </span>
-                    <span className="text-xs sm:text-sm font-serif-luxury font-bold">
-                      {evt.name}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Main Active Event Stage with 3D Slide Transition */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentEvent.id}
-                initial={{ opacity: 0, scale: 0.96, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.96, y: -20 }}
-                transition={{ duration: 0.5 }}
-                className="bg-[#291C1A]/90 backdrop-blur-md border-2 border-[#B5965A] rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 w-48 h-48 bg-[#B5965A]/10 rounded-full blur-3xl pointer-events-none" />
-
-                <div className="max-w-2xl mx-auto space-y-5">
-                  <div className="flex items-center gap-3">
-                    <span className="px-3 py-1 rounded-full bg-[#B5965A]/20 text-[#D4AF37] text-xs font-cinzel font-semibold tracking-widest border border-[#B5965A]/40 uppercase">
-                      Day 0{activeDayIndex + 1} • {currentEvent.date}
-                    </span>
-                    <div className="w-8 h-8 rounded-full bg-[#B5965A]/15 flex items-center justify-center text-[#D4AF37]">
-                      {currentEvent.iconName === 'Sparkles' && <Sparkles className="w-4 h-4" />}
-                      {currentEvent.iconName === 'Heart' && <Heart className="w-4 h-4" />}
-                      {currentEvent.iconName === 'GlassWater' && <GlassWater className="w-4 h-4" />}
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-3xl sm:text-4xl font-serif-luxury font-bold text-amber-100">
-                      {currentEvent.name}
-                    </h3>
-                    <p className="text-xs sm:text-sm font-sans-body text-[#B5965A] font-semibold mt-1">
-                      {currentEvent.tagline}
-                    </p>
-                  </div>
-
-                  <p className="text-xs sm:text-sm font-sans-body text-[#FFF9EF]/85 leading-relaxed">
-                    {currentEvent.description}
-                  </p>
-
-                  {/* Details Pills */}
-                  <div className="space-y-3 pt-3 border-t border-[#B5965A]/25 text-xs sm:text-sm font-sans-body">
-                    <div className="flex items-center gap-2.5 text-[#FFF9EF]/90">
-                      <Clock className="w-4 h-4 text-[#B5965A] shrink-0" />
-                      <span>{currentEvent.time}</span>
-                    </div>
-
-                    <div className="flex items-start gap-2.5 text-[#FFF9EF]/90">
-                      <MapPin className="w-4 h-4 text-[#B5965A] shrink-0 mt-0.5" />
-                      <div>
-                        <p className="font-semibold text-amber-100">{currentEvent.venue}</p>
-                        <p className="text-xs text-[#FFF9EF]/70">{currentEvent.address}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        )}
-
-        {/* View Mode 2: Show All Events List */}
-        {viewMode === 'all' && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {WEDDING_DATA.events.map((evt: EventDetail, idx: number) => (
-              <div
+        {/* Event Navigation Pills */}
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8">
+          {WEDDING_DATA.events.map((evt: EventDetail, idx: number) => {
+            const isActive = idx === activeEventIndex;
+            return (
+              <button
                 key={evt.id}
-                className="bg-[#291C1A]/80 border border-[#B5965A]/40 rounded-2xl p-6 shadow-xl space-y-4"
+                onClick={() => {
+                  soundEngine.playClick();
+                  setActiveEventIndex(idx);
+                }}
+                className={`px-4 py-2 rounded-xl text-xs font-sans-body font-semibold transition-all border ${
+                  isActive
+                    ? 'bg-gradient-to-r from-[#D4AF37] to-[#B5965A] text-[#291C1A] border-amber-300 shadow-lg scale-105 font-bold'
+                    : 'bg-[#291C1A]/80 text-[#FFF9EF]/80 border-[#B5965A]/30 hover:border-[#B5965A]'
+                }`}
               >
-                <span className="text-xs font-cinzel text-[#B5965A] uppercase font-semibold">
-                  Day 0{idx + 1} • {evt.formattedDate}
-                </span>
+                {evt.name}
+              </button>
+            );
+          })}
+        </div>
 
-                <h3 className="text-xl font-serif-luxury font-bold text-amber-100">
-                  {evt.name}
-                </h3>
+        {/* Illustrated Event Card (Matching Reference Card input_file_0.png) */}
+        <div className="relative max-w-xl mx-auto">
+          
+          {/* Navigation Arrows */}
+          <button
+            onClick={handlePrev}
+            className="absolute -left-4 sm:-left-12 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-[#291C1A]/90 border border-[#D4AF37] text-[#D4AF37] flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+            aria-label="Previous Event"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
 
-                <p className="text-xs font-sans-body text-[#FFF9EF]/80">
-                  {evt.description}
-                </p>
+          <button
+            onClick={handleNext}
+            className="absolute -right-4 sm:-right-12 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-[#291C1A]/90 border border-[#D4AF37] text-[#D4AF37] flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+            aria-label="Next Event"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
 
-                <div className="pt-3 border-t border-[#B5965A]/20 text-xs font-sans-body space-y-1">
-                  <p className="text-amber-200"><strong>Time:</strong> {evt.time}</p>
-                  <p className="text-amber-200"><strong>Venue:</strong> {evt.venue}</p>
-                </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentEvent.id}
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -15 }}
+              transition={{ duration: 0.4 }}
+              className="relative bg-gradient-to-b from-[#F2F7F2] via-[#F6FAF6] to-[#EEF5EE] border-2 border-[#D4AF37]/80 rounded-3xl p-6 sm:p-10 shadow-2xl text-center text-[#291C1A] overflow-hidden"
+            >
+              {/* Marigold Garland Header Motif */}
+              <div className="absolute top-0 left-0 right-0 h-12 overflow-hidden pointer-events-none opacity-90">
+                <svg viewBox="0 0 500 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full preserve-3d">
+                  {/* Garland Strings */}
+                  <path d="M0 0 Q62 40 125 0 Q187 40 250 0 Q312 40 375 0 Q437 40 500 0" stroke="#7A5C3D" strokeWidth="1.5" />
+                  {/* Marigold Flowers */}
+                  {[20, 60, 100, 140, 180, 220, 260, 300, 340, 380, 420, 460].map((cx, i) => (
+                    <g key={i}>
+                      <circle cx={cx} cy={i % 2 === 0 ? 18 : 26} r="8" fill={i % 3 === 0 ? "#FF8C00" : "#FFD700"} />
+                      <circle cx={cx} cy={i % 2 === 0 ? 18 : 26} r="4" fill="#FFA500" />
+                    </g>
+                  ))}
+                  {/* Hanging Tassels */}
+                  {[62, 187, 312, 437].map((tx, j) => (
+                    <g key={j}>
+                      <line x1={tx} y1="20" x2={tx} y2="45" stroke="#8B0000" strokeWidth="2" />
+                      <circle cx={tx} cy="48" r="5" fill="#8B0000" />
+                    </g>
+                  ))}
+                </svg>
               </div>
-            ))}
-          </div>
-        )}
+
+              <div className="pt-6 pb-2 space-y-4">
+                
+                {/* Poetic Intro Line */}
+                <div className="space-y-1 text-xs sm:text-sm font-sans-body font-semibold text-[#5E4B37] max-w-md mx-auto leading-relaxed">
+                  <p>{currentEvent.description}</p>
+                </div>
+
+                {/* Event Name (Calligraphic Script) */}
+                <div className="py-2">
+                  <h3 className="text-4xl sm:text-5xl md:text-6xl font-great-vibes text-[#7D1D28] font-bold tracking-normal leading-tight">
+                    {currentEvent.name}
+                  </h3>
+                </div>
+
+                {/* Connector */}
+                <p className="text-xs font-sans-body text-[#7A5C3D] italic">on</p>
+
+                {/* Date & Time Highlight */}
+                <div className="text-sm sm:text-base md:text-lg font-cinzel font-bold text-[#C59B27] tracking-wide">
+                  {currentEvent.formattedDate} | {currentEvent.time}
+                </div>
+
+                {/* Connector */}
+                <p className="text-xs font-sans-body text-[#7A5C3D] italic pt-1">at</p>
+
+                {/* Venue */}
+                <div className="space-y-0.5">
+                  <h4 className="text-xl sm:text-2xl font-cinzel font-black text-[#B8860B] tracking-wider uppercase">
+                    {currentEvent.venue}
+                  </h4>
+                  <p className="text-xs sm:text-sm font-sans-body text-[#5E4B37] font-semibold">
+                    {currentEvent.address}
+                  </p>
+                </div>
+
+                {/* Dress Code */}
+                <div className="pt-4 border-t border-[#D4AF37]/30">
+                  <span className="text-xs font-cinzel font-bold text-[#7D1D28] tracking-widest uppercase bg-[#FDE68A]/60 px-4 py-1.5 rounded-full border border-[#D4AF37]/50 inline-block">
+                    DRESS CODE : {currentEvent.dressCode}
+                  </span>
+                </div>
+
+                {/* Couple Illustration at Card Base */}
+                <div className="pt-4 flex justify-center items-center relative">
+                  <img
+                    src="/images/amrit_simran_2d_couple_illustration.png"
+                    alt="Sikh Couple Illustration"
+                    className="w-48 sm:w-64 h-auto object-contain mx-auto drop-shadow-md"
+                  />
+                </div>
+
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
       </motion.div>
     </section>
   );
 };
+
