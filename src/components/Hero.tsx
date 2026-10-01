@@ -17,18 +17,39 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
 
   // Ensure Video Autoplay on iOS / Android mobile WebKit browsers
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = true;
-      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {
-        const handleFirstTouch = () => {
-          if (videoRef.current) {
-            videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
-          }
-          window.removeEventListener('touchstart', handleFirstTouch);
-        };
-        window.addEventListener('touchstart', handleFirstTouch, { once: true });
-      });
-    }
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute('playsinline', 'true');
+    video.setAttribute('webkit-playsinline', 'true');
+
+    const startPlay = () => {
+      if (video.paused) {
+        video.play().then(() => setIsPlaying(true)).catch(() => {});
+      }
+    };
+
+    startPlay();
+
+    // Trigger video playback on any touch or scroll if mobile OS restricted autoplay initially
+    const handleInteraction = () => {
+      startPlay();
+    };
+
+    window.addEventListener('touchstart', handleInteraction, { passive: true });
+    window.addEventListener('scroll', handleInteraction, { passive: true });
+    window.addEventListener('pointerdown', handleInteraction, { passive: true });
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) startPlay();
+    });
+
+    return () => {
+      window.removeEventListener('touchstart', handleInteraction);
+      window.removeEventListener('scroll', handleInteraction);
+      window.removeEventListener('pointerdown', handleInteraction);
+    };
   }, []);
 
   // Track window scroll progress for hero transformations
@@ -66,13 +87,25 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
       {/* 1. FULL FRAME VIDEO BACKGROUND */}
       <motion.div style={{ scale: heroScale }} className="absolute inset-0 w-full h-full">
         <video
-          ref={videoRef}
+          ref={(el) => {
+            videoRef.current = el;
+            if (el) {
+              el.muted = true;
+              el.defaultMuted = true;
+              el.play().catch(() => {});
+            }
+          }}
           src="/videos/hero_video.mp4"
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          preload="auto"
+          onCanPlay={(e) => {
+            e.currentTarget.muted = true;
+            e.currentTarget.play().catch(() => {});
+          }}
+          className="w-full h-full object-cover pointer-events-none"
         />
         {/* Cinematic Dark & Gold Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#42131E]/90" />
