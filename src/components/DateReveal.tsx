@@ -174,20 +174,29 @@ export const DateReveal: React.FC = () => {
           Rub your finger across the golden foil card to unveil our wedding date and start the live countdown!
         </p>
 
+        {/* SVG Definition for Heart Clip-Path */}
+        <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
+          <defs>
+            <clipPath id="heartClip" clipPathUnits="objectBoundingBox">
+              <path d="M 0.5,0.96 C 0.5,0.96 0.05,0.62 0.05,0.36 C 0.05,0.16 0.22,0.04 0.36,0.04 C 0.45,0.04 0.5,0.16 0.5,0.16 C 0.5,0.16 0.55,0.04 0.64,0.04 C 0.78,0.04 0.95,0.16 0.95,0.36 C 0.95,0.62 0.5,0.96 0.5,0.96 Z" />
+            </clipPath>
+          </defs>
+        </svg>
+
         {/* Main Card Container */}
         <div className="relative max-w-lg mx-auto bg-[#FFF9EF] border-2 border-[#B5965A]/50 rounded-3xl p-6 sm:p-10 shadow-2xl overflow-hidden">
-          {/* Unrevealed State: Gold Scratch Canvas Overlay */}
+          {/* Unrevealed State: Golden Heart Scratch Canvas Overlay */}
           {!isScratched && (
-            <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden shadow-lg border border-[#B5965A]/40 group cursor-pointer">
-              {/* Underlying Date Text Teaser */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#6E1F2E] to-[#42131E] flex flex-col items-center justify-center p-4 text-[#FFF9EF]">
-                <span className="text-xs font-cinzel text-[#D4AF37] uppercase tracking-widest">
+            <div className="relative w-64 sm:w-80 h-64 sm:h-80 mx-auto [clip-path:url(#heartClip)] shadow-2xl group cursor-pointer border-4 border-[#B5965A]">
+              {/* Underlying Date Text Teaser inside Heart */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#6E1F2E] via-[#521722] to-[#42131E] flex flex-col items-center justify-center p-6 text-[#FFF9EF] text-center">
+                <span className="text-[10px] font-cinzel text-[#D4AF37] uppercase tracking-widest block mb-1">
                   Save The Date
                 </span>
-                <h3 className="text-3xl sm:text-4xl font-serif-luxury font-bold text-amber-100 my-1">
+                <h3 className="text-2xl sm:text-4xl font-serif-luxury font-bold text-amber-100 leading-tight">
                   31 January 2027
                 </h3>
-                <p className="text-xs font-sans-body text-amber-200">Amritsar, Punjab</p>
+                <p className="text-xs font-sans-body text-amber-200 mt-1">Amritsar, Punjab</p>
               </div>
 
               {/* Scratchable Canvas Surface */}

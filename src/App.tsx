@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { InvitationEnvelope } from './components/InvitationEnvelope';
 import { Hero } from './components/Hero';
 import { InvitationBlessing } from './components/InvitationBlessing';
 import { DateReveal } from './components/DateReveal';
@@ -7,6 +9,8 @@ import { FooterMap } from './components/FooterMap';
 import { MusicPlayer } from './components/MusicPlayer';
 
 export function App() {
+  const [hasOpenedCard, setHasOpenedCard] = useState(false);
+
   const handleScrollToInvitation = () => {
     const element = document.getElementById('invitation');
     if (element) {
@@ -15,7 +19,12 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFF9EF] text-[#291C1A] selection:bg-[#6E1F2E] selection:text-[#FFF9EF] overflow-x-hidden font-sans">
+    <div className="min-h-screen bg-[#FFF9EF] text-[#291C1A] selection:bg-[#6E1F2E] selection:text-[#FFF9EF] overflow-x-hidden font-sans relative">
+      {/* Royal Opening Wedding Envelope Modal */}
+      {!hasOpenedCard && (
+        <InvitationEnvelope onOpen={() => setHasOpenedCard(true)} />
+      )}
+
       {/* Main Page Flow */}
       <main>
         {/* 1. Cinematic Mobile-First Hero Portal Section */}
