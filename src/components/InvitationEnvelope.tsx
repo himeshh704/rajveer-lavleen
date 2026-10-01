@@ -130,8 +130,11 @@ export const InvitationEnvelope: React.FC<InvitationEnvelopeProps> = ({ onOpen }
                   </div>
 
                   <div className="space-y-1">
+                    <span className="text-xs font-cinzel text-[#D4AF37] uppercase tracking-[0.25em] font-semibold block">
+                      Manbeer weds Riti
+                    </span>
                     <h1 className="text-3xl sm:text-4xl font-serif-luxury font-bold text-amber-100 tracking-wide">
-                      Rajveer &amp; Lavleen
+                      Singh's Invitation
                     </h1>
                     <p className="text-xs font-cormorant italic text-[#FFF9EF]/85">
                       "Two souls, one light — Anand Karaj Union"
