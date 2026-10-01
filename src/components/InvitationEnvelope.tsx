@@ -102,8 +102,8 @@ export const InvitationEnvelope: React.FC<InvitationEnvelopeProps> = ({ onOpen }
               >
                 {/* Background Pattern Artwork */}
                 <div
-                  className="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none bg-cover bg-center"
-                  style={{ backgroundImage: "url('/images/golden_temple_vector_card.png')" }}
+                  className="absolute inset-0 opacity-30 mix-blend-overlay pointer-events-none bg-cover bg-center"
+                  style={{ backgroundImage: "url('/images/royal_sikh_preloader_bg_pattern.png')" }}
                 />
 
                 {/* 2D Cartoon Couple Frame & Header */}
