@@ -99,8 +99,8 @@ export const WEDDING_DATA: WeddingData = {
       fullName: "Rajveer Singh",
       title: "The Groom",
       about: "A gentleman of warmth, honor and quiet grace. Devoted to family heritage and building a life grounded in love and faith.",
-      parents: "Sdn. Ravinder Kaur & S. Trilochan Singh",
-      grandparents: "Sdn. Rampyari & S. Harmahinder Singh",
+      parents: "Harpreet Singh & Manjyot Kaur",
+      grandparents: "Late S. Jagjeet Singh & S. Manjeet Kaur",
       image: "/images/amrit_simran_2d_couple_illustration.png"
     },
     bride: {
@@ -116,13 +116,13 @@ export const WEDDING_DATA: WeddingData = {
     heading: "Rajveer weds Lavleen",
     subheading: "SINGH'S INVITATION"
   },
-  weddingDateISO: "2026-10-20T10:30:00",
-  formattedDate: "20 October 2026",
+  weddingDateISO: "2026-11-01T09:30:00",
+  formattedDate: "1 November 2026",
   city: "Beawar, Rajasthan",
-  venueName: "Laaz Haveli & Gurudwara Sahib, Beawar",
+  venueName: "Laaz Haveli, Beawar",
   gurbaniBlessing: {
-    gurmukhi: "ੴ ਸਤਿਗੁਰ ਪ੍ਰਸਾਦਿ ॥ ਧਨੁ ਪਿਰੁ ਏਹਿ ਨ ਆਖੀਅਨਿ ਬਹਨਿ ਇਕਠੇ ਹੋਇ ॥ ਏਕ ਜੋਤੀ ਦੁਇ ਮੂਰਤੀ ਧਨੁ ਪਿਰੁ ਕਹੀਐ ਸੋਇ ॥",
-    translation: "They are not said to be husband and wife, who merely sit together. They alone are called husband and wife, who have one light in two bodies."
+    gurmukhi: "ਸੰਤਾ ਕੈ ਕਾਰਜਿ ਆਪਿ ਖਲੋਇਆ ॥ ਹਰਿ ਕੰਮੁ ਕਰਾਵਣਿ ਆਇਆ ਰਾਮ ॥",
+    translation: "The Lord Himself has stood up to resolve the affairs of the Saints; He has come to complete their tasks."
   },
   events: [
     {

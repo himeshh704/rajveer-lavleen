@@ -30,11 +30,13 @@ export const InvitationBlessing: React.FC = () => {
           <div className="absolute bottom-3 left-3 w-12 h-12 border-b-2 border-l-2 border-[#B5965A]/60 rounded-bl-xl pointer-events-none" />
           <div className="absolute bottom-3 right-3 w-12 h-12 border-b-2 border-r-2 border-[#B5965A]/60 rounded-br-xl pointer-events-none" />
 
-          {/* Celestial / Sacred Symbol Header */}
+          {/* Maroon Ik Onkar Logo Header */}
           <div className="inline-flex flex-col items-center mb-6">
-            <span className="text-4xl sm:text-5xl font-serif text-[#6E1F2E] font-bold tracking-widest my-1 select-none">
-              ੴ
-            </span>
+            <img
+              src="/images/ik_onkar_maroon_logo.png"
+              alt="Ik Onkar Logo"
+              className="w-16 h-16 sm:w-20 sm:h-20 object-contain mx-auto mb-2"
+            />
             <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#B5965A] to-transparent my-2" />
           </div>
 
@@ -57,9 +59,9 @@ export const InvitationBlessing: React.FC = () => {
           <div className="w-16 h-[1px] bg-[#B5965A]/40 mx-auto my-6" />
 
           {/* Invitation Intro */}
-          <div className="space-y-3 mb-10">
-            <p className="text-xs sm:text-sm font-sans-body uppercase tracking-[0.25em] text-[#B5965A] font-semibold">
-              With the celestial blessings of Almighty Waheguru & Elders
+          <div className="space-y-2 mb-8">
+            <p className="text-xs sm:text-sm font-sans-body uppercase tracking-[0.25em] text-[#B5965A] font-bold">
+              WITH THE CELESTIAL BLESSINGS OF ALMIGHTY WAHEGURU &amp; ELDERS
             </p>
             <p className="text-base sm:text-lg font-cormorant italic text-[#291C1A]/90">
               Together with their families,
@@ -71,7 +73,7 @@ export const InvitationBlessing: React.FC = () => {
             {/* Groom's Side */}
             <div className="space-y-2 px-4 border-b md:border-b-0 md:border-r border-[#B5965A]/20 pb-6 md:pb-0">
               <span className="text-xs uppercase tracking-widest text-[#6E1F2E] font-bold block mb-1">
-                Groom's Family
+                GROOM'S FAMILY
               </span>
               <p className="text-sm sm:text-base font-serif-luxury text-[#291C1A] font-semibold">
                 {WEDDING_DATA.couple.groom.parents}
@@ -84,7 +86,7 @@ export const InvitationBlessing: React.FC = () => {
             {/* Bride's Side */}
             <div className="space-y-2 px-4 pt-2 md:pt-0">
               <span className="text-xs uppercase tracking-widest text-[#6E1F2E] font-bold block mb-1">
-                Bride's Family
+                BRIDE'S FAMILY
               </span>
               <p className="text-sm sm:text-base font-serif-luxury text-[#291C1A] font-semibold">
                 {WEDDING_DATA.couple.bride.parents}
@@ -96,29 +98,34 @@ export const InvitationBlessing: React.FC = () => {
           </div>
 
           {/* Formal Invite Phrasing */}
-          <p className="text-sm sm:text-base font-sans-body uppercase tracking-[0.2em] text-[#291C1A]/80 my-6 font-medium">
-            Cordially request the honor of your presence to celebrate the nuptials of
+          <p className="text-xs sm:text-sm font-sans-body uppercase tracking-[0.2em] text-[#291C1A]/80 my-6 font-semibold max-w-xl mx-auto">
+            REQUEST THE HONOUR OF YOUR PRESENCE AT THE WEDDING CELEBRATIONS OF THEIR GRANDSON
           </p>
 
-          {/* Couple Names Highlight */}
-          <div className="my-8 py-4">
+          {/* Couple Names & RL Monogram Highlight */}
+          <div className="my-8 py-2 flex flex-col items-center">
+            <img
+              src="/images/rl_monogram_logo.png"
+              alt="RL Monogram Logo"
+              className="w-16 h-16 sm:w-20 sm:h-20 object-contain mb-3"
+            />
             <h2 className="text-4xl sm:text-6xl md:text-7xl font-serif-luxury font-bold text-[#6E1F2E] tracking-tight leading-tight">
               {WEDDING_DATA.couple.groom.firstName}{' '}
               <span className="text-3xl sm:text-5xl font-italiana text-[#B5965A] font-normal italic px-2">
-                &
+                &amp;
               </span>{' '}
               {WEDDING_DATA.couple.bride.firstName}
             </h2>
-            <p className="text-sm sm:text-base font-cinzel text-[#B5965A] tracking-widest uppercase mt-3 font-semibold">
-              Anand Karaj & Wedding Celebrations
+            <p className="text-xs sm:text-sm font-cinzel text-[#B5965A] tracking-[0.2em] uppercase mt-3 font-semibold">
+              ANAND KARAJ &amp; WEDDING CELEBRATIONS
             </p>
           </div>
 
           {/* Date & Location Footer */}
           <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-[#6E1F2E] text-[#FFF9EF] shadow-md border border-[#B5965A]/40 mt-4">
             <Sparkles className="w-4 h-4 text-[#B5965A]" />
-            <span className="text-xs sm:text-sm font-cinzel font-semibold tracking-wider">
-              {WEDDING_DATA.formattedDate} • {WEDDING_DATA.city}
+            <span className="text-xs sm:text-sm font-cinzel font-semibold tracking-wider uppercase">
+              SUNDAY, 1 NOVEMBER 2026 • LAAZ HAVELI, BEAWAR
             </span>
             <Sparkles className="w-4 h-4 text-[#B5965A]" />
           </div>
