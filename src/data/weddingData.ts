@@ -95,8 +95,8 @@ export interface WeddingData {
 export const WEDDING_DATA: WeddingData = {
   couple: {
     groom: {
-      firstName: "Manbeer",
-      fullName: "Manbeer Singh",
+      firstName: "Rajveer",
+      fullName: "Rajveer Singh",
       title: "The Groom",
       about: "A gentleman of warmth, honor and quiet grace. Devoted to family heritage and building a life grounded in love and faith.",
       parents: "Sdn. Ravinder Kaur & S. Trilochan Singh",
@@ -104,16 +104,16 @@ export const WEDDING_DATA: WeddingData = {
       image: "/images/amrit_simran_2d_couple_illustration.png"
     },
     bride: {
-      firstName: "Riti",
-      fullName: "Riti Monga",
+      firstName: "Lavleen",
+      fullName: "Lavleen Kaur",
       title: "The Bride",
       about: "An elegant radiance with a compassionate heart. Lover of warmth, family blessings, and timeless togetherness.",
       parents: "Late Sdn. Harpreet Kaur & S. Surinder Singh Ji",
       grandparents: "Sdn. Karmawali & Lt. S. Balbeer Singh Ji",
       image: "/images/amrit_simran_2d_couple_illustration.png"
     },
-    hashtag: "#ManbeerWedsRiti",
-    heading: "Manbeer weds Riti",
+    hashtag: "#RajveerWedsLavleen",
+    heading: "Rajveer weds Lavleen",
     subheading: "SINGH'S INVITATION"
   },
   weddingDateISO: "2026-10-20T10:30:00",
