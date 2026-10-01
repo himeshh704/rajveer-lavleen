@@ -1,13 +1,21 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Heart } from 'lucide-react';
 import { WEDDING_DATA } from '../data/weddingData';
 import { ImageCarousel } from './ImageCarousel';
 
 export const CoupleStory: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start']
+  });
+
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [-30, 30]);
+
   return (
-    <section id="couple" className="py-20 px-4 md:px-8 bg-[#FFF9EF] text-[#291C1A] overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+    <section ref={sectionRef} id="couple" className="py-24 px-4 md:px-8 bg-[#FFF9EF] text-[#291C1A] overflow-hidden">
+      <motion.div style={{ y: parallaxY }} className="max-w-6xl mx-auto will-change-transform">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#6E1F2E]/10 border border-[#6E1F2E]/30 text-[#6E1F2E]">
@@ -108,7 +116,7 @@ export const CoupleStory: React.FC = () => {
 
           <ImageCarousel moments={WEDDING_DATA.storyMoments} />
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

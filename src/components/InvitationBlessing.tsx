@@ -1,22 +1,28 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
 import { WEDDING_DATA } from '../data/weddingData';
 
 export const InvitationBlessing: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start']
+  });
+
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [-40, 40]);
+  const scaleProgress = useTransform(scrollYProgress, [0, 0.5, 1], [0.96, 1, 0.98]);
+
   return (
-    <section id="invitation" className="relative py-20 px-4 md:px-8 bg-[#FFF9EF] text-[#291C1A] overflow-hidden">
+    <section ref={sectionRef} id="invitation" className="relative py-24 px-4 md:px-8 bg-[#FFF9EF] text-[#291C1A] overflow-hidden">
       {/* Decorative Subtle Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#B5965A_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+      <div className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(#B5965A_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
       {/* Main Luxury Frame Card */}
       <div className="max-w-4xl mx-auto relative">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="relative bg-[#F8F0E3]/90 backdrop-blur-sm border-2 border-[#B5965A]/40 rounded-2xl p-8 md:p-14 shadow-[0_12px_40px_rgba(41,28,26,0.08)] text-center overflow-hidden"
+          style={{ y: parallaxY, scale: scaleProgress }}
+          className="relative bg-[#F8F0E3]/90 backdrop-blur-sm border-2 border-[#B5965A]/40 rounded-2xl p-8 md:p-14 shadow-[0_12px_40px_rgba(41,28,26,0.08)] text-center overflow-hidden will-change-transform"
         >
           {/* Corner Floral Motifs */}
           <div className="absolute top-3 left-3 w-12 h-12 border-t-2 border-l-2 border-[#B5965A]/60 rounded-tl-xl pointer-events-none" />

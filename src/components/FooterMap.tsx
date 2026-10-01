@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { MapPin, Navigation, ArrowUp } from 'lucide-react';
 import { WEDDING_DATA } from '../data/weddingData';
 import { soundEngine } from '../utils/soundEffects';
 
 export const FooterMap: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start']
+  });
+
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [-25, 25]);
+
   const scrollToTop = () => {
     soundEngine.playClick();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <section className="relative bg-[#FFF9EF] text-[#291C1A] border-t-2 border-[#B5965A]/40 pt-16 pb-12 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section ref={sectionRef} className="relative bg-[#FFF9EF] text-[#291C1A] border-t-2 border-[#B5965A]/40 pt-16 pb-12 overflow-hidden">
+      <motion.div style={{ y: parallaxY }} className="max-w-6xl mx-auto px-4 sm:px-6 will-change-transform">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
           <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#6E1F2E]/10 border border-[#6E1F2E]/30 text-[#6E1F2E]">
@@ -103,7 +112,7 @@ export const FooterMap: React.FC = () => {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

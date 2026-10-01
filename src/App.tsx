@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Lenis from 'lenis';
 import { InvitationEnvelope } from './components/InvitationEnvelope';
 import { Hero } from './components/Hero';
 import { InvitationBlessing } from './components/InvitationBlessing';
@@ -10,6 +11,30 @@ import { MusicPlayer } from './components/MusicPlayer';
 
 export function App() {
   const [hasOpenedCard, setHasOpenedCard] = useState(false);
+
+  // Initialize Lenis 60fps hardware-accelerated smooth scrolling
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.5,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   const handleScrollToInvitation = () => {
     const element = document.getElementById('invitation');

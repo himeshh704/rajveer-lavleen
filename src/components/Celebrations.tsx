@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { MapPin, Calendar, Clock, Sparkles, Heart, GlassWater, Shirt, ChevronRight, Layers, LayoutList, Palette } from 'lucide-react';
 import { WEDDING_DATA } from '../data/weddingData';
 import type { EventDetail } from '../data/weddingData';
@@ -8,6 +8,14 @@ import { soundEngine } from '../utils/soundEffects';
 export const Celebrations: React.FC = () => {
   const [activeDayIndex, setActiveDayIndex] = useState(0);
   const [viewMode, setViewMode] = useState<'interactive' | 'all'>('interactive');
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start']
+  });
+
+  const parallaxContentY = useTransform(scrollYProgress, [0, 1], [-30, 30]);
 
   const currentEvent = WEDDING_DATA.events[activeDayIndex];
 
@@ -33,12 +41,12 @@ export const Celebrations: React.FC = () => {
   const currentSwatches = colorSwatches[currentEvent.id] || [];
 
   return (
-    <section id="celebrations" className="relative py-24 px-4 md:px-8 bg-gradient-to-b from-[#6E1F2E] via-[#521722] to-[#42131E] text-[#FFF9EF] overflow-hidden">
+    <section ref={sectionRef} id="celebrations" className="relative py-24 px-4 md:px-8 bg-gradient-to-b from-[#6E1F2E] via-[#521722] to-[#42131E] text-[#FFF9EF] overflow-hidden">
       {/* Ambient Radial Glow Backgrounds */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#B5965A]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto relative z-10">
+      <motion.div style={{ y: parallaxContentY }} className="max-w-5xl mx-auto relative z-10 will-change-transform">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
           <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#B5965A]/20 border border-[#B5965A]/40 text-[#D4AF37]">
@@ -296,7 +304,7 @@ export const Celebrations: React.FC = () => {
             ))}
           </div>
         )}
-      </div>
+      </motion.div>
     </section>
   );
 };
