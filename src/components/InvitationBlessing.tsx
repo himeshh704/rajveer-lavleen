@@ -61,13 +61,18 @@ export const InvitationBlessing: React.FC = () => {
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-4 text-center"
+          className="mb-4 text-center px-2"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#6E1F2E] text-[#FFF9EF] shadow-sm border border-[#D4AF37]/50">
-            <img src="/images/ik_onkar_maroon_cutout.png" alt="Ik Onkar" className="w-5 h-5 object-contain invert brightness-200" />
-            <span className="text-xs sm:text-sm font-serif-luxury font-semibold tracking-wide">
-              {WEDDING_DATA.gurbaniBlessing.gurmukhi}
-            </span>
+          <div className="inline-flex flex-col items-center gap-1.5 px-6 py-2.5 rounded-2xl bg-[#6E1F2E] text-[#FFF9EF] shadow-md border border-[#D4AF37]/60 max-w-xl mx-auto">
+            <div className="flex items-center gap-2">
+              <img src="/images/ik_onkar_maroon_cutout.png" alt="Ik Onkar" className="w-6 h-6 object-contain invert brightness-200" />
+              <span className="text-sm sm:text-base font-serif-luxury font-bold tracking-wide text-[#FDE68A]">
+                {WEDDING_DATA.gurbaniBlessing.gurmukhi}
+              </span>
+            </div>
+            <p className="text-[11px] sm:text-xs font-sans-body italic text-[#FFF9EF]/90 font-light">
+              "{WEDDING_DATA.gurbaniBlessing.translation}"
+            </p>
           </div>
         </motion.div>
 
@@ -86,7 +91,7 @@ export const InvitationBlessing: React.FC = () => {
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col items-center justify-center mt-2 mb-6"
+            className="flex flex-col items-center justify-center mt-2 mb-4"
           >
             <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1.5 bg-gradient-to-br from-[#F5E5C0] via-[#D4AF37] to-[#9A7B3E] shadow-md flex items-center justify-center">
               <div className="w-full h-full rounded-full bg-[#FFFDF9] flex items-center justify-center p-2 border border-[#B5965A]/40 shadow-inner">
@@ -102,22 +107,28 @@ export const InvitationBlessing: React.FC = () => {
             </p>
           </motion.div>
 
+          {/* Family Blessing Heading */}
+          <p className="text-[10px] sm:text-xs font-sans-body uppercase tracking-[0.2em] text-[#B5965A] font-bold mb-3">
+            WITH THE CELESTIAL BLESSINGS OF ALMIGHTY WAHEGURU &amp; ELDERS
+          </p>
+
           {/* Opening Poetic Lines */}
-          <div className="space-y-1 my-6 max-w-md mx-auto text-[#6B5139] font-serif-luxury text-sm sm:text-base leading-snug italic">
+          <div className="space-y-1 my-3 max-w-md mx-auto text-[#6B5139] font-serif-luxury text-sm sm:text-base leading-snug italic">
             <p>By the grace of Waheguru,</p>
             <p>two souls are coming together,</p>
             <p>and two families are becoming one.</p>
-            <p className="not-italic font-medium text-xs sm:text-sm text-[#7A5C3D] pt-1">
-              With immense happiness and folded hands,
-            </p>
           </div>
+
+          <p className="text-xs sm:text-sm font-sans-body italic text-[#7A5C3D] my-2">
+            Together with their families,
+          </p>
 
           {/* Grandparents Line (Golden Cursive Script) */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="my-5"
+            className="my-4"
           >
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-great-vibes text-[#C59B27] font-semibold tracking-wide drop-shadow-sm px-2">
               {WEDDING_DATA.couple.groom.grandparents}
@@ -125,12 +136,12 @@ export const InvitationBlessing: React.FC = () => {
           </motion.div>
 
           {/* Invitation Request Lines */}
-          <div className="space-y-1.5 my-6 text-[#6B5139]">
-            <p className="text-xs sm:text-sm font-sans-body text-[#7A5C3D]">
-              Request the honour of your presence at the
+          <div className="space-y-1 my-5 text-[#6B5139]">
+            <p className="text-xs sm:text-sm font-sans-body text-[#7A5C3D] uppercase tracking-wider font-semibold">
+              REQUEST THE HONOUR OF YOUR PRESENCE AT THE
             </p>
             <h4 className="text-base sm:text-lg md:text-xl font-cinzel font-bold text-[#B8860B] tracking-wider uppercase py-1">
-              "WEDDING PROGRAMME"
+              "WEDDING CELEBRATIONS"
             </h4>
             <p className="text-xs sm:text-sm font-sans-body text-[#7A5C3D]">
               of their Grandson
@@ -143,7 +154,7 @@ export const InvitationBlessing: React.FC = () => {
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="my-6 space-y-1"
+            className="my-5 space-y-1"
           >
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-great-vibes text-[#7D1D28] font-bold tracking-normal leading-tight">
               {WEDDING_DATA.couple.groom.firstName} Singh
@@ -154,7 +165,7 @@ export const InvitationBlessing: React.FC = () => {
           </motion.div>
 
           {/* Connector Word */}
-          <div className="my-4">
+          <div className="my-3">
             <span className="text-sm sm:text-base font-great-vibes text-[#C59B27] italic px-4 font-semibold text-lg">
               with
             </span>
@@ -166,7 +177,7 @@ export const InvitationBlessing: React.FC = () => {
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="my-6 space-y-1"
+            className="my-5 space-y-1"
           >
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-great-vibes text-[#7D1D28] font-bold tracking-normal leading-tight">
               {WEDDING_DATA.couple.bride.firstName}
@@ -177,11 +188,18 @@ export const InvitationBlessing: React.FC = () => {
             </div>
           </motion.div>
 
+          {/* Event Name Highlight */}
+          <div className="my-4 pt-2">
+            <p className="text-xs sm:text-sm font-cinzel font-bold text-[#B8860B] tracking-[0.2em] uppercase">
+              ANAND KARAJ &amp; WEDDING CELEBRATIONS
+            </p>
+          </div>
+
           {/* Date & Venue Section */}
-          <div className="mt-8 pt-6 border-t border-[#D4AF37]/30 space-y-2 text-[#6B5139]">
+          <div className="mt-6 pt-5 border-t border-[#D4AF37]/30 space-y-2 text-[#6B5139]">
             <p className="text-xs font-sans-body text-[#7A5C3D] italic">on</p>
-            <p className="text-lg sm:text-xl font-cinzel font-bold text-[#C59B27] tracking-wide">
-              Sunday, 1st November 2026
+            <p className="text-lg sm:text-xl font-cinzel font-bold text-[#C59B27] tracking-wide uppercase">
+              SUNDAY, 1 NOVEMBER 2026
             </p>
             <p className="text-xs font-sans-body text-[#7A5C3D] italic pt-1">at</p>
             <h4 className="text-xl sm:text-2xl font-cinzel font-black text-[#B8860B] tracking-wider uppercase">
