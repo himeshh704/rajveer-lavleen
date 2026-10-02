@@ -176,3 +176,48 @@ html.lenis, html.lenis body {
 ::-webkit-scrollbar-thumb:hover {
   background: #B5965A;
 }
+
+/* Card Fan Carousel Styles */
+.fan-layout {
+  min-height: 22rem;
+  perspective: 1200px;
+}
+
+@media (min-width: 640px) {
+  .fan-layout {
+    min-height: 26rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .fan-layout {
+    min-height: 32rem;
+  }
+}
+
+.fan-card {
+  position: absolute;
+  width: 13rem;
+  height: 18rem;
+  border-radius: 1.25rem;
+  border: 2px solid rgba(181, 150, 90, 0.4);
+  box-shadow: 0 15px 35px rgba(41, 28, 26, 0.2);
+  overflow: hidden;
+  will-change: transform;
+  transition: border-color 0.3s ease;
+}
+
+@media (min-width: 640px) {
+  .fan-card {
+    width: 16rem;
+    height: 22rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .fan-card {
+    width: 18.5rem;
+    height: 25.5rem;
+  }
+}
+

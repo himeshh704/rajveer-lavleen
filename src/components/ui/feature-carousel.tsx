@@ -1,0 +1,365 @@
+"use client";
+
+import React, { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Sparkles,
+  Heart,
+  Calendar,
+  MapPin,
+  Sun,
+  Flame,
+  Wine,
+  Music,
+  Clock,
+  Shirt,
+  ChevronLeft,
+  ChevronRight
+} from "lucide-react";
+import { cn } from "../../lib/utils";
+
+export interface EventFeatureItem {
+  id: string;
+  label: string;
+  sublabel: string;
+  icon: React.ElementType;
+  image: string;
+  venue: string;
+  time: string;
+  dressCode: string;
+  description: string;
+}
+
+const EVENTS_DATA: EventFeatureItem[] = [
+  {
+    id: "aarambh-akhand-path",
+    label: "Akhand Path Sahib",
+    sublabel: "28 Oct • 10:00 AM",
+    icon: Sparkles,
+    image: "/images/sikh_wedding_akhand_path_2d.png",
+    venue: "Gurudwara Sahib / Residence",
+    time: "Wednesday, 28th Oct • 10:00 AM",
+    dressCode: "Traditional / Modest",
+    description: "48-Hour Inaugural Commencement of Sri Guru Granth Sahib Ji Recitation seeking divine blessings for the couple.",
+  },
+  {
+    id: "sampati-kirtan-brunch",
+    label: "Sampati & Kirtan",
+    sublabel: "30 Oct • 10:00 AM",
+    icon: Calendar,
+    image: "/images/sikh_wedding_akhand_path_2d.png",
+    venue: "Gurudwara Sahib & LAAZ HAVELI",
+    time: "Friday, 30th Oct • 10:00 AM - 11:30 AM",
+    dressCode: "Traditional Attire",
+    description: "Sampati Bhog & Soulful Shabad Kirtan at Gurudwara Sahib, followed by Lunch Brunch at Laaj Haveli (11:30 AM).",
+  },
+  {
+    id: "sagan-mehndi-cocktail",
+    label: "Sagan, Mehndi & Cocktail",
+    sublabel: "30 Oct • 8:00 PM",
+    icon: Wine,
+    image: "/images/sikh_wedding_mehndi_2d.png",
+    venue: "LAAZ HAVELI, Beawar",
+    time: "Friday, 30th Oct • 8:00 PM Onwards",
+    dressCode: "Glitz & Glamour / Cocktail",
+    description: "Intricate Henna, Auspicious Sagan Ceremonies, Evening Music & Cocktail Celebration at Laaj Haveli.",
+  },
+  {
+    id: "pool-party",
+    label: "Pool Party",
+    sublabel: "31 Oct • 8:00 AM",
+    icon: Sun,
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+    venue: "LAAZ HAVELI, Beawar",
+    time: "Saturday, 31st Oct • 8:00 AM Onwards",
+    dressCode: "SHADES OF PASTEL",
+    description: "Let's Make a Splash! Morning sunshine, poolside music, games & endless fun followed by breakfast.",
+  },
+  {
+    id: "haldi",
+    label: "Haldi Ceremony",
+    sublabel: "31 Oct • 11:30 AM",
+    icon: Flame,
+    image: "/images/sikh_wedding_haldi_2d.png",
+    venue: "LAAZ HAVELI, Beawar",
+    time: "Saturday, 31st Oct • 11:30 AM Onwards",
+    dressCode: "YELLOW COLOUR",
+    description: "Sacred Turmeric Blessing Ceremony filled with laughter, golden hues & family blessings.",
+  },
+  {
+    id: "ghadoli",
+    label: "Ghadoli Ritual",
+    sublabel: "31 Oct • 3:00 PM",
+    icon: Music,
+    image: "/images/sikh_wedding_haldi_2d.png",
+    venue: "LAAZ HAVELI, Beawar",
+    time: "Saturday, 31st Oct • 3:00 PM Onwards",
+    dressCode: "PUNJABI TOUCH",
+    description: "Traditional Punjabi Ghadoli ritual fetching holy water from Gurudwara Sahib for the pre-wedding bath.",
+  },
+  {
+    id: "baraat-departure",
+    label: "Baraat Departure",
+    sublabel: "31 Oct • 8:00 PM",
+    icon: Sparkles,
+    image: "/images/sikh_wedding_mehndi_2d.png",
+    venue: "Residence to LAAZ HAVELI",
+    time: "Saturday, 31st Oct • 8:00 PM Onwards",
+    dressCode: "Royal Festive / Formal",
+    description: "Grand Baraat Departure from home to Laaj Haveli with live dhol beats, fireworks & celebration.",
+  },
+  {
+    id: "anand-karaj",
+    label: "Anand Karaj",
+    sublabel: "1 Nov • 10:30 AM",
+    icon: Heart,
+    image: "/images/sikh_wedding_anand_karaj_2d.png",
+    venue: "Gurudwara Sahib & LAAZ HAVELI",
+    time: "Sunday, 1st Nov • 10:30 AM Onwards",
+    dressCode: "PINK COLOUR (Head Covering)",
+    description: "Holy Four Laavan Nuptials at Gurudwara Sahib (Theme: Pink Colour). Two souls united as one in sacred matrimony.",
+  },
+];
+
+const AUTO_PLAY_INTERVAL = 4000;
+const ITEM_HEIGHT = 68;
+
+const wrap = (min: number, max: number, v: number) => {
+  const rangeSize = max - min;
+  return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
+};
+
+export function FeatureCarousel() {
+  const [step, setStep] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const currentIndex =
+    ((step % EVENTS_DATA.length) + EVENTS_DATA.length) % EVENTS_DATA.length;
+
+  const nextStep = useCallback(() => {
+    setStep((prev) => prev + 1);
+  }, []);
+
+  const prevStep = useCallback(() => {
+    setStep((prev) => prev - 1);
+  }, []);
+
+  const handleChipClick = (index: number) => {
+    const diff = (index - currentIndex + EVENTS_DATA.length) % EVENTS_DATA.length;
+    if (diff > 0) setStep((s) => s + diff);
+  };
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(nextStep, AUTO_PLAY_INTERVAL);
+    return () => clearInterval(interval);
+  }, [nextStep, isPaused]);
+
+  const getCardStatus = (index: number) => {
+    const diff = index - currentIndex;
+    const len = EVENTS_DATA.length;
+
+    let normalizedDiff = diff;
+    if (diff > len / 2) normalizedDiff -= len;
+    if (diff < -len / 2) normalizedDiff += len;
+
+    if (normalizedDiff === 0) return "active";
+    if (normalizedDiff === -1) return "prev";
+    if (normalizedDiff === 1) return "next";
+    return "hidden";
+  };
+
+  return (
+    <div className="w-full max-w-7xl mx-auto px-1 sm:px-4 md:p-4">
+      <div className="relative overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] lg:rounded-[3.5rem] flex flex-col lg:flex-row min-h-[580px] lg:aspect-video border border-[#D4AF37]/40 shadow-2xl bg-[#42131E]">
+        
+        {/* Left Interactive Vertical Navigation Rail */}
+        <div className="w-full lg:w-[42%] min-h-[300px] sm:min-h-[350px] md:min-h-[420px] lg:h-full relative z-30 flex flex-col items-start justify-center overflow-hidden px-4 sm:px-6 md:px-12 lg:pl-12 bg-gradient-to-b from-[#5A1220] via-[#42131E] to-[#330D16]">
+          <div className="absolute inset-x-0 top-0 h-10 md:h-16 lg:h-16 bg-gradient-to-b from-[#5A1220] via-[#5A1220]/80 to-transparent z-40" />
+          <div className="absolute inset-x-0 bottom-0 h-10 md:h-16 lg:h-16 bg-gradient-to-t from-[#330D16] via-[#330D16]/80 to-transparent z-40" />
+          
+          <div className="relative w-full h-full flex items-center justify-center lg:justify-start z-20">
+            {EVENTS_DATA.map((feature, index) => {
+              const isActive = index === currentIndex;
+              const distance = index - currentIndex;
+              const wrappedDistance = wrap(
+                -(EVENTS_DATA.length / 2),
+                EVENTS_DATA.length / 2,
+                distance
+              );
+
+              const IconComponent = feature.icon;
+
+              return (
+                <motion.div
+                  key={feature.id}
+                  style={{
+                    height: ITEM_HEIGHT,
+                    width: "fit-content",
+                  }}
+                  animate={{
+                    y: wrappedDistance * ITEM_HEIGHT,
+                    opacity: 1 - Math.abs(wrappedDistance) * 0.25,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 90,
+                    damping: 22,
+                    mass: 1,
+                  }}
+                  className="absolute flex items-center justify-start"
+                >
+                  <button
+                    onClick={() => handleChipClick(index)}
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
+                    className={cn(
+                      "relative flex items-center gap-2.5 sm:gap-3 md:gap-4 px-4 sm:px-5 md:px-8 py-2.5 sm:py-3 rounded-full transition-all duration-700 text-left group border cursor-pointer",
+                      isActive
+                        ? "bg-gradient-to-r from-[#D4AF37] via-[#FDE68A] to-[#B5965A] text-[#291C1A] border-amber-300 shadow-xl z-10 font-bold scale-105"
+                        : "bg-black/30 text-amber-100/70 border-[#D4AF37]/20 hover:border-[#D4AF37]/50 hover:text-white"
+                    )}
+                  >
+                    <div
+                      className={cn(
+                        "flex items-center justify-center transition-colors duration-500 shrink-0",
+                        isActive ? "text-[#6E1F2E]" : "text-[#D4AF37]"
+                      )}
+                    >
+                      <IconComponent className="w-4 h-4 md:w-5 md:h-5" />
+                    </div>
+
+                    <div className="flex flex-col">
+                      <span className="font-serif-luxury font-bold text-xs md:text-sm tracking-wide whitespace-nowrap uppercase">
+                        {feature.label}
+                      </span>
+                      <span className="text-[10px] md:text-[11px] font-sans-body opacity-80 whitespace-nowrap">
+                        {feature.sublabel}
+                      </span>
+                    </div>
+                  </button>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Right Active Event Visual Stage & Card */}
+        <div className="flex-1 min-h-[460px] sm:min-h-[480px] md:min-h-[580px] lg:h-full relative bg-[#291C1A]/90 flex items-center justify-center py-8 sm:py-12 md:py-20 lg:py-12 px-3 sm:px-6 md:px-10 lg:px-8 overflow-hidden border-t lg:border-t-0 lg:border-l border-[#D4AF37]/30">
+          
+          {/* Mobile Touch / Navigation Arrows */}
+          <button
+            onClick={prevStep}
+            aria-label="Previous Event"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-30 p-2.5 rounded-full bg-black/60 text-[#D4AF37] border border-[#D4AF37]/40 hover:bg-[#D4AF37] hover:text-[#291C1A] transition-all shadow-lg active:scale-95"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          
+          <button
+            onClick={nextStep}
+            aria-label="Next Event"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-30 p-2.5 rounded-full bg-black/60 text-[#D4AF37] border border-[#D4AF37]/40 hover:bg-[#D4AF37] hover:text-[#291C1A] transition-all shadow-lg active:scale-95"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          <div className="relative w-full max-w-[340px] sm:max-w-[380px] md:max-w-[400px] aspect-[4/5] flex items-center justify-center">
+            {EVENTS_DATA.map((feature, index) => {
+              const status = getCardStatus(index);
+              const isActive = status === "active";
+              const isPrev = status === "prev";
+              const isNext = status === "next";
+
+              return (
+                <motion.div
+                  key={feature.id}
+                  initial={false}
+                  animate={{
+                    x: isActive ? 0 : isPrev ? -90 : isNext ? 90 : 0,
+                    scale: isActive ? 1 : isPrev || isNext ? 0.85 : 0.7,
+                    opacity: isActive ? 1 : isPrev || isNext ? 0.4 : 0,
+                    rotate: isPrev ? -3 : isNext ? 3 : 0,
+                    zIndex: isActive ? 20 : isPrev || isNext ? 10 : 0,
+                    pointerEvents: isActive ? "auto" : "none",
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 25,
+                    mass: 0.8,
+                  }}
+                  className="absolute inset-0 rounded-[1.75rem] sm:rounded-[2rem] md:rounded-[2.5rem] overflow-hidden border-3 sm:border-4 md:border-6 border-[#D4AF37] bg-[#42131E] shadow-2xl origin-center"
+                >
+                  <img
+                    src={feature.image}
+                    alt={feature.label}
+                    className={cn(
+                      "w-full h-full object-cover transition-all duration-700",
+                      isActive
+                        ? "grayscale-0 blur-0"
+                        : "grayscale blur-[2px] brightness-75"
+                    )}
+                  />
+
+                  {/* Active Event Info Backdrop Overlay */}
+                  <AnimatePresence>
+                    {isActive && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute inset-x-0 bottom-0 p-4 sm:p-6 md:p-8 pt-24 bg-gradient-to-t from-black/95 via-black/75 to-transparent flex flex-col justify-end pointer-events-none"
+                      >
+                        {/* Event Title Badge */}
+                        <div className="bg-[#6E1F2E] text-[#FFF9EF] px-3 py-1 rounded-full text-[9px] sm:text-[10px] md:text-xs font-cinzel font-bold uppercase tracking-[0.2em] w-fit shadow-md mb-2 border border-[#D4AF37]/60">
+                          {index + 1} • {feature.label}
+                        </div>
+
+                        {/* Event Description */}
+                        <p className="text-amber-100 font-sans-body text-xs sm:text-sm leading-snug sm:leading-relaxed drop-shadow-md mb-2.5">
+                          {feature.description}
+                        </p>
+
+                        {/* Timing & Venue Pills */}
+                        <div className="space-y-1 text-[10px] sm:text-[11px] md:text-xs font-sans-body border-t border-[#D4AF37]/40 pt-2 text-[#FFF9EF]/90">
+                          <div className="flex items-center gap-1.5 text-amber-200">
+                            <Clock className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
+                            <span className="truncate">{feature.time}</span>
+                          </div>
+                          <div className="flex items-center gap-1.5 text-amber-200">
+                            <MapPin className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
+                            <span className="truncate">{feature.venue}</span>
+                          </div>
+                          <div className="flex items-center gap-1.5 text-amber-200">
+                            <Shirt className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
+                            <span className="truncate">DRESS CODE: {feature.dressCode}</span>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Live Event Indicator */}
+                  <div
+                    className={cn(
+                      "absolute top-4 left-4 sm:top-6 sm:left-6 flex items-center gap-2 transition-opacity duration-300 bg-black/60 backdrop-blur-md px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full border border-[#D4AF37]/50",
+                      isActive ? "opacity-100" : "opacity-0"
+                    )}
+                  >
+                    <div className="w-2 h-2 rounded-full bg-[#D4AF37] animate-ping" />
+                    <span className="text-amber-200 text-[9px] sm:text-[10px] font-cinzel uppercase tracking-[0.2em] font-bold">
+                      #RajveerWedsLavleen
+                    </span>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default FeatureCarousel;
