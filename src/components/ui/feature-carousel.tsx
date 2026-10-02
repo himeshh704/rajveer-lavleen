@@ -161,15 +161,41 @@ export function FeatureCarousel() {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-1 sm:px-4 md:p-4">
-      <div className="relative overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] lg:rounded-[3.5rem] flex flex-col lg:flex-row min-h-[580px] lg:aspect-video border border-[#D4AF37]/40 shadow-2xl bg-[#42131E]">
+    <div className="w-full max-w-7xl mx-auto px-0 sm:px-4 md:p-4">
+      <div className="relative overflow-hidden rounded-none sm:rounded-[2.5rem] lg:rounded-[3.5rem] flex flex-col lg:flex-row min-h-[88vh] lg:min-h-[580px] lg:aspect-video border-0 sm:border border-[#D4AF37]/40 shadow-2xl bg-[#42131E]">
         
-        {/* Left Interactive Vertical Navigation Rail */}
-        <div className="w-full lg:w-[42%] min-h-[300px] sm:min-h-[350px] md:min-h-[420px] lg:h-full relative z-30 flex flex-col items-start justify-center overflow-hidden px-4 sm:px-6 md:px-12 lg:pl-12 bg-gradient-to-b from-[#5A1220] via-[#42131E] to-[#330D16]">
-          <div className="absolute inset-x-0 top-0 h-10 md:h-16 lg:h-16 bg-gradient-to-b from-[#5A1220] via-[#5A1220]/80 to-transparent z-40" />
-          <div className="absolute inset-x-0 bottom-0 h-10 md:h-16 lg:h-16 bg-gradient-to-t from-[#330D16] via-[#330D16]/80 to-transparent z-40" />
+        {/* Mobile Horizontal Pill Strip (< lg screens) */}
+        <div className="flex lg:hidden overflow-x-auto scrollbar-none py-3 px-3 gap-2 border-b border-[#D4AF37]/30 bg-gradient-to-r from-[#5A1220] via-[#42131E] to-[#330D16] z-40 shrink-0">
+          {EVENTS_DATA.map((feature, index) => {
+            const isActive = index === currentIndex;
+            const IconComponent = feature.icon;
+
+            return (
+              <button
+                key={feature.id}
+                onClick={() => handleChipClick(index)}
+                className={cn(
+                  "flex items-center gap-2 px-3.5 py-1.5 rounded-full transition-all text-left shrink-0 border cursor-pointer",
+                  isActive
+                    ? "bg-gradient-to-r from-[#D4AF37] via-[#FDE68A] to-[#B5965A] text-[#291C1A] border-amber-300 shadow-md font-bold scale-105"
+                    : "bg-black/40 text-amber-100/70 border-[#D4AF37]/20 hover:border-[#D4AF37]/50"
+                )}
+              >
+                <IconComponent className={cn("w-3.5 h-3.5 shrink-0", isActive ? "text-[#6E1F2E]" : "text-[#D4AF37]")} />
+                <span className="font-serif-luxury font-bold text-[11px] whitespace-nowrap uppercase">
+                  {feature.label}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Desktop Vertical Navigation Rail (>= lg screens) */}
+        <div className="hidden lg:flex w-[42%] h-full relative z-30 flex-col items-start justify-center overflow-hidden pl-12 bg-gradient-to-b from-[#5A1220] via-[#42131E] to-[#330D16]">
+          <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#5A1220] via-[#5A1220]/80 to-transparent z-40" />
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#330D16] via-[#330D16]/80 to-transparent z-40" />
           
-          <div className="relative w-full h-full flex items-center justify-center lg:justify-start z-20">
+          <div className="relative w-full h-full flex items-center justify-start z-20">
             {EVENTS_DATA.map((feature, index) => {
               const isActive = index === currentIndex;
               const distance = index - currentIndex;
@@ -203,7 +229,7 @@ export function FeatureCarousel() {
                   <button
                     onClick={() => handleChipClick(index)}
                     className={cn(
-                      "relative flex items-center gap-2.5 sm:gap-3 md:gap-4 px-4 sm:px-5 md:px-8 py-2.5 sm:py-3 rounded-full transition-all duration-700 text-left group border cursor-pointer",
+                      "relative flex items-center gap-4 px-8 py-3 rounded-full transition-all duration-700 text-left group border cursor-pointer",
                       isActive
                         ? "bg-gradient-to-r from-[#D4AF37] via-[#FDE68A] to-[#B5965A] text-[#291C1A] border-amber-300 shadow-xl z-10 font-bold scale-105"
                         : "bg-black/30 text-amber-100/70 border-[#D4AF37]/20 hover:border-[#D4AF37]/50 hover:text-white"
@@ -215,14 +241,14 @@ export function FeatureCarousel() {
                         isActive ? "text-[#6E1F2E]" : "text-[#D4AF37]"
                       )}
                     >
-                      <IconComponent className="w-4 h-4 md:w-5 md:h-5" />
+                      <IconComponent className="w-5 h-5" />
                     </div>
 
                     <div className="flex flex-col">
-                      <span className="font-serif-luxury font-bold text-xs md:text-sm tracking-wide whitespace-nowrap uppercase">
+                      <span className="font-serif-luxury font-bold text-sm tracking-wide whitespace-nowrap uppercase">
                         {feature.label}
                       </span>
-                      <span className="text-[10px] md:text-[11px] font-sans-body opacity-80 whitespace-nowrap">
+                      <span className="text-[11px] font-sans-body opacity-80 whitespace-nowrap">
                         {feature.sublabel}
                       </span>
                     </div>
@@ -233,27 +259,27 @@ export function FeatureCarousel() {
           </div>
         </div>
 
-        {/* Right Active Event Visual Stage & Card */}
-        <div className="flex-1 min-h-[460px] sm:min-h-[480px] md:min-h-[580px] lg:h-full relative bg-[#291C1A]/90 flex items-center justify-center py-8 sm:py-12 md:py-20 lg:py-12 px-3 sm:px-6 md:px-10 lg:px-8 overflow-hidden border-t lg:border-t-0 lg:border-l border-[#D4AF37]/30">
+        {/* Full-Bleed Event Visual Stage & Card */}
+        <div className="flex-1 min-h-[500px] sm:min-h-[560px] lg:h-full relative bg-[#291C1A]/90 flex items-center justify-center py-4 sm:py-12 md:py-20 lg:py-12 px-2 sm:px-6 md:px-10 lg:px-8 overflow-hidden border-t lg:border-t-0 lg:border-l border-[#D4AF37]/30">
           
           {/* Mobile Touch / Navigation Arrows */}
           <button
             onClick={prevStep}
             aria-label="Previous Event"
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-30 p-2.5 rounded-full bg-black/60 text-[#D4AF37] border border-[#D4AF37]/40 hover:bg-[#D4AF37] hover:text-[#291C1A] transition-all shadow-lg active:scale-95"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-black/70 text-[#D4AF37] border border-[#D4AF37]/50 hover:bg-[#D4AF37] hover:text-[#291C1A] transition-all shadow-2xl active:scale-95"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-6 h-6" />
           </button>
           
           <button
             onClick={nextStep}
             aria-label="Next Event"
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-30 p-2.5 rounded-full bg-black/60 text-[#D4AF37] border border-[#D4AF37]/40 hover:bg-[#D4AF37] hover:text-[#291C1A] transition-all shadow-lg active:scale-95"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-black/70 text-[#D4AF37] border border-[#D4AF37]/50 hover:bg-[#D4AF37] hover:text-[#291C1A] transition-all shadow-2xl active:scale-95"
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-6 h-6" />
           </button>
 
-          <div className="relative w-full max-w-[340px] sm:max-w-[380px] md:max-w-[400px] aspect-[4/5] flex items-center justify-center">
+          <div className="relative w-[92%] sm:w-full max-w-[360px] sm:max-w-[390px] md:max-w-[420px] aspect-[3/4] sm:aspect-[4/5] flex items-center justify-center">
             {EVENTS_DATA.map((feature, index) => {
               const status = getCardStatus(index);
               const isActive = status === "active";
@@ -265,9 +291,9 @@ export function FeatureCarousel() {
                   key={feature.id}
                   initial={false}
                   animate={{
-                    x: isActive ? 0 : isPrev ? -90 : isNext ? 90 : 0,
+                    x: isActive ? 0 : isPrev ? -80 : isNext ? 80 : 0,
                     scale: isActive ? 1 : isPrev || isNext ? 0.85 : 0.7,
-                    opacity: isActive ? 1 : isPrev || isNext ? 0.4 : 0,
+                    opacity: isActive ? 1 : isPrev || isNext ? 0.35 : 0,
                     rotate: isPrev ? -3 : isNext ? 3 : 0,
                     zIndex: isActive ? 20 : isPrev || isNext ? 10 : 0,
                     pointerEvents: isActive ? "auto" : "none",
@@ -298,10 +324,10 @@ export function FeatureCarousel() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
-                        className="absolute inset-x-0 bottom-0 p-4 sm:p-6 md:p-8 pt-24 bg-gradient-to-t from-black/95 via-black/75 to-transparent flex flex-col justify-end pointer-events-none"
+                        className="absolute inset-x-0 bottom-0 p-4 sm:p-6 md:p-8 pt-24 bg-gradient-to-t from-black/95 via-black/80 to-transparent flex flex-col justify-end pointer-events-none"
                       >
                         {/* Event Title Badge */}
-                        <div className="bg-[#6E1F2E] text-[#FFF9EF] px-3 py-1 rounded-full text-[9px] sm:text-[10px] md:text-xs font-cinzel font-bold uppercase tracking-[0.2em] w-fit shadow-md mb-2 border border-[#D4AF37]/60">
+                        <div className="bg-[#6E1F2E] text-[#FFF9EF] px-3 py-1 rounded-full text-[10px] sm:text-xs font-cinzel font-bold uppercase tracking-[0.2em] w-fit shadow-md mb-2 border border-[#D4AF37]/60">
                           {index + 1} • {feature.label}
                         </div>
 
@@ -311,7 +337,7 @@ export function FeatureCarousel() {
                         </p>
 
                         {/* Timing & Venue Pills */}
-                        <div className="space-y-1 text-[10px] sm:text-[11px] md:text-xs font-sans-body border-t border-[#D4AF37]/40 pt-2 text-[#FFF9EF]/90">
+                        <div className="space-y-1.5 text-[11px] sm:text-xs font-sans-body border-t border-[#D4AF37]/40 pt-2 text-[#FFF9EF]/90">
                           <div className="flex items-center gap-1.5 text-amber-200">
                             <Clock className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
                             <span className="truncate">{feature.time}</span>
