@@ -371,9 +371,9 @@ export const WEDDING_DATA: WeddingData = {
     }
   ],
   contacts: [
-    { name: "S. Gurinder Singh Dhillon", relation: "Father of the Bride", phone: "+91 98765 11111" },
-    { name: "S. Harpreet Singh Ahluwalia", relation: "Father of the Groom", phone: "+91 98765 22222" },
-    { name: "Simran Kaur Dhillon", relation: "Sister of the Bride", phone: "+91 98765 33333" }
+    { name: "Sdr. Manjeet Singh", relation: "Father of the Bride", phone: "+91 98765 11111" },
+    { name: "Harpreet Singh", relation: "Father of the Groom", phone: "+91 98765 22222" },
+    { name: "Wedding Helpdesk", relation: "Concierge / RSVP", phone: "+91 98765 33333" }
   ],
   audioTrack: {
     title: "Sacred Anand Karaj Raga (Soft Shehnai & Sitar)",

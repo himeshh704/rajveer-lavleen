@@ -58,7 +58,7 @@ export const FinalScene: React.FC = () => {
 
           <p className="font-handwriting text-2xl text-[#800E13] font-bold">
             With Love &amp; Blessings,<br />
-            The Ahluwalia &amp; Dhillon Families
+            The Singh Families
           </p>
 
           {/* Back to top button */}

@@ -78,16 +78,16 @@ export interface WeddingDataConfig {
 
 export const WEDDING_DATA: WeddingDataConfig = {
   bride: {
-    fullName: "Lavleen Kaur Ahluwalia",
+    fullName: "Lavleen Kaur",
     firstName: "Lavleen",
     nickname: "Lavleen",
     description: "A gentle soul with a love for classical Gurbani ragas, warm masala chai, and traditional Phulkari embroidery.",
     lehengaColor: "#800E13", // Deep velvet bridal red/maroon
   },
   groom: {
-    fullName: "Rajveer Singh Dhillon",
+    fullName: "Rajveer Singh",
     firstName: "Rajveer",
-    nickname: "Raj",
+    nickname: "Rajveer",
     description: "A warm-hearted royal soul who loves Punjabi folk music, horses, and family traditions.",
     turbanColor: "#5B1424", // Royal maroon turban
   },
@@ -139,12 +139,10 @@ export const WEDDING_DATA: WeddingDataConfig = {
     },
   ],
   families: [
-    { id: "f1", name: "S. Gurdeep Singh Ahluwalia", relation: "Father of the Bride", side: "bride", clothingColor: "#5B1424" },
-    { id: "f2", name: "Smt. Jasbir Kaur Ahluwalia", relation: "Mother of the Bride", side: "bride", clothingColor: "#D5A652" },
-    { id: "f3", name: "Simran Kaur Ahluwalia", relation: "Sister of the Bride", side: "bride", clothingColor: "#F4ACB7" },
-    { id: "f4", name: "S. Amarjit Singh Dhillon", relation: "Father of the Groom", side: "groom", clothingColor: "#2C5E3B" },
-    { id: "f5", name: "Smt. Harpreet Kaur Dhillon", relation: "Mother of the Groom", side: "groom", clothingColor: "#E76F51" },
-    { id: "f6", name: "Gurjot Singh Dhillon", relation: "Brother of the Groom", side: "groom", clothingColor: "#800E13" },
+    { id: "f1", name: "Sdr. Manjeet Singh", relation: "Father of the Bride", side: "bride", clothingColor: "#5B1424" },
+    { id: "f2", name: "Sdn. Guljeet Kaur", relation: "Mother of the Bride", side: "bride", clothingColor: "#D5A652" },
+    { id: "f4", name: "Harpreet Singh", relation: "Father of the Groom", side: "groom", clothingColor: "#2C5E3B" },
+    { id: "f5", name: "Manjyot Kaur", relation: "Mother of the Groom", side: "groom", clothingColor: "#E76F51" },
   ],
   events: [
     {

@@ -51,7 +51,7 @@ export const GroomScene: React.FC = () => {
 
           <div className="pt-2">
             <span className="font-handwriting text-xl text-[#2C5E3B] font-bold">
-              Son of S. Balwinder Singh Dhillon &amp; Sardarni Harpreet Kaur
+              Son of Harpreet Singh &amp; Manjyot Kaur
             </span>
           </div>
         </motion.div>

@@ -51,7 +51,7 @@ export const BrideScene: React.FC = () => {
 
           <div className="pt-2">
             <span className="font-handwriting text-xl text-[#2C5E3B] font-bold">
-              Daughter of S. Gurdev Singh Ahluwalia &amp; Sardarni Manjeet Kaur
+              Daughter of Sdn. Guljeet Kaur &amp; Sdr. Manjeet Singh
             </span>
           </div>
         </motion.div>
