@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Sparkles,
@@ -121,7 +121,6 @@ const EVENTS_DATA: EventFeatureItem[] = [
   },
 ];
 
-const AUTO_PLAY_INTERVAL = 4000;
 const ITEM_HEIGHT = 68;
 
 const wrap = (min: number, max: number, v: number) => {
@@ -131,7 +130,6 @@ const wrap = (min: number, max: number, v: number) => {
 
 export function FeatureCarousel() {
   const [step, setStep] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
   const currentIndex =
     ((step % EVENTS_DATA.length) + EVENTS_DATA.length) % EVENTS_DATA.length;
@@ -145,15 +143,8 @@ export function FeatureCarousel() {
   }, []);
 
   const handleChipClick = (index: number) => {
-    const diff = (index - currentIndex + EVENTS_DATA.length) % EVENTS_DATA.length;
-    if (diff > 0) setStep((s) => s + diff);
+    setStep(index);
   };
-
-  useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(nextStep, AUTO_PLAY_INTERVAL);
-    return () => clearInterval(interval);
-  }, [nextStep, isPaused]);
 
   const getCardStatus = (index: number) => {
     const diff = index - currentIndex;
@@ -211,8 +202,6 @@ export function FeatureCarousel() {
                 >
                   <button
                     onClick={() => handleChipClick(index)}
-                    onMouseEnter={() => setIsPaused(true)}
-                    onMouseLeave={() => setIsPaused(false)}
                     className={cn(
                       "relative flex items-center gap-2.5 sm:gap-3 md:gap-4 px-4 sm:px-5 md:px-8 py-2.5 sm:py-3 rounded-full transition-all duration-700 text-left group border cursor-pointer",
                       isActive
