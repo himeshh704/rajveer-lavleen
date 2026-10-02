@@ -35,7 +35,7 @@ export const FooterMap: React.FC = () => {
           </h2>
 
           <p className="text-sm sm:text-base font-cormorant italic text-[#291C1A]/80 max-w-lg mx-auto">
-            The Royal Palms Estate & Taj Swarna Ballroom • Amritsar, Punjab
+            LAAZ HAVELI • Mill Road, Beawar, Rajasthan
           </p>
 
           <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#B5965A] to-transparent mx-auto mt-4" />
@@ -49,16 +49,16 @@ export const FooterMap: React.FC = () => {
               <span className="text-xl font-serif text-[#D4AF37]">ੴ</span>
               <div>
                 <span className="text-xs font-serif-luxury font-bold text-amber-100 block">
-                  The Royal Palms Estate & Lawns
+                  LAAZ HAVELI, BEAWAR
                 </span>
                 <span className="text-[10px] font-sans-body text-[#FFF9EF]/70 block">
-                  Taj Swarna Premises, Mall Road, Amritsar, Punjab 143001
+                  Mill Road, Beawar, Rajasthan 305901
                 </span>
               </div>
             </div>
 
             <a
-              href="https://maps.google.com/?q=Taj+Swarna+Amritsar"
+              href="https://maps.app.goo.gl/PanroztgtnnRfbyLA?g_st=iw"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#B5965A] hover:bg-[#D4AF37] text-[#291C1A] text-xs font-bold font-sans-body shadow-md transition-colors"
@@ -71,14 +71,14 @@ export const FooterMap: React.FC = () => {
           {/* Full Size iFrame Map */}
           <div className="w-full h-[380px] sm:h-[480px]">
             <iframe
-              src="https://maps.google.com/maps?q=Taj%20Swarna%20Amritsar%20Punjab&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=Laaz%20Haveli%20Mill%20Road%20Beawar%20Rajasthan&t=&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="The Royal Palms Estate Full Map"
+              title="Laaz Haveli Location Map"
             />
           </div>
         </div>

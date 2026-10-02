@@ -337,15 +337,20 @@ export function FeatureCarousel() {
                         </p>
 
                         {/* Timing & Venue Pills */}
-                        <div className="space-y-1.5 text-[11px] sm:text-xs font-sans-body border-t border-[#D4AF37]/40 pt-2 text-[#FFF9EF]/90">
+                        <div className="space-y-1.5 text-[11px] sm:text-xs font-sans-body border-t border-[#D4AF37]/40 pt-2 text-[#FFF9EF]/90 pointer-events-auto">
                           <div className="flex items-center gap-1.5 text-amber-200">
                             <Clock className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
                             <span className="truncate">{feature.time}</span>
                           </div>
-                          <div className="flex items-center gap-1.5 text-amber-200">
-                            <MapPin className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
-                            <span className="truncate">{feature.venue}</span>
-                          </div>
+                          <a
+                            href="https://maps.app.goo.gl/PanroztgtnnRfbyLA?g_st=iw"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 text-amber-200 hover:text-amber-300 transition-colors group/map"
+                          >
+                            <MapPin className="w-3.5 h-3.5 text-[#D4AF37] group-hover/map:scale-110 transition-transform shrink-0" />
+                            <span className="truncate underline underline-offset-2 decoration-[#D4AF37]/60">{feature.venue} 📍</span>
+                          </a>
                           <div className="flex items-center gap-1.5 text-amber-200">
                             <Shirt className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
                             <span className="truncate">DRESS CODE: {feature.dressCode}</span>

@@ -138,7 +138,7 @@ export const WEDDING_DATA: WeddingData = {
       dressCode: "Traditional / Modest (Head covering mandatory)",
       description: "Commencement of the 48-hour continuous reading of Sri Guru Granth Sahib Ji seeking divine blessings for the couple and families.",
       iconName: "Sparkles",
-      googleMapsUrl: "https://maps.google.com/?q=Beawar+Rajasthan",
+      googleMapsUrl: "https://maps.app.goo.gl/PanroztgtnnRfbyLA?g_st=iw",
       calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Aarambh+Akhand+Path+-+Rajveer+weds+Lavleen&dates=20261028T043000Z/20261028T063000Z&details=Aarambh+Shri+Akhand+Path+Sahib&location=Beawar"
     },
     {
@@ -154,7 +154,7 @@ export const WEDDING_DATA: WeddingData = {
       dressCode: "Traditional (Head covering mandatory at Gurudwara)",
       description: "10:00 AM Sampati Shri Akhand Path Sahib followed by Kirtan (10:15 AM - 11:15 AM) at Gurudwara Sahib, and Lunch/Brunch at Laaj Haveli (11:30 AM Onwards).",
       iconName: "Sparkles",
-      googleMapsUrl: "https://maps.google.com/?q=Beawar+Rajasthan",
+      googleMapsUrl: "https://maps.app.goo.gl/PanroztgtnnRfbyLA?g_st=iw",
       calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Sampati+Akhand+Path+and+Kirtan+-+Rajveer+weds+Lavleen&dates=20261030T043000Z/20261030T073000Z&details=Sampati+Shri+Akhand+Path+Sahib+and+Brunch&location=Beawar"
     },
     {
@@ -170,7 +170,7 @@ export const WEDDING_DATA: WeddingData = {
       dressCode: "Cocktail / Glitz & Glamour",
       description: "A Traditional Way Where Women Express Their Joy & Good Luck. Ladies Of \"Singh Family\" Embrace Your Presence To Fill This Scented Colour In Bride & Grooms Life.",
       iconName: "Sparkles",
-      googleMapsUrl: "https://maps.google.com/?q=Beawar+Rajasthan",
+      googleMapsUrl: "https://maps.app.goo.gl/PanroztgtnnRfbyLA?g_st=iw",
       calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Sagan+Mehndi+Cocktail+-+Rajveer+weds+Lavleen&dates=20261030T143000Z/20261030T183000Z&details=Sagan+Mehndi+Cocktail+Night&location=Beawar"
     },
     {
@@ -186,7 +186,7 @@ export const WEDDING_DATA: WeddingData = {
       dressCode: "SHADES OF PASTEL",
       description: "Let's Make a Splash! Come join us for a morning filled with sunshine, laughter, music & endless fun.",
       iconName: "Sparkles",
-      googleMapsUrl: "https://maps.google.com/?q=Beawar+Rajasthan",
+      googleMapsUrl: "https://maps.app.goo.gl/PanroztgtnnRfbyLA?g_st=iw",
       calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pool+Party+-+Rajveer+weds+Lavleen&dates=20261031T023000Z/20261031T050000Z&details=Pool+Party+and+Breakfast&location=Beawar"
     },
     {
@@ -202,7 +202,7 @@ export const WEDDING_DATA: WeddingData = {
       dressCode: "YELLOW COLOUR",
       description: "A vibrant ritual of auspicious turmeric paste, family laughter, blessings & golden hues.",
       iconName: "Sparkles",
-      googleMapsUrl: "https://maps.google.com/?q=Beawar+Rajasthan",
+      googleMapsUrl: "https://maps.app.goo.gl/PanroztgtnnRfbyLA?g_st=iw",
       calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Haldi+Ceremony+-+Rajveer+weds+Lavleen&dates=20261031T060000Z/20261031T093000Z&details=Haldi+Ceremony&location=Beawar"
     },
     {
@@ -218,7 +218,7 @@ export const WEDDING_DATA: WeddingData = {
       dressCode: "PUNJABI TOUCH",
       description: "A traditional Punjabi ritual where sisters & family fetch sacred water for the holy pre-wedding bath.",
       iconName: "Sparkles",
-      googleMapsUrl: "https://maps.google.com/?q=Beawar+Rajasthan",
+      googleMapsUrl: "https://maps.app.goo.gl/PanroztgtnnRfbyLA?g_st=iw",
       calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ghadoli+-+Rajveer+weds+Lavleen&dates=20261031T093000Z/20261031T120000Z&details=Ghadoli+Ceremony&location=Beawar"
     },
     {
@@ -234,7 +234,7 @@ export const WEDDING_DATA: WeddingData = {
       dressCode: "Royal Festive / Formal",
       description: "Grand Baraat Departure from home to Laaj Haveli with dhol, brass band & joyous celebration.",
       iconName: "Sparkles",
-      googleMapsUrl: "https://maps.google.com/?q=Beawar+Rajasthan",
+      googleMapsUrl: "https://maps.app.goo.gl/PanroztgtnnRfbyLA?g_st=iw",
       calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Baraat+Departure+-+Rajveer+weds+Lavleen&dates=20261031T143000Z/20261031T180000Z&details=Baraat+Departure&location=Beawar"
     },
     {
@@ -250,7 +250,7 @@ export const WEDDING_DATA: WeddingData = {
       dressCode: "PINK COLOUR (Head covering mandatory)",
       description: "10:30 AM: Anand Karaj at Gurudwara Sahib (Theme: Pink colour). The solemn and divine union of two souls bound in holy matrimony through sacred Laavan.",
       iconName: "Heart",
-      googleMapsUrl: "https://maps.google.com/?q=Beawar+Rajasthan",
+      googleMapsUrl: "https://maps.app.goo.gl/PanroztgtnnRfbyLA?g_st=iw",
       calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Anand+Karaj+-+Rajveer+weds+Lavleen&dates=20261101T050000Z/20261101T090000Z&details=Anand+Karaj+Wedding+Ceremony&location=Beawar"
     }
   ],
