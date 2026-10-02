@@ -98,10 +98,6 @@ export const FooterMap: React.FC = () => {
             {WEDDING_DATA.couple.heading}
           </h3>
 
-          <p className="text-xs sm:text-sm font-sans-body text-[#291C1A]/70 max-w-md mx-auto">
-            Made with love & devotion for Rajveer Singh Ahluwalia & Lavleen Kaur Dhillon • 31 January 2027
-          </p>
-
           <div className="pt-4">
             <button
               onClick={scrollToTop}
