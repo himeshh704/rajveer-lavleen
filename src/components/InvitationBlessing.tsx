@@ -150,7 +150,7 @@ export const InvitationBlessing: React.FC = () => {
             className="my-5 space-y-1"
           >
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-great-vibes text-[#7D1D28] font-bold tracking-normal leading-tight">
-              {WEDDING_DATA.couple.groom.firstName} Singh
+              {WEDDING_DATA.couple.groom.fullName}
             </h2>
             <p className="text-xs sm:text-sm font-sans-body text-[#5E4B37] font-medium">
               (S/o. {WEDDING_DATA.couple.groom.parents})
@@ -173,7 +173,7 @@ export const InvitationBlessing: React.FC = () => {
             className="my-5 space-y-1"
           >
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-great-vibes text-[#7D1D28] font-bold tracking-normal leading-tight">
-              {WEDDING_DATA.couple.bride.firstName}
+              {WEDDING_DATA.couple.bride.fullName}
             </h2>
             <div className="space-y-0.5 text-xs sm:text-sm font-sans-body text-[#5E4B37] font-medium pt-1">
               <p>(G.D/o. {WEDDING_DATA.couple.bride.grandparents})</p>
