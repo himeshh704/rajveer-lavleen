@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Heart } from 'lucide-react';
 import { WEDDING_DATA } from '../data/weddingData';
-import { ImageCarousel } from './ImageCarousel';
 
 export const CoupleStory: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -37,7 +36,7 @@ export const CoupleStory: React.FC = () => {
         </div>
 
         {/* Couple Profile Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-16 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-stretch">
           {/* Groom Card */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -102,21 +101,9 @@ export const CoupleStory: React.FC = () => {
             </div>
           </motion.div>
         </div>
-
-        {/* Story Memory Carousel Component */}
-        <div className="mt-12">
-          <div className="text-center mb-6">
-            <h3 className="text-2xl sm:text-3xl font-serif-luxury font-bold text-[#6E1F2E]">
-              Our Journey in Chapters
-            </h3>
-            <p className="text-xs sm:text-sm font-sans-body text-[#291C1A]/70">
-              Moments that brought us closer to our wedding day.
-            </p>
-          </div>
-
-          <ImageCarousel moments={WEDDING_DATA.storyMoments} />
-        </div>
       </motion.div>
     </section>
   );
 };
+
+export default CoupleStory;
