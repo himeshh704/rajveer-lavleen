@@ -6,6 +6,7 @@ import { InvitationBlessing } from './components/InvitationBlessing';
 import { DateReveal } from './components/DateReveal';
 import { Celebrations } from './components/Celebrations';
 import { CoupleStory } from './components/CoupleStory';
+import { ReceptionSection } from './components/ReceptionSection';
 import { FooterMap } from './components/FooterMap';
 import { MusicPlayer } from './components/MusicPlayer';
 import { FlowerShower } from './components/FlowerShower';
@@ -68,7 +69,10 @@ export function App() {
         {/* 5. Pre-Wedding Photo Gallery */}
         <CoupleStory />
 
-        {/* 6. Full Size Interactive Google Map & Footer */}
+        {/* 6. Grand Wedding Reception Section */}
+        <ReceptionSection />
+
+        {/* 7. Full Size Interactive Google Map & Footer */}
         <FooterMap />
       </main>
 
