@@ -95,7 +95,7 @@ const EVENTS_DATA: EventFeatureItem[] = [
     venue: "LAAZ HAVELI, Beawar",
     time: "Saturday, 31st Oct • 3:00 PM Onwards",
     dressCode: "PUNJABI TOUCH",
-    description: "Traditional Punjabi Ghadoli ritual fetching holy water from Gurudwara Sahib for the pre-wedding bath.",
+    description: "",
   },
   {
     id: "baraat-departure",
@@ -330,6 +330,12 @@ export function FeatureCarousel() {
                         <div className="bg-[#6E1F2E] text-[#FFF9EF] px-3 py-1 rounded-full text-[10px] sm:text-xs font-cinzel font-bold uppercase tracking-[0.2em] w-fit shadow-md mb-2.5 border border-[#D4AF37]/60">
                           {index + 1} • {feature.label}
                         </div>
+
+                        {feature.description && (
+                          <p className="text-[#FFF9EF]/90 text-xs sm:text-sm font-sans-body mb-2.5 leading-relaxed line-clamp-3">
+                            {feature.description}
+                          </p>
+                        )}
 
                         {/* Timing & Venue Pills */}
                         <div className="space-y-1.5 text-[11px] sm:text-xs font-sans-body border-t border-[#D4AF37]/40 pt-2 text-[#FFF9EF]/90 pointer-events-auto">
