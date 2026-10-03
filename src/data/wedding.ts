@@ -242,5 +242,5 @@ export const WEDDING_DATA: WeddingDataConfig = {
     whatsappFormatted: "+91 98765 43210",
     deadline: "November 1, 2026",
   },
-  audioTrack: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=indian-meditation-soft-sitar-112398.mp3",
+  audioTrack: "/audio/bg_music.mp3",
 };

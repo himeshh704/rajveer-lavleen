@@ -392,8 +392,8 @@ export const WEDDING_DATA: WeddingData = {
     { name: "Wedding Helpdesk", relation: "Concierge / RSVP", phone: "+91 98765 33333" }
   ],
   audioTrack: {
-    title: "Sacred Anand Karaj Raga (Soft Shehnai & Sitar)",
-    artist: "Traditional Instrumental",
-    url: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=indian-meditation-soft-sitar-112398.mp3"
+    title: "Singh Wedding Audio Track",
+    artist: "Special Ceremony Melodies",
+    url: "/audio/bg_music.mp3"
   }
 };
