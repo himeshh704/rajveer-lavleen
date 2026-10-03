@@ -6,7 +6,6 @@ import { InvitationBlessing } from './components/InvitationBlessing';
 import { DateReveal } from './components/DateReveal';
 import { Celebrations } from './components/Celebrations';
 import { CoupleStory } from './components/CoupleStory';
-import { RsvpSection } from './components/RsvpSection';
 import { FooterMap } from './components/FooterMap';
 import { MusicPlayer } from './components/MusicPlayer';
 import { FlowerShower } from './components/FlowerShower';
@@ -66,11 +65,8 @@ export function App() {
         {/* 4. Creative Day-by-Day Wedding Itinerary */}
         <Celebrations />
 
-        {/* 5. Meet the Bride & Groom Section */}
+        {/* 5. Pre-Wedding Photo Gallery */}
         <CoupleStory />
-
-        {/* 6. Interactive RSVP & Digital Pass Generator */}
-        <RsvpSection />
 
         {/* 6. Full Size Interactive Google Map & Footer */}
         <FooterMap />
