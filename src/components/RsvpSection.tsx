@@ -24,7 +24,7 @@ export const RsvpSection: React.FC = () => {
 
   useEffect(() => {
     // Check local storage for previous RSVP
-    const savedRSVP = localStorage.getItem('ranbir_alia_wedding_rsvp');
+    const savedRSVP = localStorage.getItem('rajveer_lavleen_wedding_rsvp');
     if (savedRSVP) {
       try {
         const parsed = JSON.parse(savedRSVP);
@@ -81,7 +81,7 @@ export const RsvpSection: React.FC = () => {
     };
 
     try {
-      localStorage.setItem('ranbir_alia_wedding_rsvp', JSON.stringify(payload));
+      localStorage.setItem('rajveer_lavleen_wedding_rsvp', JSON.stringify(payload));
       setSubmitted(true);
       soundEngine.playChime();
 
@@ -100,7 +100,7 @@ export const RsvpSection: React.FC = () => {
 
   const resetForm = () => {
     soundEngine.playClick();
-    localStorage.removeItem('ranbir_alia_wedding_rsvp');
+    localStorage.removeItem('rajveer_lavleen_wedding_rsvp');
     setSubmitted(false);
     setAttending(null);
     setFullName('');
@@ -210,7 +210,7 @@ export const RsvpSection: React.FC = () => {
 
                     <div className="mt-6 pt-4 border-t border-[#B5965A]/25 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-sans-body">
                       <span className="text-[#FFF9EF]/70 text-[11px]">
-                        Show this pass at Taj Swarna concierge desks for luxury airport transfers.
+                        Show this pass at Laaz Haveli concierge desks for luxury airport transfers.
                       </span>
 
                       <button
