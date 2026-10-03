@@ -77,7 +77,7 @@ export function App() {
       </main>
 
       {/* Floating Audio Music Player */}
-      <MusicPlayer />
+      <MusicPlayer autoPlay={hasOpenedCard} />
 
       {/* Interactive Phool Varsha (Shower Blessings) Button & Petals */}
       <FlowerShower />

@@ -3,7 +3,11 @@ import { Play, Pause, Music, Volume2, VolumeX, ArrowUp } from 'lucide-react';
 import { WEDDING_DATA } from '../data/weddingData';
 import { soundEngine } from '../utils/soundEffects';
 
-export const MusicPlayer: React.FC = () => {
+interface MusicPlayerProps {
+  autoPlay?: boolean;
+}
+
+export const MusicPlayer: React.FC<MusicPlayerProps> = ({ autoPlay = false }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [soundEffectsEnabled, setSoundEffectsEnabled] = useState(true);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -21,6 +25,29 @@ export const MusicPlayer: React.FC = () => {
       }
     };
   }, []);
+
+  useEffect(() => {
+    if (autoPlay && audioRef.current && !isPlaying) {
+      audioRef.current
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch((e) => {
+          console.log('Audio autoplay prevented', e);
+          const handleFirstGesture = () => {
+            if (audioRef.current) {
+              audioRef.current
+                .play()
+                .then(() => setIsPlaying(true))
+                .catch(console.error);
+            }
+            window.removeEventListener('pointerdown', handleFirstGesture);
+            window.removeEventListener('click', handleFirstGesture);
+          };
+          window.addEventListener('pointerdown', handleFirstGesture, { once: true });
+          window.addEventListener('click', handleFirstGesture, { once: true });
+        });
+    }
+  }, [autoPlay]);
 
   const togglePlay = () => {
     soundEngine.playClick();
