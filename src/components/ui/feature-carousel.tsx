@@ -327,14 +327,9 @@ export function FeatureCarousel() {
                         className="absolute inset-x-0 bottom-0 p-4 sm:p-6 md:p-8 pt-24 bg-gradient-to-t from-black/95 via-black/80 to-transparent flex flex-col justify-end pointer-events-none"
                       >
                         {/* Event Title Badge */}
-                        <div className="bg-[#6E1F2E] text-[#FFF9EF] px-3 py-1 rounded-full text-[10px] sm:text-xs font-cinzel font-bold uppercase tracking-[0.2em] w-fit shadow-md mb-2 border border-[#D4AF37]/60">
+                        <div className="bg-[#6E1F2E] text-[#FFF9EF] px-3 py-1 rounded-full text-[10px] sm:text-xs font-cinzel font-bold uppercase tracking-[0.2em] w-fit shadow-md mb-2.5 border border-[#D4AF37]/60">
                           {index + 1} • {feature.label}
                         </div>
-
-                        {/* Event Description */}
-                        <p className="text-amber-100 font-sans-body text-xs sm:text-sm leading-snug sm:leading-relaxed drop-shadow-md mb-2.5">
-                          {feature.description}
-                        </p>
 
                         {/* Timing & Venue Pills */}
                         <div className="space-y-1.5 text-[11px] sm:text-xs font-sans-body border-t border-[#D4AF37]/40 pt-2 text-[#FFF9EF]/90 pointer-events-auto">
