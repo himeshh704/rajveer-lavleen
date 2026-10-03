@@ -66,11 +66,11 @@ export function App() {
         {/* 4. Creative Day-by-Day Wedding Itinerary */}
         <Celebrations />
 
-        {/* 5. Pre-Wedding Photo Gallery */}
-        <CoupleStory />
-
-        {/* 6. Grand Wedding Reception Section */}
+        {/* 5. Grand Wedding Reception Section */}
         <ReceptionSection />
+
+        {/* 6. Pre-Wedding Photo Gallery */}
+        <CoupleStory />
 
         {/* 7. Full Size Interactive Google Map & Footer */}
         <FooterMap />
