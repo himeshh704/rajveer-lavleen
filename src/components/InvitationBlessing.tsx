@@ -181,14 +181,18 @@ export const InvitationBlessing: React.FC = () => {
           </motion.div>
 
           {/* Date & Venue Section */}
-          <div className="mt-8 pt-6 border-t border-[#D4AF37]/30 space-y-2 text-[#6B5139]">
-            <p className="text-xs font-sans-body text-[#7A5C3D] italic">on</p>
+          <div className="mt-8 pt-6 border-t border-[#D4AF37]/30 space-y-1.5 text-[#6B5139]">
+            <p className="text-xs font-sans-body text-[#7A5C3D] italic">for the holy</p>
+            <h3 className="text-xl sm:text-2xl font-cinzel font-bold text-[#6E1F2E] tracking-wider uppercase">
+              ANAND KARAJ
+            </h3>
+            <p className="text-xs font-sans-body text-[#7A5C3D] italic pt-1">on</p>
             <p className="text-lg sm:text-xl font-cinzel font-bold text-[#C59B27] tracking-wide uppercase">
               SUNDAY, 1 NOVEMBER 2026
             </p>
             <p className="text-xs font-sans-body text-[#7A5C3D] italic pt-1">at</p>
             <h4 className="text-xl sm:text-2xl font-cinzel font-black text-[#B8860B] tracking-wider uppercase">
-              LAZ HAVELI
+              GURUDWARA SAHIB
             </h4>
             <p className="text-sm font-sans-body text-[#5E4B37] font-semibold">
               Beawar (Raj.)
