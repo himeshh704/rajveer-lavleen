@@ -113,7 +113,7 @@ const EVENTS_DATA: EventFeatureItem[] = [
     label: "Wedding Reception",
     sublabel: "31 Oct • 8:00 PM",
     icon: Sparkles,
-    image: "/images/reception_card.jpg",
+    image: "/images/reception_stage_2d.jpg",
     venue: "LAAZ HAVELI, Mill Road",
     time: "Wednesday, 31st Oct • 8:00 PM Onwards",
     dressCode: "Formals / Glitz",
