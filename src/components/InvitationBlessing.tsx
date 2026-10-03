@@ -109,7 +109,7 @@ export const InvitationBlessing: React.FC = () => {
 
           {/* Family Blessing Heading */}
           <p className="text-[10px] sm:text-xs font-sans-body uppercase tracking-[0.25em] text-[#B5965A] font-bold mb-4">
-            WITH THE CELESTIAL BLESSINGS OF ALMIGHTY WAHEGURU &amp; ELDERS
+            WITH THE CELESTIAL BLESSINGS OF ALMIGHTY WAHEGURU
           </p>
 
           <p className="text-xs sm:text-sm font-sans-body italic text-[#7A5C3D] my-2 font-medium">
