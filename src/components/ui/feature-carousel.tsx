@@ -33,36 +33,36 @@ export interface EventFeatureItem {
 const EVENTS_DATA: EventFeatureItem[] = [
   {
     id: "aarambh-akhand-path",
-    label: "Akhand Path Sahib",
+    label: "Aarambh Akhand Path",
     sublabel: "28 Oct • 10:00 AM",
     icon: Sparkles,
     image: "/images/sikh_wedding_akhand_path_2d.png",
     venue: "Gurudwara Sahib / Residence",
     time: "Wednesday, 28th Oct • 10:00 AM",
-    dressCode: "Traditional / Modest",
-    description: "48-Hour Inaugural Commencement of Sri Guru Granth Sahib Ji Recitation seeking divine blessings for the couple.",
+    dressCode: "",
+    description: "Inaugural Commencement of Sri Guru Granth Sahib Ji Recitation seeking divine blessings for the couple.",
   },
   {
     id: "sampati-kirtan-brunch",
-    label: "Sampati & Kirtan",
+    label: "Samapti & Kirtan Darbar",
     sublabel: "30 Oct • 10:00 AM",
     icon: Calendar,
     image: "/images/sikh_wedding_akhand_path_2d.png",
     venue: "Gurudwara Sahib & LAAZ HAVELI",
     time: "Friday, 30th Oct • 10:00 AM - 11:30 AM",
-    dressCode: "Traditional Attire",
-    description: "Sampati Bhog & Soulful Shabad Kirtan at Gurudwara Sahib, followed by Lunch Brunch at Laaj Haveli (11:30 AM).",
+    dressCode: "",
+    description: "30, Samapti Shri Akhand Path Sahib and Kirtan Darbar at Gurudwara Sahib, followed by Lunch Brunch at Laaj Haveli (11:30 AM).",
   },
   {
     id: "sagan-mehndi-cocktail",
-    label: "Sagan, Mehndi & Cocktail",
+    label: "Sagan, Mehndi, Cocktail & Jaggo",
     sublabel: "30 Oct • 8:00 PM",
     icon: Wine,
     image: "/images/sikh_wedding_mehndi_2d.png",
-    venue: "LAAZ HAVELI, Beawar",
+    venue: "Laaz Haveli, Mill Road",
     time: "Friday, 30th Oct • 8:00 PM Onwards",
-    dressCode: "Glitz & Glamour / Cocktail",
-    description: "Intricate Henna, Auspicious Sagan Ceremonies, Evening Music & Cocktail Celebration at Laaj Haveli.",
+    dressCode: "Glitz & Glamour (Black)",
+    description: "Sagan di Mehndi, Jaggo, Cocktail & Evening Celebration in Black at Laaj Haveli, Mill Road.",
   },
   {
     id: "pool-party",
@@ -351,10 +351,12 @@ export function FeatureCarousel() {
                             <MapPin className="w-3.5 h-3.5 text-[#D4AF37] group-hover/map:scale-110 transition-transform shrink-0" />
                             <span className="truncate underline underline-offset-2 decoration-[#D4AF37]/60">{feature.venue} 📍</span>
                           </a>
-                          <div className="flex items-center gap-1.5 text-amber-200">
-                            <Shirt className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
-                            <span className="truncate">DRESS CODE: {feature.dressCode}</span>
-                          </div>
+                          {feature.dressCode && (
+                            <div className="flex items-center gap-1.5 text-amber-200">
+                              <Shirt className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
+                              <span className="truncate">DRESS CODE: {feature.dressCode}</span>
+                            </div>
+                          )}
                         </div>
                       </motion.div>
                     )}
