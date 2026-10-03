@@ -100,9 +100,6 @@ export const SpecialNotes: React.FC = () => {
               Awaiting Eyes
             </span>
             <div className="space-y-3 font-cormorant text-lg sm:text-xl text-[#291C1A]/90 leading-relaxed max-w-lg mx-auto">
-              <motion.p variants={itemVariants} className="text-xl sm:text-2xl font-serif-luxury font-bold text-[#6E1F2E]">
-                Dadi
-              </motion.p>
               <motion.div variants={itemVariants} className="flex flex-wrap justify-center items-center gap-x-3 gap-y-1">
                 <span>Ardas</span>
                 <span className="text-[#B5965A]/60">•</span>
