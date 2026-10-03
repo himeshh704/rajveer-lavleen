@@ -5,6 +5,7 @@ import { Hero } from './components/Hero';
 import { InvitationBlessing } from './components/InvitationBlessing';
 import { DateReveal } from './components/DateReveal';
 import { Celebrations } from './components/Celebrations';
+import { SpecialNotes } from './components/SpecialNotes';
 import { CoupleStory } from './components/CoupleStory';
 import { FooterMap } from './components/FooterMap';
 import { MusicPlayer } from './components/MusicPlayer';
@@ -65,7 +66,10 @@ export function App() {
         {/* 4. Creative Day-by-Day Wedding Itinerary */}
         <Celebrations />
 
-        {/* 5. Pre-Wedding Photo Gallery */}
+        {/* 5. Minimalist Special Notes & Family Blessings */}
+        <SpecialNotes />
+
+        {/* 6. Pre-Wedding Photo Gallery */}
         <CoupleStory />
 
         {/* 6. Full Size Interactive Google Map & Footer */}
