@@ -1,107 +1,220 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Heart } from 'lucide-react';
-import { WEDDING_DATA } from '../data/weddingData';
+import React, { useState, useRef } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { Camera, Sparkles, X, ChevronLeft, ChevronRight, Heart } from 'lucide-react';
+import { soundEngine } from '../utils/soundEffects';
+
+interface GalleryItem {
+  id: number;
+  src: string;
+  title: string;
+  caption: string;
+}
+
+const GALLERY_IMAGES: GalleryItem[] = [
+  {
+    id: 1,
+    src: "/images/gallery_1.jpg",
+    title: "Love in Bloom",
+    caption: "A joyful embrace wrapped in tradition and vibrant colors."
+  },
+  {
+    id: 2,
+    src: "/images/gallery_2.jpg",
+    title: "Timeless Elegance",
+    caption: "Classic romance with vintage charm and royal grace."
+  },
+  {
+    id: 3,
+    src: "/images/gallery_3.jpg",
+    title: "Divine Heritage",
+    caption: "Shared smiles beneath sacred motifs and artistic heritage."
+  },
+  {
+    id: 4,
+    src: "/images/gallery_4.jpg",
+    title: "Sweet Togetherness",
+    caption: "Pure affection, laughter, and moments to cherish forever."
+  }
+];
 
 export const CoupleStory: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end start']
   });
 
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [-30, 30]);
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [-25, 25]);
+
+  const openLightbox = (index: number) => {
+    soundEngine.playClick();
+    setSelectedImageIndex(index);
+  };
+
+  const closeLightbox = () => {
+    soundEngine.playClick();
+    setSelectedImageIndex(null);
+  };
+
+  const nextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    soundEngine.playClick();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex + 1) % GALLERY_IMAGES.length);
+    }
+  };
+
+  const prevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    soundEngine.playClick();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length);
+    }
+  };
 
   return (
-    <section ref={sectionRef} id="couple" className="py-24 px-4 md:px-8 bg-[#FFF9EF] text-[#291C1A] overflow-hidden">
+    <section ref={sectionRef} id="couple" className="py-20 sm:py-24 px-4 sm:px-6 md:px-8 bg-[#FFF9EF] text-[#291C1A] overflow-hidden">
       <motion.div style={{ y: parallaxY }} className="max-w-6xl mx-auto will-change-transform">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
           <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#6E1F2E]/10 border border-[#6E1F2E]/30 text-[#6E1F2E]">
-            <Heart className="w-4 h-4 text-[#6E1F2E]" />
+            <Camera className="w-4 h-4 text-[#B5965A]" />
             <span className="text-xs uppercase font-sans-body tracking-[0.25em] font-semibold">
-              Two Souls, One Destiny
+              Priceless Moments
             </span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-serif-luxury font-bold text-[#6E1F2E]">
-            Meet the Bride & Groom
+            Pre-Wedding Gallery
           </h2>
 
           <p className="text-sm sm:text-base font-cormorant italic text-[#291C1A]/80 max-w-xl mx-auto">
-            "Ek Joti Due Murti" — Two hearts coming together to embark on a holy journey of lifetime togetherness.
+            "Capturing the eternal bond, laughter, and timeless romance of Rajveer & Lavleen."
           </p>
 
           <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#B5965A] to-transparent mx-auto mt-4" />
         </div>
 
-        {/* Couple Profile Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-stretch">
-          {/* Groom Card */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7 }}
-            className="bg-[#F8F0E3] border-2 border-[#B5965A]/40 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-center shadow-lg hover:border-[#B5965A] transition-all"
-          >
-            <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full border-4 border-[#B5965A]/50 overflow-hidden shrink-0 shadow-md">
+        {/* Interactive Gallery Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {GALLERY_IMAGES.map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              onClick={() => openLightbox(index)}
+              className="group relative cursor-pointer rounded-2xl overflow-hidden border-2 border-[#B5965A]/50 bg-[#F8F0E3] shadow-lg hover:shadow-2xl hover:border-[#D4AF37] transition-all duration-500 aspect-[9/16]"
+            >
+              {/* Photo */}
               <img
-                src={WEDDING_DATA.couple.groom.image}
-                alt={WEDDING_DATA.couple.groom.fullName}
-                className="w-full h-full object-cover"
+                src={item.src}
+                alt={item.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-            </div>
 
-            <div className="space-y-2 text-center sm:text-left flex-1">
-              <span className="text-xs font-cinzel font-semibold uppercase tracking-widest text-[#B5965A]">
-                {WEDDING_DATA.couple.groom.title}
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-serif-luxury font-bold text-[#6E1F2E]">
-                {WEDDING_DATA.couple.groom.fullName}
-              </h3>
-              <p className="text-xs font-sans-body text-[#291C1A]/80 leading-relaxed italic">
-                "{WEDDING_DATA.couple.groom.about}"
-              </p>
-              <div className="pt-2 text-[11px] font-sans-body text-[#6E1F2E] font-medium border-t border-[#B5965A]/20">
-                Parents: {WEDDING_DATA.couple.groom.parents}
+              {/* Hover Overlay with Gold Text */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300 flex flex-col justify-end p-5">
+                <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                  <div className="flex items-center gap-1.5 text-[#D4AF37] text-xs font-cinzel uppercase tracking-widest font-semibold mb-1">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>Rajveer & Lavleen</span>
+                  </div>
+                  <h3 className="text-lg font-serif-luxury font-bold text-[#FFF9EF]">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs font-sans-body text-[#FFF9EF]/80 line-clamp-2 mt-1">
+                    {item.caption}
+                  </p>
+                </div>
               </div>
-            </div>
-          </motion.div>
 
-          {/* Bride Card */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7 }}
-            className="bg-[#F8F0E3] border-2 border-[#B5965A]/40 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-center shadow-lg hover:border-[#B5965A] transition-all"
-          >
-            <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full border-4 border-[#B5965A]/50 overflow-hidden shrink-0 shadow-md">
-              <img
-                src={WEDDING_DATA.couple.bride.image}
-                alt={WEDDING_DATA.couple.bride.fullName}
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            <div className="space-y-2 text-center sm:text-left flex-1">
-              <span className="text-xs font-cinzel font-semibold uppercase tracking-widest text-[#B5965A]">
-                {WEDDING_DATA.couple.bride.title}
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-serif-luxury font-bold text-[#6E1F2E]">
-                {WEDDING_DATA.couple.bride.fullName}
-              </h3>
-              <p className="text-xs font-sans-body text-[#291C1A]/80 leading-relaxed italic">
-                "{WEDDING_DATA.couple.bride.about}"
-              </p>
-              <div className="pt-2 text-[11px] font-sans-body text-[#6E1F2E] font-medium border-t border-[#B5965A]/20">
-                Parents: {WEDDING_DATA.couple.bride.parents}
+              {/* Click to Zoom Icon Badge */}
+              <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-md p-2 rounded-full border border-[#D4AF37]/50 text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity">
+                <Heart className="w-4 h-4 fill-[#D4AF37]" />
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
       </motion.div>
+
+      {/* Full-Screen Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImageIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeLightbox}
+            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
+          >
+            {/* Close Button */}
+            <button
+              onClick={closeLightbox}
+              className="absolute top-6 right-6 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors z-50 border border-white/20"
+              aria-label="Close Lightbox"
+            >
+              <X className="w-6 h-6 text-[#D4AF37]" />
+            </button>
+
+            {/* Prev Image */}
+            <button
+              onClick={prevImage}
+              className="absolute left-4 sm:left-8 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors z-50 border border-white/20"
+              aria-label="Previous Image"
+            >
+              <ChevronLeft className="w-6 h-6 text-[#D4AF37]" />
+            </button>
+
+            {/* Main Lightbox Image Frame */}
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-2xl max-h-[85vh] w-full rounded-2xl overflow-hidden border-2 border-[#D4AF37] bg-black shadow-2xl flex flex-col"
+            >
+              <div className="relative flex-1 min-h-0 bg-black flex items-center justify-center">
+                <img
+                  src={GALLERY_IMAGES[selectedImageIndex].src}
+                  alt={GALLERY_IMAGES[selectedImageIndex].title}
+                  className="max-w-full max-h-[70vh] object-contain"
+                />
+              </div>
+
+              {/* Lightbox Caption Bar */}
+              <div className="bg-[#42131E] border-t border-[#D4AF37]/50 p-4 sm:p-5 text-[#FFF9EF]">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-serif-luxury font-bold text-amber-200">
+                      {GALLERY_IMAGES[selectedImageIndex].title}
+                    </h3>
+                    <p className="text-xs sm:text-sm font-sans-body text-[#FFF9EF]/80 mt-0.5">
+                      {GALLERY_IMAGES[selectedImageIndex].caption}
+                    </p>
+                  </div>
+                  <span className="text-xs font-cinzel text-[#D4AF37] font-semibold tracking-widest shrink-0">
+                    {selectedImageIndex + 1} / {GALLERY_IMAGES.length}
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Next Image */}
+            <button
+              onClick={nextImage}
+              className="absolute right-4 sm:right-8 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors z-50 border border-white/20"
+              aria-label="Next Image"
+            >
+              <ChevronRight className="w-6 h-6 text-[#D4AF37]" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
