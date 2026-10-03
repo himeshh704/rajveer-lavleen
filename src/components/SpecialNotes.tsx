@@ -73,6 +73,27 @@ export const SpecialNotes: React.FC = () => {
         >
 
 
+          {/* A Cordial Invitation From */}
+          <motion.div variants={itemVariants} className="space-y-4">
+            <span className="text-xs font-cinzel font-semibold uppercase tracking-[0.25em] text-[#B5965A] block">
+              A Cordial Invitation From
+            </span>
+            <div className="space-y-2 font-cormorant text-xl sm:text-2xl text-[#291C1A] leading-relaxed">
+              <motion.p variants={itemVariants} className="font-bold text-[#6E1F2E] tracking-wider uppercase text-2xl sm:text-3xl font-serif-luxury">
+                Harpreet Singh
+              </motion.p>
+              <motion.p variants={itemVariants} className="text-base sm:text-xl text-[#6E1F2E]/80 font-medium">
+                Harpreet Rexine House
+              </motion.p>
+              <motion.p variants={itemVariants} className="text-sm sm:text-base text-[#B5965A] tracking-wider font-sans-body pt-1">
+                Mob. <a href="tel:+919782137500" className="hover:underline">9782137500</a>, <a href="tel:+918107405768" className="hover:underline">8107405768</a>
+              </motion.p>
+            </div>
+          </motion.div>
+
+          {/* Minimal Line Separator */}
+          <motion.div variants={itemVariants} className="w-12 h-[1px] bg-[#B5965A]/25 mx-auto" />
+
           {/* Special Request */}
           <motion.div variants={itemVariants} className="space-y-4">
             <span className="text-xs font-cinzel font-semibold uppercase tracking-[0.25em] text-[#B5965A] block">
@@ -120,27 +141,6 @@ export const SpecialNotes: React.FC = () => {
                 <span className="text-[#B5965A]/60">•</span>
                 <span>Fateh</span>
               </motion.div>
-            </div>
-          </motion.div>
-
-          {/* Minimal Line Separator */}
-          <motion.div variants={itemVariants} className="w-12 h-[1px] bg-[#B5965A]/25 mx-auto" />
-
-          {/* A Cordial Invitation From */}
-          <motion.div variants={itemVariants} className="space-y-4">
-            <span className="text-xs font-cinzel font-semibold uppercase tracking-[0.25em] text-[#B5965A] block">
-              A Cordial Invitation From
-            </span>
-            <div className="space-y-2 font-cormorant text-xl sm:text-2xl text-[#291C1A] leading-relaxed">
-              <motion.p variants={itemVariants} className="font-bold text-[#6E1F2E] tracking-wider uppercase text-2xl sm:text-3xl font-serif-luxury">
-                Harpreet Singh
-              </motion.p>
-              <motion.p variants={itemVariants} className="text-base sm:text-xl text-[#6E1F2E]/80 font-medium">
-                Harpreet Rexine House
-              </motion.p>
-              <motion.p variants={itemVariants} className="text-sm sm:text-base text-[#B5965A] tracking-wider font-sans-body pt-1">
-                Mob. <a href="tel:+919782137500" className="hover:underline">9782137500</a>, <a href="tel:+918107405768" className="hover:underline">8107405768</a>
-              </motion.p>
             </div>
           </motion.div>
         </motion.div>
