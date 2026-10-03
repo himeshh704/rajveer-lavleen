@@ -152,16 +152,6 @@ export const InvitationEnvelope: React.FC<InvitationEnvelopeProps> = ({ onOpen }
               </div>
             )}
 
-            {/* Quick Skip Button if playing */}
-            {hasStarted && !showGlowFlash && (
-              <button
-                onClick={triggerGlowAndReveal}
-                className="absolute top-6 right-6 z-30 px-4 py-1.5 rounded-full bg-black/60 border border-[#B5965A]/40 text-amber-100 text-xs font-sans-body backdrop-blur-md hover:bg-black/80 transition-all"
-              >
-                Skip Video →
-              </button>
-            )}
-
             {/* 2. GOLDEN GLOW & FLASH TRANSITION EFFECT (Fires upon video completion) */}
             <AnimatePresence>
               {showGlowFlash && (
