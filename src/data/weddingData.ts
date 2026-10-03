@@ -127,7 +127,7 @@ export const WEDDING_DATA: WeddingData = {
   events: [
     {
       id: "aarambh-akhand-path",
-      name: "Aarambh Shri Akhand Path Sahib",
+      name: "Shri Akhand Path Sahib Ji",
       tagline: "Inaugural Commencement of Sacred Recitation",
       date: "28 October 2026",
       formattedDate: "Wednesday, 28th October 2026",
@@ -143,12 +143,12 @@ export const WEDDING_DATA: WeddingData = {
     },
     {
       id: "sampati-kirtan-brunch",
-      name: "30, Samapti Shri Akhand Path Sahib and Kirtan Darbar",
+      name: "Samapti Shri Akhand Path Sahib Ji",
       tagline: "Kirtan Darbar & Lunch Brunch",
       date: "30 October 2026",
       formattedDate: "Friday, 30th October 2026",
-      time: "10:00 AM Samapti | 10:15 AM Kirtan | 11:30 AM Brunch",
-      venue: "Gurudwara Sahib & LAAZ HAVELI",
+      time: "10:00 AM - 11:30 AM (Kirtan Darbaar)",
+      venue: "",
       address: "Mill Road, Beawar (Raj.)",
       city: "Beawar",
       dressCode: "",
@@ -263,8 +263,8 @@ export const WEDDING_DATA: WeddingData = {
       venue: "Gurudwara Sahib & LAAZ HAVELI",
       address: "Station Road & Mill Road, Beawar (Raj.)",
       city: "Beawar",
-      dressCode: "PINK COLOUR (Head covering mandatory)",
-      description: "10:30 AM: Anand Karaj at Gurudwara Sahib (Theme: Pink colour). The solemn and divine union of two souls bound in holy matrimony through sacred Laavan.",
+      dressCode: "",
+      description: "Holy Four Laavan Nuptials at Gurudwara Sahib.",
       iconName: "Heart",
       googleMapsUrl: "https://maps.app.goo.gl/PanroztgtnnRfbyLA?g_st=iw",
       calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Anand+Karaj+-+Rajveer+weds+Lavleen&dates=20261101T050000Z/20261101T090000Z&details=Anand+Karaj+Wedding+Ceremony&location=Beawar"

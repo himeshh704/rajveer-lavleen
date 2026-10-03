@@ -33,7 +33,7 @@ export interface EventFeatureItem {
 const EVENTS_DATA: EventFeatureItem[] = [
   {
     id: "aarambh-akhand-path",
-    label: "Aarambh Akhand Path",
+    label: "Shri Akhand Path Sahib Ji",
     sublabel: "28 Oct • 10:00 AM",
     icon: Sparkles,
     image: "/images/sikh_wedding_akhand_path_2d.png",
@@ -44,12 +44,12 @@ const EVENTS_DATA: EventFeatureItem[] = [
   },
   {
     id: "sampati-kirtan-brunch",
-    label: "Samapti & Kirtan Darbar",
+    label: "Samapti Shri Akhand Path Sahib Ji",
     sublabel: "30 Oct • 10:00 AM",
     icon: Calendar,
     image: "/images/sikh_wedding_kirtan_2d.png",
-    venue: "Gurudwara Sahib & LAAZ HAVELI",
-    time: "Friday, 30th Oct • 10:00 AM - 11:30 AM",
+    venue: "",
+    time: "Friday, 30th Oct • 10:00 AM - 11:30 AM (Kirtan Darbaar)",
     dressCode: "",
     description: "30, Samapti Shri Akhand Path Sahib and Kirtan Darbar at Gurudwara Sahib, followed by Lunch Brunch at Laaj Haveli (11:30 AM).",
   },
@@ -127,8 +127,8 @@ const EVENTS_DATA: EventFeatureItem[] = [
     image: "/images/sikh_wedding_anand_karaj_2d.png",
     venue: "Gurudwara Sahib & LAAZ HAVELI",
     time: "Sunday, 1st Nov • 10:30 AM Onwards",
-    dressCode: "PINK COLOUR (Head Covering)",
-    description: "Holy Four Laavan Nuptials at Gurudwara Sahib (Theme: Pink Colour). Two souls united as one in sacred matrimony.",
+    dressCode: "",
+    description: "Holy Four Laavan Nuptials at Gurudwara Sahib.",
   },
 ];
 
@@ -354,15 +354,17 @@ export function FeatureCarousel() {
                             <Clock className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
                             <span className="truncate">{feature.time}</span>
                           </div>
-                          <a
-                            href="https://maps.app.goo.gl/PanroztgtnnRfbyLA?g_st=iw"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-1.5 text-amber-200 hover:text-amber-300 transition-colors group/map"
-                          >
-                            <MapPin className="w-3.5 h-3.5 text-[#D4AF37] group-hover/map:scale-110 transition-transform shrink-0" />
-                            <span className="truncate underline underline-offset-2 decoration-[#D4AF37]/60">{feature.venue} 📍</span>
-                          </a>
+                          {feature.venue && (
+                            <a
+                              href="https://maps.app.goo.gl/PanroztgtnnRfbyLA?g_st=iw"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-1.5 text-amber-200 hover:text-amber-300 transition-colors group/map"
+                            >
+                              <MapPin className="w-3.5 h-3.5 text-[#D4AF37] group-hover/map:scale-110 transition-transform shrink-0" />
+                              <span className="truncate underline underline-offset-2 decoration-[#D4AF37]/60">{feature.venue} 📍</span>
+                            </a>
+                          )}
                           {feature.dressCode && (
                             <div className="flex items-center gap-1.5 text-amber-200">
                               <Shirt className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />

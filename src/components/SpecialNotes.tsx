@@ -71,21 +71,7 @@ export const SpecialNotes: React.FC = () => {
           viewport={{ once: true, margin: '-50px' }}
           className="space-y-12 sm:space-y-16"
         >
-          {/* Kirtan Darbaar Note */}
-          <motion.div variants={itemVariants} className="space-y-2">
-            <span className="text-xs font-cinzel uppercase tracking-[0.25em] text-[#B5965A] block font-semibold">
-              Sacred Recitation
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-serif-luxury text-[#6E1F2E] font-bold">
-              10:00 AM – 11:30 AM
-            </h3>
-            <p className="text-lg sm:text-xl font-cormorant italic text-[#291C1A]/85">
-              Kirtan Darbaar
-            </p>
-          </motion.div>
 
-          {/* Minimal Line Separator */}
-          <motion.div variants={itemVariants} className="w-12 h-[1px] bg-[#B5965A]/25 mx-auto" />
 
           {/* Special Request */}
           <motion.div variants={itemVariants} className="space-y-4">
