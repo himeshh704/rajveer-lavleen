@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
           <a href="#couple" className="hover:text-[#B5965A] transition-colors">Our Story</a>
           <a href="#video" className="hover:text-[#B5965A] transition-colors">Film</a>
           <a href="#details" className="hover:text-[#B5965A] transition-colors">Guide</a>
-          <a href="#rsvp" className="hover:text-[#B5965A] transition-colors">RSVP</a>
+          <a href="#reception" className="hover:text-[#B5965A] transition-colors">Reception</a>
         </div>
 
         {/* Back to Top Button */}
