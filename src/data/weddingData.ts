@@ -238,6 +238,22 @@ export const WEDDING_DATA: WeddingData = {
       calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Baraat+Departure+-+Rajveer+weds+Lavleen&dates=20261031T143000Z/20261031T180000Z&details=Baraat+Departure&location=Beawar"
     },
     {
+      id: "wedding-reception",
+      name: "Wedding Reception",
+      tagline: "(Followed by Dinner)",
+      date: "31 October 2026",
+      formattedDate: "Wednesday, 31st October 2026",
+      time: "8:00 PM Onwards",
+      venue: "LAAZ HAVELI",
+      address: "Mill Road, Beawar (Raj.)",
+      city: "Beawar",
+      dressCode: "Formals / Glitz",
+      description: "A Celebration of Love & Togetherness. With hearts full of joy, we invite you to grace the evening as the couple celebrate the beginning of their beautiful journey together.",
+      iconName: "Sparkles",
+      googleMapsUrl: "https://maps.app.goo.gl/PanroztgtnnRfbyLA?g_st=iw",
+      calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Reception+-+Rajveer+weds+Lavleen&dates=20261031T143000Z/20261031T183000Z&details=Wedding+Reception+followed+by+Dinner&location=Laaz+Haveli,+Mill+Road,+Beawar"
+    },
+    {
       id: "anand-karaj",
       name: "Anand Karaj (Sacred Wedding)",
       tagline: "Holy Four Laavan Nuptials (Theme: Pink Colour)",

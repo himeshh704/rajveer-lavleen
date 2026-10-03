@@ -109,6 +109,17 @@ const EVENTS_DATA: EventFeatureItem[] = [
     description: "Grand Baraat Departure from home to Laaj Haveli at 6:00 PM with live dhol beats, fireworks & celebration.",
   },
   {
+    id: "wedding-reception",
+    label: "Wedding Reception",
+    sublabel: "31 Oct • 8:00 PM",
+    icon: Sparkles,
+    image: "/images/reception_card.jpg",
+    venue: "LAAZ HAVELI, Mill Road",
+    time: "Wednesday, 31st Oct • 8:00 PM Onwards",
+    dressCode: "Formals / Glitz",
+    description: "A Celebration of Love & Togetherness. With hearts full of joy, we invite you to grace the evening as the couple celebrate the beginning of their beautiful journey together (Followed by Dinner).",
+  },
+  {
     id: "anand-karaj",
     label: "Anand Karaj",
     sublabel: "1 Nov • 10:30 AM",
