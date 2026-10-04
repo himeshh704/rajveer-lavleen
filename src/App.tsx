@@ -10,6 +10,7 @@ import { CoupleStory } from './components/CoupleStory';
 import { FooterMap } from './components/FooterMap';
 import { MusicPlayer } from './components/MusicPlayer';
 import { FlowerShower } from './components/FlowerShower';
+import { GoldSparkleTrail } from './components/GoldSparkleTrail';
 
 export function App() {
   const [hasOpenedCard, setHasOpenedCard] = useState(false);
@@ -78,6 +79,9 @@ export function App() {
 
       {/* Floating Audio Music Player */}
       <MusicPlayer autoPlay={hasOpenedCard} />
+
+      {/* Interactive Gold Sparkle Cursor/Touch Trail */}
+      <GoldSparkleTrail />
 
       {/* Interactive Phool Varsha (Shower Blessings) Button & Petals */}
       <FlowerShower />
