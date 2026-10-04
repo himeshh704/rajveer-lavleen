@@ -127,7 +127,7 @@ export const WEDDING_DATA: WeddingData = {
   events: [
     {
       id: "aarambh-akhand-path",
-      name: "Shri Akhand Path Sahib Ji",
+      name: "Aarambh Shri Akhand Path Sahib Ji",
       tagline: "Inaugural Commencement of Sacred Recitation",
       date: "28 October 2026",
       formattedDate: "Wednesday, 28th October 2026",

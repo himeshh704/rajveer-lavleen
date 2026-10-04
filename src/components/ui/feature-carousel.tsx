@@ -33,7 +33,7 @@ export interface EventFeatureItem {
 const EVENTS_DATA: EventFeatureItem[] = [
   {
     id: "aarambh-akhand-path",
-    label: "Shri Akhand Path Sahib Ji",
+    label: "Aarambh Shri Akhand Path Sahib Ji",
     sublabel: "28 Oct • 10:00 AM",
     icon: Sparkles,
     image: "/images/sikh_wedding_akhand_path_2d.png",
