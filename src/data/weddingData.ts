@@ -100,7 +100,7 @@ export const WEDDING_DATA: WeddingData = {
       title: "The Groom",
       about: "A gentleman of warmth, honor and quiet grace. Devoted to family heritage and building a life grounded in love and faith.",
       parents: "Harpreet Singh & Manjyot Kaur",
-      grandparents: "Late S. Jagjeet Singh & S. Manjeet Kaur",
+      grandparents: "Late S. Jagjeet Singh & Sdn. Manjeet Kaur",
       image: "/images/amrit_simran_2d_couple_illustration.png"
     },
     bride: {
