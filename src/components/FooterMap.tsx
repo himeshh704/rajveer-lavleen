@@ -42,7 +42,7 @@ export const FooterMap: React.FC = () => {
         </div>
 
         {/* FULL SIZE INTERACTIVE GOOGLE MAP CONTAINER */}
-        <div className="relative rounded-3xl overflow-hidden border-2 border-[#B5965A] shadow-2xl bg-black">
+        <div className="relative rounded-3xl overflow-hidden border-2 border-[#B5965A] shadow-2xl bg-[#FFF9EF]">
           {/* Map Frame Header Overlay Bar */}
           <div className="bg-[#6E1F2E] text-[#FFF9EF] px-6 py-3 border-b border-[#B5965A]/40 flex flex-col sm:flex-row items-center justify-between gap-2">
             <div className="flex items-center gap-2">
@@ -61,7 +61,7 @@ export const FooterMap: React.FC = () => {
               href="https://maps.app.goo.gl/PanroztgtnnRfbyLA?g_st=iw"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#B5965A] hover:bg-[#D4AF37] text-[#291C1A] text-xs font-bold font-sans-body shadow-md transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#B5965A] hover:bg-[#D4AF37] text-[#291C1A] text-xs font-bold font-sans-body shadow-md transition-all hover:scale-105"
             >
               <Navigation className="w-3.5 h-3.5" />
               <span>Open in Google Maps</span>
@@ -69,9 +69,9 @@ export const FooterMap: React.FC = () => {
           </div>
 
           {/* Full Size iFrame Map */}
-          <div className="w-full h-[380px] sm:h-[480px]">
+          <div className="w-full h-[380px] sm:h-[480px] relative bg-[#FAF2E4]">
             <iframe
-              src="https://maps.google.com/maps?q=Laaz%20Haveli%20Mill%20Road%20Beawar%20Rajasthan&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=Laaz+Haveli,+Mill+Road,+Beawar,+Rajasthan+305901&t=&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -79,6 +79,7 @@ export const FooterMap: React.FC = () => {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="Laaz Haveli Location Map"
+              className="relative z-10 w-full h-full"
             />
           </div>
         </div>
