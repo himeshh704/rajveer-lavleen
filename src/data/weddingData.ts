@@ -109,7 +109,7 @@ export const WEDDING_DATA: WeddingData = {
       title: "The Bride",
       about: "An elegant radiance with a compassionate heart. Lover of warmth, family blessings, and timeless togetherness.",
       parents: "Sdr. Manjeet Singh & Sdn. Guljeet Kaur",
-      grandparents: "Late Sdn. Harbhajan Kaur & Late Sdr. Kartar Singh Oboveja",
+      grandparents: "Lt. Sdr. Kartar Singh Oboveja (LIC) & Lt. Sdn. Harbhajan Kaur",
       image: "/images/amrit_simran_2d_couple_illustration.png"
     },
     hashtag: "#RajveerWedsLavleen",

@@ -177,6 +177,9 @@ export const InvitationBlessing: React.FC = () => {
             </h2>
             <div className="space-y-0.5 text-xs sm:text-sm font-sans-body text-[#5E4B37] font-medium pt-1">
               <p>(D/o. {WEDDING_DATA.couple.bride.parents})</p>
+              <p className="text-xs sm:text-sm text-[#5E4B37]/90 font-medium">
+                (G/d. {WEDDING_DATA.couple.bride.grandparents})
+              </p>
             </div>
           </motion.div>
 
