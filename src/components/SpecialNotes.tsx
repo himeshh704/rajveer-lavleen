@@ -89,6 +89,9 @@ export const SpecialNotes: React.FC = () => {
                 Mob. <a href="tel:+919782137500" className="hover:underline">9782137500</a>, <a href="tel:+918107405768" className="hover:underline">8107405768</a>
               </motion.p>
               <motion.div variants={itemVariants} className="space-y-1 text-base sm:text-lg text-[#6E1F2E]/90 font-medium pt-2">
+                <span className="text-xs font-cinzel font-semibold uppercase tracking-[0.2em] text-[#B5965A] block">
+                  Firms:
+                </span>
                 <p>Chardikala Mattress And Handloom</p>
                 <p>CHAM</p>
                 <p>Aadi Opticals</p>
