@@ -260,14 +260,14 @@ export const WEDDING_DATA: WeddingData = {
       date: "1 November 2026",
       formattedDate: "Sunday, 1st November 2026",
       time: "10:30 AM Onwards",
-      venue: "Gurudwara Sahib & LAAZ HAVELI",
-      address: "Station Road & Mill Road, Beawar (Raj.)",
+      venue: "Gurudwara Sahib",
+      address: "Station Road, Beawar (Raj.)",
       city: "Beawar",
-      dressCode: "",
+      dressCode: "PINK COLOUR",
       description: "Holy Four Laavan Nuptials at Gurudwara Sahib.",
       iconName: "Heart",
       googleMapsUrl: "https://maps.app.goo.gl/PanroztgtnnRfbyLA?g_st=iw",
-      calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Anand+Karaj+-+Rajveer+weds+Lavleen&dates=20261101T050000Z/20261101T090000Z&details=Anand+Karaj+Wedding+Ceremony&location=Beawar"
+      calendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Anand+Karaj+-+Rajveer+weds+Lavleen&dates=20261101T050000Z/20261101T090000Z&details=Anand+Karaj+Wedding+Ceremony&location=Gurudwara+Sahib,+Beawar"
     }
   ],
   storyMoments: [

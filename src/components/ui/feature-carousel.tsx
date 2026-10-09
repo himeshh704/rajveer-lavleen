@@ -125,9 +125,9 @@ const EVENTS_DATA: EventFeatureItem[] = [
     sublabel: "1 Nov • 10:30 AM",
     icon: Heart,
     image: "/images/sikh_wedding_anand_karaj_2d.png",
-    venue: "Gurudwara Sahib & LAAZ HAVELI",
+    venue: "Gurudwara Sahib",
     time: "Sunday, 1st Nov • 10:30 AM Onwards",
-    dressCode: "",
+    dressCode: "PINK COLOUR",
     description: "Holy Four Laavan Nuptials at Gurudwara Sahib.",
   },
 ];
